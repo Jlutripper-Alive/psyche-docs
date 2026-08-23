@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>内倾 Introversion · 荣格《心理类型》</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --fg: #1f1b16;
+      --muted: #5a5348;
+      --card: #fffdf8;
+      --line: #d8d0c2;
+      --accent: #2f4a3a;
+      --quote: #ebe4d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14120f;
+        --fg: #eee8dc;
+        --muted: #b4aa98;
+        --card: #1c1914;
+        --line: #3a342a;
+        --accent: #b7c9a8;
+        --quote: #242017;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0 auto;
+      max-width: 40rem;
+      padding: 1.2rem 1.1rem 3.5rem;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.7 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    }
+    header { margin-bottom: 2rem; }
+    .kicker {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.3;
+      font-weight: 650;
+      margin: 0.35rem 0 0.6rem;
+    }
+    h2 {
+      font-size: 1.28rem;
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font-weight: 650;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.4rem 0 0.4rem;
+      font-weight: 650;
+    }
+    p { margin: 0.85rem 0; }
+    a { color: var(--accent); }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--quote);
+      border-left: 3px solid var(--accent);
+    }
+    blockquote p { margin: 0.5rem 0; }
+    .cite, .note, figcaption, footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .case, .ask {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 1rem 0;
+    }
+    ol.feynman { padding-left: 1.2rem; }
+    ol.feynman li { margin: 0.8rem 0; }
+    nav {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    nav a { margin-right: 0.55rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">psyche-study · 001</div>
+    <h1>内倾（Introversion）</h1>
+    <p>荣格在《心理类型》里说的是力比多朝主体回撤。会议里不说话，是后头才被人看见的样子。</p>
+    <nav>
+      <a href="#xiezi">楔子</a>
+      <a href="#yuanwen">原文</a>
+      <a href="#yiwen">译文</a>
+      <a href="#gainian">概念解析</a>
+      <a href="#changjing">场景案例</a>
+      <a href="#tashan">他山之石</a>
+      <a href="#feiman">费曼三问</a>
+    </nav>
+  </header>
+
+  <section id="xiezi">
+    <h2>1. 楔子</h2>
+    <p>周二下午的需求对齐。产品把 Figma 投到电视上，三个人同时说话。他笔记本开着，光标停在一段还没发出去的话：「这个状态机如果按你们刚才说的拆，取消订单会把库存锁死。」</p>
+    <p>他知道自己想说什么。房间里每进来一句新话，脑子里的那张图就要重画一遍。散会后同事拍他肩膀：「你又内向了，下次大胆说。」手机锁屏上还留着去年测的 INFJ。</p>
+    <p>他并不怕说话。上周 code review 他能盯着一段 diff 写八百字。怕的是那间会议室把判断从他身上吸走，还没等判断成形，轮次已经过了。同事用的「内向」，和他测出来的那个 I，和荣格写过的那个词，是不是一件事？</p>
+  </section>
+
+  <section id="yuanwen">
+    <h2>2. 原文</h2>
+    <p>标准本用荣格《全集》第六卷《心理类型》（<em>Psychological Types</em>, Collected Works 6），R. F. C. Hull 修订 H. G. Baynes 英译，普林斯顿大学出版社 1971 年第二版。段落号依 CW 惯例。下列各条均已在检索存档中标 <code>[VERIFIED]</code>。</p>
+
+    <h3>导论 §4：兴趣朝哪边走</h3>
+    <blockquote>
+      <p>But everyone possesses both mechanisms, extraversion as well as introversion, and only the relative predominance of one or the other determines the type. […] But despite the diversity of the formulations the fundamental idea common to them all constantly shines through: in one case an outward movement of interest towards the object, and in the other a movement of interest away from the object to the subject and his own psychological processes. In the first case the object works like a magnet upon the tendencies of the subject; it determines the subject to a large extent and even alienates him from himself. […] But in the second case the subject is and remains the centre of every interest. It looks, one might say, as though all the life-energy were ultimately seeking the subject, and thus continually prevented the object from exercising any overpowering influence. It is as though the energy were flowing away from the object, and the subject were a magnet drawing the object to itself.</p>
+    </blockquote>
+    <p class="cite">— C. G. Jung, <em>Psychological Types</em>, CW 6, Introduction, §4. Hull / Baynes, Princeton, 1971. 检索：<a href="../sources/001-neiqing-introversion.md">sources/001-neiqing-introversion.md</a></p>
+
+    <h3>导论 §5：内倾立场把什么放在上面</h3>
+    <blockquote>
+      <p>But in general one could say that the introverted standpoint is one which sets the ego and the subjective psychological process above the object and the objective process, or at any rate seeks to hold its ground against the object. This attitude, therefore, gives the subject a higher value than the object, and the object accordingly has a lower value. It is of secondary importance; indeed, sometimes the object represents no more than an outward token of a subjective content, the embodiment of an idea, the idea being the essential thing. If it is the embodiment of a feeling, then again the feeling is the main thing and not the object in its own right.</p>
+    </blockquote>
+    <p class="cite">— 同上，§5。</p>
+
+    <h3>导论 §6：没有纯类型</h3>
+    <blockquote>
+      <p>These contrary attitudes are in themselves no more than correlative mechanisms: a diastolic going out and seizing of the object, and a systolic concentration and detachment of energy from the object seized. Every human being possesses both mechanisms as an expression of his natural life-rhythm […] One mechanism will naturally predominate, and if this condition becomes in any way chronic a type will be produced; that is, an habitual attitude in which one mechanism predominates permanently, although the other can never be completely suppressed since it is an integral part of the psychic economy. Hence there can never be a pure type in the sense that it possesses only one mechanism with the complete atrophy of the other. A typical attitude always means merely the relative predominance of one mechanism.</p>
+    </blockquote>
+    <p class="cite">— 同上，§6。</p>
+
+    <h3>第十章 §621–§622：同一客体，两种同化</h3>
+    <blockquote>
+      <p>Although the introverted consciousness is naturally aware of external conditions, it selects the subjective determinants as the decisive ones. […] For example, two people see the same object, but they never see it in such a way that the images they receive are absolutely identical. […] Whereas the extravert continually appeals to what comes to him from the object, the introvert relies principally on what the sense impression constellates in the subject.</p>
+    </blockquote>
+    <p class="cite">— 同上，第十章「内倾型 / 意识的一般态度」，§621。</p>
+    <blockquote>
+      <p>It is characteristic of our present extraverted sense of values that the word “subjective” usually sounds like a reproof; at all events the epithet “merely subjective” is brandished like a weapon over the head of anyone who is not boundlessly convinced of the absolute superiority of the object. […] By the subjective factor I understand that psychological action or reaction which merges with the effect produced by the object and so gives rise to a new psychic datum. In so far as the subjective factor has, from the earliest times and among all peoples, remained in large measure constant, elementary perceptions and cognitions being almost universally the same, it is a reality that is just as firmly established as the external object. […] In this sense, therefore, the subjective factor is as ineluctable a datum as the extent of the sea and the radius of the earth.</p>
+    </blockquote>
+    <p class="cite">— 同上，§622。</p>
+  </section>
+
+  <section id="yiwen">
+    <h2>3. 译文</h2>
+    <p>下面是我直接从上面的英译转写的中文。直译优先。通行译名：荣格、力比多、主体、客体、《心理类型》。不采用任何中间译文。</p>
+
+    <h3>§4</h3>
+    <blockquote>
+      <p>可是每个人都拥有两套机制，外倾和内倾都有，只是其中一套相对占优势，才决定了类型。[…] 尽管各家的表述五花八门，贯穿其间的那个基本观念却始终透出来：一种情形是兴趣向外，朝向客体运动；另一种情形是兴趣离开客体，退回到主体及其自身的心理过程。在前一种情形里，客体像磁铁一样作用于主体的种种倾向；它在很大程度上规定主体，甚至使主体疏离自己。[…] 而在后一种情形里，主体是、并且始终是每一种兴趣的中心。可以说，仿佛全部生命能量最终都在寻找主体，从而不断地阻止客体施加压倒性的影响。就像能量正从客体流走，而主体是一块把客体吸向自己的磁铁。</p>
+    </blockquote>
+    <p class="note">译注。「object / subject」译「客体 / 主体」。荣格的 object 不只是「一件东西」，也包括人、事实、外部处境，凡是站在意识主体对面的都算。life-energy 此处与后文 libido（力比多）同向，指心理过程的能量强度，不是弗洛伊德那种以性为主的力比多。mechanism 保留「机制」，因为荣格把它写成可交替的生理节律类比（收缩 / 舒张），不是性格标签。</p>
+
+    <h3>§5</h3>
+    <blockquote>
+      <p>但一般可以说，内倾立场是把自我和主观心理过程置于客体及客观过程之上，或者至少力求在客体面前守住自己的阵地。因此这种态度给主体的价值高于客体，客体的价值相应地较低。它是次要的；的确，有时客体不过是某种主观内容的外在标记，是一个观念的化身，而观念才是本质的东西。如果它是一种情感的化身，那么同样，情感才是主要的，而不是客体自身。</p>
+    </blockquote>
+    <p class="note">译注。ego 译「自我」，后文 self 译「自性」，二者在荣格体系里不是同一个词。hold its ground 译「守住阵地」，保留对抗意味，不软化成「保持独立」。</p>
+
+    <h3>§6</h3>
+    <blockquote>
+      <p>这些彼此相反的态度本身只不过是成对的机制：舒张式地走出去抓住客体，以及收缩式地把能量从已抓住的客体上集中并卸下来。每一个人都拥有两套机制，作为其自然生命节律的表达。[…] 一套机制自然会占上风；若这种状况以任何方式变成慢性的，一种类型就产生了，也就是一种习惯性态度，其中一套机制持久占优，另一套却绝不可能被完全压制，因为它是心理经济不可分割的一部分。因此，绝不可能有这样一种纯粹类型，它只拥有一套机制而另一套完全萎缩。所谓典型态度，始终只意味着一套机制相对占优势。</p>
+    </blockquote>
+    <p class="note">译注。psychic economy 译「心理经济」，指心理能量的收支安排，不是「节省」。chronic 保留医学口气「慢性的」，因为荣格在导论里把类型写成习惯固化，不是一次选择。</p>
+
+    <h3>§621–§622</h3>
+    <blockquote>
+      <p>内倾意识当然觉察外部条件，可它挑选主观规定作为决定性的规定。[…] 举例说，两个人看见同一个客体，他们收到的影像却从来不会绝对同一。[…] 外倾者不断诉诸从客体到达他那里的东西，内倾者则主要依赖感官印象在主体里聚起的东西。</p>
+    </blockquote>
+    <p class="note">译注。constellate 是荣格的术语，字面有「聚成星座」。我译「聚起」，指外部印象把主体里已有的心理内容召唤到一起，不是「联想一下」。不译成「投射」，以免和后文的 projection 混成一个词。</p>
+    <blockquote>
+      <p>我们眼下这种外倾的价值感有一个特点：「主观的」这个词听起来通常像一句责备；无论如何，「不过是主观的」这句评语，会像武器一样挥向任何尚未无限信服客体绝对优越的人。[…] 所谓主观因素，我理解为那种心理上的行动或反应，它与客体产生的效应融合，从而形成一个新的心理事实。就主观因素从远古以来、在各民族中间大体保持恒定而言（基本的知觉和认知几乎普遍相同），它是一种与外部客体一样牢固确立的实在。[…] 因此，在这个意义上，主观因素是一项无法回避的与件，就像海的广度、地球的半径一样。</p>
+    </blockquote>
+    <p class="note">译注。datum / ineluctable a datum 译「与件 / 无法回避的与件」，稍硬，为的是保住「给定事实」而不是「数据」。merely subjective 译「不过是主观的」，对应荣格听到的贬义口气。</p>
+  </section>
+
+  <section id="gainian">
+    <h2>4. 概念解析</h2>
+    <p>在荣格自己的排序里，内倾和外倾是第一层区分：态度类型（attitude types），由一般兴趣或力比多运动的方向来划。功能类型（function-types）是第二层：思维、情感、感觉、直觉，每一种都可以再取内倾或外倾的方向。这是原文说的，见导论 §7。MBTI 的 I 落在第一层。</p>
+    <p>态度在这里指能量习惯上朝哪边走。外倾时，客体像磁铁，主体的兴趣被吸过去，人甚至会疏离自己。内倾时，主体是磁铁，能量从客体流走，客体变成观念或情感的外壳。会议室、Figma、别人正在说的那句话，都是客体。那段还没发出去的话，已经是主体这边聚起来的东西。</p>
+    <p>荣格给「主观因素」（subjective factor）下了定义。它是客体打进来之后，在主体里发生的那一层行动或反应，两者融合成一个新的心理事实。他把它写得和海的广度、地球的半径一样无法拿掉。这是原文说的，§622。流行测验里的 I，量的是行为输出，比如话少、爱独处。荣格量的是这一层同化发生在哪一边。</p>
+    <p>§4、§6 还写过：每个人都有两套机制，类型只是相对优势，没有一套机制完全萎缩的纯类型。这是我的推断：把 I 读成「我在人群里必须耗电」，等于拿社交技能分数替换了习惯方向。</p>
+    <p>第十章另有一处容易滑过去。内倾态度通常由心理结构定向，那结构先于自我（ego）的发育；更根本的主体是自性（self），它包含无意识。内倾者特有的偏差，是把自我抬成整个心理过程的主体，意识被人为地主观化，反而跟客体闹翻。见 §623。会议里死守「我已经想清楚了」而不再听房间，属于这种滑移的日常版本。这是我的推断。荣格写的是临床夸张，不是周会策略。</p>
+    <p>后来的人从几个方向改过这个概念，结论对不上。</p>
+    <p>量表这条线。Myers-Briggs 把荣格的临床描述改成自陈问卷和强制二分。McCrae 与 Costa 1989 年用 NEO-PI 对照后说，数据不支持 MBTI 测到了真正的二分偏好或性质上不同的类型；荣格的理论要么本身不对，要么被 MBTI 操作化得很不够，不能当作解释 MBTI 分数的地基。Pittenger 2005 年写得更短：MBTI 直觉上好看，还撑不起推广者那些用法。Stein 与 Swan 2019 年从理论标准上再判：与已知事实不符、难检验、内部有矛盾。这些是学界通行的心理测量批评，针对问卷，不是荣格的原段落。</p>
+    <p>大五这条线。今天人格心理学里的 Extraversion，核心常常是社交性、活动性和正性情绪。它和荣格的「力比多朝客体」只有部分重叠。一个人可以在大五人格上偏外向（话多、好兴奋），同时在荣格意义上仍是内倾态度（判断仍以主体里聚起的东西为准）。Rain Mason Olbert 把这种错位写得很直：当代用法按社交能力定义内外倾，于是「独处却能应酬」变成谜。荣格的原区分不靠这组反差。</p>
+    <p>临床这条线。国际分析心理学协会（IAAP）对 CW 6 导论的摘要仍按荣格自己的话来：内倾者以主观心理过程为兴趣中心，生命能量寻找主体，客体价值较低。分析心理学内部大体沿用这个方向定义。有争议的是，类型观察能不能离开个案、做成可重复测量。荣格自己在导论里承认，给自己判类型时判断会被主观地弄得很浑。限制写在原文里。</p>
+  </section>
+
+  <section id="changjing">
+    <h2>5. 场景案例</h2>
+
+    <div class="case">
+      <h3>案例一。书面 review 对上语音 walk-through</h3>
+      <p>你对一份 PR 写了很长的评论，先画模块边界，再问这个抽象能不能撑住下个季度的两个调用方。作者在群里回：「上个会吧，我屏幕分享，十分钟讲完。」你仍要合作。你需要那份 diff 先在你脑子里聚成一张图，再开口。作者需要看着活的屏幕，让客体（代码此刻的样子）带着两个人往前走。</p>
+      <p>按 §621 推一步：你们看见的是同一个客体，收到的影像并不同一。他不断诉诸从客体到达他那里的东西。你依赖印象在主体里聚起的东西。争执如果停在「你是不是太内向、不爱同步」，会漏掉真正的摩擦点：同步应该发生在图成形之前，还是之后。一个能试的动作是先给十分钟静读，再开会，好让两种同化都有材料。</p>
+    </div>
+
+    <div class="case">
+      <h3>案例二。绩效评语写「会议贡献不足」</h3>
+      <p>经理的原话往往更具体：「关键讨论里声音少，决策后才在文档里补反对意见。」用流行的 I 来听，这是社交电量不够。用 §5 来听，你把主观过程放在客体过程上面：会开完了，你的判断才写圆。经理要的是当场可观察、被房间吸走的那种依赖。§4 写过，客体像磁铁，它规定主体，别人也看得见。</p>
+      <p>两边都有走过头的地方。你把「我还没想完」当成可以不进入客体的许可证，决策已经按房间里的磁铁走完了。经理把「当场可观察」当成唯一合格的贡献，于是「不过是主观的」变成评语里的暗刺，正是 §622 写过的那件武器。会议中途交出半成品就够用：「我还没想完，但当前方案有一个库存锁死的风险，散会前我补三行。」半成品已经是客体。能量回撤可以不等于缺席。</p>
+    </div>
+
+    <div class="case">
+      <h3>案例三。提示词改到第三稿还不肯发</h3>
+      <p>你给模型写系统提示。第一稿已经能跑。你仍在改那个「主体里的观念」：边界要不要更硬，失败时要不要先问再做。同事说：「先丢上去，看输出再调。」客体（真实输出）在他们那边是磁铁。在你这边，提示词是观念的化身，观念没稳，客体不配先说话。这是 §5 的结构，日常版。</p>
+      <p>荣格在 §6 写过，另一套机制不会萎缩。外倾还在，只是没上场。真要验证那句提示，只能让客体回来：发一版，看模型在三个坏例子上怎么歪。主观因素仍然在，它负责读那些歪法里哪一处碰到了你原先的观念。缺的是回撤之后再走出去的那一下。这是我的推断：提示词工作特别容易把内倾态度用过，因为材料本身就是语言，主体可以在内部循环很久，而不碰到任何外部失败。</p>
+    </div>
+  </section>
+
+  <section id="tashan">
+    <h2>6. 他山之石</h2>
+    <p>只引检索里标了 <code>[VERIFIED]</code> 的文本。X 上的讨论本轮没有可靠抓取，见存档 SOCIAL 节。</p>
+
+    <blockquote>
+      <p>For the introverted personality, subjective and psychological processes are the center of interest: all life-giving energy seeks the subject himself; the object has a lower value than the subject. The extraverted personality, on the other hand, is drawn to the object as the center of interest: ultimate value rests in the object and the subject subordinates his own subjective processes to the object. The psychological result of these two standpoints is two totally different orientations: one sees everything in terms of the objective event (extraverted); the other sees everything in terms of his own situation (introverted).</p>
+    </blockquote>
+    <p class="cite">— International Association of Analytical Psychology, <em>Abstracts of the Collected Works of C. G. Jung</em>, Volume 6, abstract 000094. <a href="https://iaap.org/resources/academic-resources/collected-works-abstracts/volume-6-psychological-types/">iaap.org</a></p>
+
+    <blockquote>
+      <p>The data suggest that Jung's theory is either incorrect or inadequately operationalized by the MBTI and cannot provide a sound basis for interpreting it. However, correlational analyses showed that the four MBTI indices did measure aspects of four of the five major dimensions of normal personality.</p>
+    </blockquote>
+    <p class="cite">— Robert R. McCrae &amp; Paul T. Costa, Jr., “Reinterpreting the Myers-Briggs Type Indicator from the perspective of the five-factor model of personality,” <em>Journal of Personality</em> 57(1), 1989, pp. 17–40. <a href="https://doi.org/10.1111/j.1467-6494.1989.tb00759.x">doi:10.1111/j.1467-6494.1989.tb00759.x</a></p>
+
+    <blockquote>
+      <p>The author concludes that the MBTI, while offering much intuitive appeal, may not yet be able to support the claims its promoters make.</p>
+    </blockquote>
+    <p class="cite">— David J. Pittenger, “Cautionary comments regarding the Myers-Briggs Type Indicator,” <em>Consulting Psychology Journal: Practice and Research</em> 57(3), 2005, pp. 210–221. <a href="https://doi.org/10.1037/1065-9293.57.3.210">doi:10.1037/1065-9293.57.3.210</a></p>
+
+    <blockquote>
+      <p>We find that the MBTI theory falters on rigorous theoretical criteria in that it lacks agreement with known facts and data, lacks testability, and possesses internal contradictions.</p>
+    </blockquote>
+    <p class="cite">— Randy Stein &amp; Alexander B. Swan, “Evaluating the validity of Myers-Briggs Type Indicator theory,” <em>Social and Personality Psychology Compass</em> 13(2), 2019. <a href="https://doi.org/10.1111/spc3.12434">doi:10.1111/spc3.12434</a></p>
+
+    <blockquote>
+      <p>Contemporary psychology and popular usage tend to define extraversion and introversion in terms of behavior or social aptitude: one is seen as extraverted if one is outgoing, energetic and interpersonally skilled, and introverted if one is shy, withdrawn, or socially awkward. […] Unfortunately, this leads to some contorted understandings and confusions. I can't count how many times someone has tried to make sense of the fact that they prefer to be alone or quiet, yet are socially fluent and outgoing when they need to be. […] The two attitude types of extraversion and introversion concern whether a person has a predominantly outward- or inward-oriented approach to objects in the world.</p>
+    </blockquote>
+    <p class="cite">— Rain Mason Olbert, Ph.D., “Jung’s Notions of Extraversion and Introversion,” 2020-10-25. <a href="https://rainmasonphd.com/writing/jungs-notions-of-extraversion-and-introversion/">rainmasonphd.com</a></p>
+  </section>
+
+  <section id="feiman">
+    <h2>7. 费曼三问</h2>
+    <p>用自己的话答。可以写进 <code>notes/</code>。</p>
+    <ol class="feynman">
+      <li>荣格写「兴趣离开客体，退回到主体及其自身的心理过程」。你用自己的句子重说一遍，不要出现「电量」「社恐」「安静」。</li>
+      <li>最近一次会上，你是在跟着客体走（议程、屏幕、别人的下一句），还是在等客体在你心里聚成一个判断？中间有没有一个具体的时刻，判断成形了，你却没把它送回房间？</li>
+      <li>如果主观因素真的和海的广度一样无法拿掉，你在 code review 或提示词里坚持的那张「内部的图」，哪一次是 §622 说的那种与件，哪一次已经滑成 §623 里自我冒充自性？</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>楔子里那段没发出去的话还在。状态机、取消订单、库存锁死，已经是主体这边聚好的东西。下次对齐，先把那三行丢进会议室。</p>
+    <p>检索存档：<a href="../sources/001-neiqing-introversion.md">sources/001-neiqing-introversion.md</a> · 入口地图：<a href="../map/mbti-entry.md">map/mbti-entry.md</a></p>
+  </footer>
+</body>
+</html>
