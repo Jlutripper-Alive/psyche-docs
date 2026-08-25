@@ -133,7 +133,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       margin: 1.4rem 0;
-      overflow: hidden;
+      overflow: visible;
     }
     .pair h3 {
       margin: 0;
@@ -198,6 +198,96 @@
       opacity: 0.45;
       cursor: not-allowed;
     }
+
+    .pair { overflow: visible; }
+    .origin, .origin blockquote { overflow: visible; }
+    .sent { display: block; margin: 0.75rem 0; }
+    .sent:first-child { margin-top: 0.15rem; }
+    .sent:last-child { margin-bottom: 0.15rem; }
+    .sent .en {
+      display: block;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .sent .zh {
+      display: block;
+      margin: 0.18rem 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    button.wd {
+      display: inline;
+      position: relative;
+      margin: 0;
+      padding: 0.05em 0.02em;
+      border: 0;
+      border-bottom: 1px dotted var(--accent);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.wd::after {
+      content: "";
+      position: absolute;
+      top: -0.4em;
+      right: -0.25em;
+      bottom: -0.35em;
+      left: -0.25em;
+    }
+    button.wd .hint {
+      font-size: 11px;
+      line-height: 1;
+      color: var(--muted);
+      margin-left: 0.14em;
+      font-style: normal;
+      font-weight: 400;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+      vertical-align: super;
+    }
+    #wd-pop {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 80;
+      max-width: min(22rem, calc(100vw - 1.5rem));
+      padding: 0.7rem 0.85rem 0.75rem;
+      background: var(--card);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    #wd-pop[hidden] { display: none !important; }
+    #wd-pop .wd-line {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
+    #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
+    #wd-pop .wd-say {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.88rem;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
   </style>
 </head>
 <body>
@@ -248,7 +338,9 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <p>The extravert, on the contrary, maintains a positive relation to the object. To such an extent does he affirm its importance that his subjective attitude is continually being orientated by, and related to the object. Au fond, the object can never have sufficient value; for him, therefore, its importance must always be paramount.</p>
+          <span class="sent"><span class="en" lang="en">The <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>, on the contrary, maintains a positive relation to the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="对客体持积极的态度">object<span class="hint">客体</span></button>.</span><span class="zh" lang="zh">相反，外倾型则对客体持积极的态度。</span></span>
+          <span class="sent"><span class="en" lang="en">To such an extent does he affirm its importance that his subjective attitude is continually being <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="主观态度由客体所定向">orientated<span class="hint">定向</span></button> by, and related to the object.</span><span class="zh" lang="zh">他非常重视客体以至于其主观态度就是由客体所定向并与客体密切相关的。</span></span>
+          <span class="sent"><span class="en" lang="en"><button type="button" class="wd" data-ipa="oʊ ˈfɒn" data-gloss="Au fond：从根子上、从内心里">Au fond<span class="hint">从内心里</span></button>, the object can never have sufficient value; for him, therefore, its importance must always be <button type="button" class="wd" data-ipa="ˈpærəmaʊnt" data-gloss="客体的重要性总是至高无上">paramount<span class="hint">至高无上</span></button>.</span><span class="zh" lang="zh">他从内心里认为客体的价值永远不够充分；因此对他来说，其重要性总是至高无上的。</span></span>
         </blockquote>
         <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, A. The Extraverted Type. Baynes, 1923, p. 413. [VERIFIED]</p>
       </div>
@@ -266,7 +358,9 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <p>Although it is true that everyone orients himself in accordance with the data supplied by the outside world, we see every day that the data in themselves are only relatively decisive. The fact that it is cold outside prompts one man to put on his overcoat, while another, who wants to get hardened, finds this superfluous. One man admires the latest tenor because everybody else does, another refuses to do so, not because he dislikes him, but because in his view the subject of universal admiration is far from having been proved admirable.</p>
+          <span class="sent"><span class="en" lang="en">Although it is true that everyone <button type="button" class="wd" data-ipa="ˈɔːrients" data-gloss="被外部世界提供的事件所定向">orients<span class="hint">定向</span></button> himself in accordance with the <button type="button" class="wd" data-ipa="ˈdeɪtə" data-gloss="这里中译写成「事件」：外面给的那些事实">data<span class="hint">事件</span></button> supplied by the outside world, we see every day that the data in themselves are only relatively decisive.</span><span class="zh" lang="zh">众所周知，每一个人都被外部世界提供给他的事件所定向；但我们看到，这种可能如此的情形只具有相对的决定性。</span></span>
+          <span class="sent"><span class="en" lang="en">The fact that it is cold outside prompts one man to put on his overcoat, while another, who wants to get hardened, finds this <button type="button" class="wd" data-ipa="suːˈpɜːrfluəs" data-gloss="觉得穿大衣大可不必">superfluous<span class="hint">大可不必</span></button>.</span><span class="zh" lang="zh">例如因为室外天气寒冷，某人被说服穿上他的大衣，但另一个人出于一种变得冷酷的欲望而发现这是大可不必的事情。</span></span>
+          <span class="sent"><span class="en" lang="en">One man admires the latest <button type="button" class="wd" data-ipa="ˈtenər" data-gloss="新近成名的男高音歌手">tenor<span class="hint">男高音</span></button>, because everybody else does, another refuses to do so, not because he dislikes him, but because in his view the <button type="button" class="wd" data-ipa="ˈsʌbdʒekt" data-gloss="这里指被众人崇拜的那个对象">subject<span class="hint">对象</span></button> of universal admiration is far from having been proved admirable.</span><span class="zh" lang="zh">某人崇拜一个新近成名的男高音歌手是因为整个世界都崇拜他，而另一个人的不置可否则并不是因为他不喜欢他，而是因为他觉得公众所普遍崇拜的对象实际上并不值得崇拜。</span></span>
         </blockquote>
         <p class="cite">— CW 6, Chapter X, §563. Hull, 1971. [VERIFIED]</p>
       </div>
@@ -284,7 +378,11 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <p>Now, when the orientation to the object and to objective facts is so predominant that the most frequent and essential decisions and actions are determined, not by subjective values but by objective relations, one speaks of an extraverted attitude. When this is habitual, one speaks of an extraverted type. If a man so thinks, feels, and acts, in a word so lives, as to correspond directly with objective conditions and their claims, whether in a good sense or ill, he is extraverted. His life makes it perfectly clear that it is the objective rather than the subjective value which plays the greater role as the determining factor of his consciousness. He naturally has subjective values, but their determining value is less than that of the objective conditions.</p>
+          <span class="sent"><span class="en" lang="en">Now, when the <button type="button" class="wd" data-ipa="ˌɔːriənˈteɪʃn" data-gloss="朝着客体和客观事实的定向">orientation<span class="hint">定向</span></button> to the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="朝向客体">object<span class="hint">客体</span></button> and to objective facts is so <button type="button" class="wd" data-ipa="prɪˈdɑːmɪnənt" data-gloss="定向占据显著优势">predominant<span class="hint">占优势</span></button> that the most frequent and essential decisions and actions are determined, not by subjective values but by objective relations, one speaks of an <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="外倾性态度">extraverted<span class="hint">外倾的</span></button> attitude.</span><span class="zh" lang="zh">如果朝着客体和客观事实的定向占据显著的优势，以至于不是被主观的价值、而是被客观的关系左右了最经常和最根本的决策和行动，这就属于外倾性态度。</span></span>
+          <span class="sent"><span class="en" lang="en">When this is <button type="button" class="wd" data-ipa="həˈbɪtʃuəl" data-gloss="成为习惯才叫外倾类型">habitual<span class="hint">习惯</span></button>, one speaks of an extraverted type.</span><span class="zh" lang="zh">当它成为一种习惯，就属于外倾类型。</span></span>
+          <span class="sent"><span class="en" lang="en">If a man so thinks, feels, and acts, in a word so lives, as to correspond directly with objective conditions and their claims, whether in a good sense or ill, he is extraverted.</span><span class="zh" lang="zh">如果一个人直接地将客观的条件与其主张对应起来——不管是正面的意义上还是反面的意义上，并这样去思考、感受和行动，一句话这样去生活，则他就属于外倾型。</span></span>
+          <span class="sent"><span class="en" lang="en">His life makes it perfectly clear that it is the objective rather than the subjective value which plays the greater role as the determining factor of his consciousness.</span><span class="zh" lang="zh">他的生活清楚地显示出，在他的意识中，作为决定性因素的正是客观事实而不是主观价值。</span></span>
+          <span class="sent"><span class="en" lang="en">He naturally has subjective values, but their determining value is less than that of the objective conditions.</span><span class="zh" lang="zh">当然，他也有主观价值，但其所起的影响作用远不如外在的客观条件所起的作用重要。</span></span>
         </blockquote>
         <p class="cite">— 同章同节，对应 Hull §563。Baynes, 1923. [VERIFIED]</p>
       </div>
@@ -302,7 +400,10 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <p>The very adjustment of the normal extraverted type is his limitation. He owes his normality on the one hand to his ability to fit into existing conditions with comparative ease. His requirements are limited to the objectively possible […] On the other hand, his normality must also depend essentially on whether he takes account of his subjective needs and requirements, and this is just his weak point, for the tendency of his type is so outer-directed that even the most obvious of all subjective facts, the condition of his own body, receives scant attention.</p>
+          <span class="sent"><span class="en" lang="en">The very adjustment of the normal <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="正常的外倾型">extraverted<span class="hint">外倾的</span></button> type is his limitation.</span><span class="zh" lang="zh">单纯的调节是对正常的外倾型的限制。</span></span>
+          <span class="sent"><span class="en" lang="en">He owes his normality on the one hand to his ability to fit into existing conditions with comparative ease.</span><span class="zh" lang="zh">一方面外倾型把他的正常归功于他以相对的安定去适应现存条件的能力。</span></span>
+          <span class="sent"><span class="en" lang="en">His requirements are limited to the objectively possible</span><span class="zh" lang="zh">当然，他所主张的只不过是满足于现存的客观可能性</span></span>
+          <span class="sent"><span class="en" lang="en">On the other hand, his normality must also depend essentially on whether he takes account of his <button type="button" class="wd" data-ipa="səbˈdʒektɪv" data-gloss="是否顾及主观需要">subjective<span class="hint">主观的</span></button> needs and requirements, and this is just his weak point, for the tendency of his type is so <button type="button" class="wd" data-ipa="ˈaʊtər dɪˈrektɪd" data-gloss="外部倾向太强">outer-directed<span class="hint">朝外</span></button> that even the most obvious of all subjective facts, the condition of his own body, receives scant attention.</span><span class="zh" lang="zh">但是另一方面，他的正常性也必定根本上依赖外倾型是否考虑到了他的主观需求和需求之事物的具体性；并且，这正是他的弱点所在，因为他的类型具有如此强烈的外部倾向，以至于最为明显的主观事实，即他自己身体的状况也会非常容易地接受并不恰当的思考。</span></span>
         </blockquote>
         <p class="cite">— CW 6, Chapter X, §564. Hull, 1971. [VERIFIED]</p>
       </div>
@@ -320,7 +421,8 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <p>This is the extravert's danger: he gets sucked into objects and completely loses himself in them. The resultant functional disorders, nervous or physical, have a compensatory value, as they force him into an involuntary self-restraint.</p>
+          <span class="sent"><span class="en" lang="en">This is the <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>’s danger: he gets sucked into <button type="button" class="wd" data-ipa="ˈɑːbdʒekts" data-gloss="为客观所束缚">objects<span class="hint">客体</span></button> and completely loses himself in them.</span><span class="zh" lang="zh">这就是外倾型的危险：他为客观所束缚，在他们的辛劳中完全迷失了自己。</span></span>
+          <span class="sent"><span class="en" lang="en">The resultant functional disorders, nervous or physical, have a <button type="button" class="wd" data-ipa="kəmˈpensətɔːri" data-gloss="具有补偿意义">compensatory<span class="hint">补偿</span></button> value, as they force him into an involuntary self-restraint.</span><span class="zh" lang="zh">从这种状态产生出来的功能性（神经性）或实际的生理紊乱就具有一种补偿意义，它迫使主体进行一种不自觉的自我限制。</span></span>
         </blockquote>
         <p class="cite">— 同上，§565. [VERIFIED]</p>
       </div>
@@ -338,7 +440,8 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <p>The attitude of the unconscious as an effective complement to the conscious extraverted attitude has a definitely introverting character. It concentrates the libido on the subjective factor, that is, on all those needs and demands that are stifled or repressed by the conscious attitude.</p>
+          <span class="sent"><span class="en" lang="en">The attitude of the unconscious as an effective complement to the conscious <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="意识的外倾态度">extraverted<span class="hint">外倾的</span></button> attitude has a definitely <button type="button" class="wd" data-ipa="ˌɪntrəˈvɜːrtɪŋ" data-gloss="无意识那一侧带内倾性质">introverting<span class="hint">内倾的</span></button> character.</span><span class="zh" lang="zh">作为意识的外倾态度的一种有效的补充，无意识的态度具有一种内倾性质。</span></span>
+          <span class="sent"><span class="en" lang="en">It concentrates the <button type="button" class="wd" data-ipa="lɪˈbiːdoʊ" data-gloss="这里中译写成「能量」：力比多集中到主观因素上">libido<span class="hint">力比多</span></button> on the <button type="button" class="wd" data-ipa="səbˈdʒektɪv ˈfæktər" data-gloss="被意识态度压下去的那些需要">subjective factor<span class="hint">主观因素</span></button>, that is, on all those needs and demands that are <button type="button" class="wd" data-ipa="ˈstaɪfəld" data-gloss="被压制或压抑">stifled<span class="hint">压制</span></button> or repressed by the conscious attitude.</span><span class="zh" lang="zh">而且会把能量集中在主观因素上，也就是集中在所有受到过度外倾的意识态度所压制或压抑的需要和要求上。</span></span>
         </blockquote>
         <p class="cite">— 同上，§570. [VERIFIED]</p>
       </div>
@@ -380,8 +483,11 @@
         <div class="origin">
           <div class="label">原文</div>
           <blockquote>
-            <p>EXTRAVERSION is an outward-turning of libido (q.v.). I use this concept to denote a manifest relation of subject to object, a positive movement of subjective interest towards the object. Everyone in the extraverted state thinks, feels, and acts in relation to the object, and moreover in a direct and clearly observable fashion, so that no doubt can remain about his positive dependence on the object. [...] When extraversion is habitual, we speak of the extraverted type (q.v.).</p>
-          </blockquote>
+          <span class="sent"><span class="en" lang="en"><button type="button" class="wd" data-ipa="ˌekstrəˈvɜːrʒn" data-gloss="外倾：力比多的向外转">EXTRAVERSION<span class="hint">外倾</span></button> is an outward-turning of <button type="button" class="wd" data-ipa="lɪˈbiːdoʊ" data-gloss="力比多">libido<span class="hint">力比多</span></button> (q.v.).</span><span class="zh" lang="zh">外倾是力比多的向外转。</span></span>
+          <span class="sent"><span class="en" lang="en">I use this concept to denote a manifest relation of <button type="button" class="wd" data-ipa="ˈsʌbdʒekt" data-gloss="主体对客体的显明关系">subject<span class="hint">主体</span></button> to <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="客体">object<span class="hint">客体</span></button>, a positive movement of subjective interest towards the object.</span><span class="zh" lang="zh">我用这个概念指主体对客体的一种显明关系，即主观兴趣朝客体的一种正向运动。</span></span>
+          <span class="sent"><span class="en" lang="en">Everyone in the <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="处在外倾状态中">extraverted<span class="hint">外倾的</span></button> state thinks, feels, and acts in relation to the object, and moreover in a direct and clearly observable fashion, so that no doubt can remain about his positive dependence on the object.</span><span class="zh" lang="zh">凡处在外倾状态中的人，其思考、感受和行动都关联着客体，而且是以直接、清楚可见的方式，因此他对客体的正向依赖不容置疑。</span></span>
+          <span class="sent"><span class="en" lang="en">When extraversion is <button type="button" class="wd" data-ipa="həˈbɪtʃuəl" data-gloss="成为习惯就叫外倾型">habitual<span class="hint">习惯</span></button>, we speak of the extraverted type (q.v.).</span><span class="zh" lang="zh">外倾一旦成为习惯，我们就说外倾型。</span></span>
+        </blockquote>
           <p class="cite">— CW 6, Chapter XI Definitions, §710. Hull, 1971. [VERIFIED]</p>
         </div>
         <div class="translation">
@@ -397,8 +503,10 @@
         <div class="origin">
           <div class="label">原文</div>
           <blockquote>
-            <p>They represent natural orientations of energy—opposite ways to direct/receive energy and focus attention. People who prefer Extraversion feel energized by interaction in the outer world of people and things. Their attention is naturally drawn in this outward direction.</p>
-          </blockquote>
+          <span class="sent"><span class="en" lang="en">They represent natural <button type="button" class="wd" data-ipa="ˌɔːriənˈteɪʃnz" data-gloss="精力的自然朝向">orientations<span class="hint">朝向</span></button> of energy—opposite ways to direct/receive energy and focus attention.</span><span class="zh" lang="zh">它们代表精力的自然朝向——引导和接收精力、放置注意的两种相反方式。</span></span>
+          <span class="sent"><span class="en" lang="en">People who prefer <button type="button" class="wd" data-ipa="ˌekstrəˈvɜːrʒn" data-gloss="迈尔斯问卷里的 Extraversion">Extraversion<span class="hint">外倾</span></button> feel energized by interaction in the outer world of people and things.</span><span class="zh" lang="zh">偏好 Extraversion 的人，在外部世界与人和事物互动时感到有精力。</span></span>
+          <span class="sent"><span class="en" lang="en">Their attention is naturally drawn in this outward direction.</span><span class="zh" lang="zh">他们的注意自然被引向外面这个方向。</span></span>
+        </blockquote>
           <p class="cite">— The Myers-Briggs Company. <a href="https://www.myersbriggs.org/my-mbti-personality-type/the-mbti-preferences/">myersbriggs.org</a> [VERIFIED]</p>
         </div>
         <div class="translation">
@@ -414,8 +522,9 @@
         <div class="origin">
           <div class="label">原文</div>
           <blockquote>
-            <p>Contemporary psychology and popular usage tend to define extraversion and introversion in terms of behavior or social aptitude: one is seen as extraverted if one is outgoing, energetic and interpersonally skilled, and introverted if one is shy, withdrawn, or socially awkward. [...] Jung begins his “General Description of the Types” by distinguishing two types of people, defined by the direction of their interests.</p>
-          </blockquote>
+          <span class="sent"><span class="en" lang="en">Contemporary psychology and popular usage tend to define <button type="button" class="wd" data-ipa="ˌekstrəˈvɜːrʒn" data-gloss="通行用法里的外倾">extraversion<span class="hint">外倾</span></button> and <button type="button" class="wd" data-ipa="ˌɪntrəˈvɜːrʒn" data-gloss="通行用法里的内倾">introversion<span class="hint">内倾</span></button> in terms of behavior or social aptitude: one is seen as <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="外向、精力充沛就被看成外倾">extraverted<span class="hint">外倾</span></button> if one is outgoing, energetic and interpersonally skilled, and <button type="button" class="wd" data-ipa="ˈɪntrəvɜːrtɪd" data-gloss="害羞、退缩就被看成内倾">introverted<span class="hint">内倾</span></button> if one is shy, withdrawn, or socially awkward.</span><span class="zh" lang="zh">当代心理学和流行用法倾向于按行为或社交能力来定义外倾与内倾：一个人若外向、精力充沛、人际上熟练，就被看成外倾；若害羞、退缩、社交上笨拙，就被看成内倾。</span></span>
+          <span class="sent"><span class="en" lang="en">Jung begins his “General Description of the Types” by distinguishing two types of people, defined by the direction of their interests.</span><span class="zh" lang="zh">荣格在《类型总论》开篇区分两类人，依据的是他们兴趣的方向。</span></span>
+        </blockquote>
           <p class="cite">— Rain Mason Olbert, Ph.D., 2020-10-25. <a href="https://rainmasonphd.com/writing/jungs-notions-of-extraversion-and-introversion/">rainmasonphd.com</a> [VERIFIED]</p>
         </div>
         <div class="translation">
@@ -470,6 +579,8 @@
     var synth = window.speechSynthesis || null;
     var active = null;
     var watchdog = null;
+    var pop = null;
+    var popWord = "";
 
     function voices() {
       return synth ? (synth.getVoices() || []) : [];
@@ -488,9 +599,20 @@
       return us || gb || en || null;
     }
 
+    function bareText(el) {
+      if (!el) return "";
+      var clone = el.cloneNode(true);
+      var junk = clone.querySelectorAll(".zh, .hint, rt");
+      var i;
+      for (i = 0; i < junk.length; i++) {
+        if (junk[i].parentNode) junk[i].parentNode.removeChild(junk[i]);
+      }
+      return String(clone.innerText || clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
     function englishText(origin) {
       var bq = origin.querySelector("blockquote");
-      var text = bq ? String(bq.innerText || bq.textContent || "").replace(/\s+/g, " ").trim() : "";
+      var text = bareText(bq);
       if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
       var latin = (text.match(/[A-Za-z]/g) || []).length;
       var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
@@ -557,10 +679,68 @@
       else start();
     }
 
+    function speakWord(text) {
+      if (!synth || !text) return;
+      var wasBusy = !!(active || synth.speaking);
+      stop();
+      function start() {
+        var u = new SpeechSynthesisUtterance(text);
+        var v = pickEn();
+        u.lang = "en-US";
+        u.rate = 0.9;
+        if (v) u.voice = v;
+        synth.speak(u);
+      }
+      if (wasBusy) setTimeout(start, 80);
+      else start();
+    }
+
+    function closePop() {
+      if (!pop) return;
+      pop.hidden = true;
+      popWord = "";
+    }
+
+    function placePop(anchor) {
+      var r = anchor.getBoundingClientRect();
+      var pw = pop.offsetWidth;
+      var ph = pop.offsetHeight;
+      var pad = 10;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var x = r.left + (r.width / 2) - (pw / 2);
+      var y = r.bottom + 8;
+      if (x < pad) x = pad;
+      if (x + pw > vw - pad) x = Math.max(pad, vw - pw - pad);
+      if (y + ph > vh - pad) y = r.top - ph - 8;
+      if (y < pad) y = pad;
+      pop.style.left = Math.round(x) + "px";
+      pop.style.top = Math.round(y) + "px";
+    }
+
+    function openPop(btn) {
+      var word = bareText(btn);
+      pop.querySelector(".wd-word").textContent = word;
+      pop.querySelector(".wd-ipa").textContent = btn.getAttribute("data-ipa") || "";
+      pop.querySelector(".wd-gloss").textContent = btn.getAttribute("data-gloss") || "";
+      popWord = word;
+      pop.style.visibility = "hidden";
+      pop.hidden = false;
+      placePop(btn);
+      pop.style.visibility = "visible";
+    }
+
     if (synth) {
       voices();
       if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
     }
+
+    pop = document.createElement("div");
+    pop.id = "wd-pop";
+    pop.hidden = true;
+    pop.setAttribute("role", "dialog");
+    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读这个词</button>';
+    document.body.appendChild(pop);
 
     var origins = document.querySelectorAll(".origin");
     var i, origin, label, row, btn;
@@ -588,13 +768,35 @@
 
     document.addEventListener("click", function (e) {
       var t = e.target;
-      var hit = t && t.closest ? t.closest("button.speak") : null;
-      if (!hit || hit.disabled) return;
-      var box = hit.closest(".origin");
-      var text = box ? englishText(box) : "";
-      if (!text) return;
-      speak(hit, text);
+      if (!t) return;
+      var say = t.closest ? t.closest("#wd-pop .wd-say") : null;
+      if (say) {
+        e.preventDefault();
+        speakWord(popWord);
+        return;
+      }
+      var wdBtn = t.closest ? t.closest("button.wd") : null;
+      if (wdBtn) {
+        e.preventDefault();
+        if (!pop.hidden && popWord === bareText(wdBtn)) closePop();
+        else openPop(wdBtn);
+        return;
+      }
+      var hit = t.closest ? t.closest("button.speak") : null;
+      if (hit && !hit.disabled) {
+        closePop();
+        var box = hit.closest(".origin");
+        var text = box ? englishText(box) : "";
+        if (!text) return;
+        speak(hit, text);
+        return;
+      }
+      if (pop && !pop.hidden && !(t.closest && t.closest("#wd-pop"))) closePop();
     });
+
+    window.addEventListener("scroll", closePop, { passive: true });
+    window.addEventListener("resize", closePop);
+    window.addEventListener("orientationchange", closePop);
   })();
   </script>
 </body>
