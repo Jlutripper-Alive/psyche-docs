@@ -87,7 +87,41 @@
       gap: 0.8rem;
     }
     ol.feynman { padding-left: 1.2rem; }
-    ol.feynman li { margin: 0.8rem 0; }
+    ol.feynman > li { margin: 1.3rem 0; }
+    ol.feynman .q { margin: 0 0 0.55rem; }
+    details.jiangjie {
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    details.jiangjie > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.6rem 0.85rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--accent);
+      list-style: none;
+    }
+    details.jiangjie > summary::-webkit-details-marker { display: none; }
+    details.jiangjie > summary::after {
+      content: "展开";
+      flex: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+    }
+    details.jiangjie[open] > summary::after { content: "收起"; }
+    details.jiangjie[open] > summary { border-bottom: 1px solid var(--line); }
+    .jiangjie-body {
+      padding: 0.15rem 0.85rem 0.8rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .jiangjie-body p { margin: 0.8rem 0; }
     nav {
       font-size: 0.92rem;
       line-height: 1.6;
@@ -147,7 +181,7 @@
 
   <section id="xiezi">
     <h2>1. 楔子</h2>
-    <p>「内倾」是心理学进入日常之后被用得最频繁、也被改写得最厉害的词之一。这一课回到出处——荣格《心理类型》CW 6——读它最初命名了什么样的心理结构，以及那个结构里有哪些层次在后来的简化中消失了。</p>
+    <p>「内倾」进了日常口语，多半指话少、怕生。荣格在《心理类型》（CW 6）里命名的是另一回事：兴趣朝客体走，还是从客体退回主体。这一课读导论与第十章的几段，看这个差别怎么定义，代价又写在哪里。</p>
   </section>
 
   <section id="gushi">
@@ -180,7 +214,7 @@
 
   <section id="yuanhe">
     <h2>3. 原著核心</h2>
-    <p>CW 6，Hull 英译（1971）。第十章绪言用吴康等 1989 年中译。其余未核到纸页，标为自译。</p>
+    <p>CW 6，Hull 英译（1971）。第十章绪言用吴康等 1989 年中译，其余各段未核到纸页，标为自译。</p>
 
     <article class="pair">
       <h3>导论 §4：兴趣朝哪边走</h3>
@@ -232,7 +266,25 @@
         <blockquote>
           <p>正如我已多次指出的那样，一般态度类型由他们的对客体的特殊态度来区分。内倾型对客体的态度是一种抽象的态度；在本质上，他总是面临着一个怎样才能够从客体中提取力比多的难题，就像他只得不断地阻挠客体欲取得优势的意图一样。相反，外倾型却对客体保持着一种过分信赖的关系。由此，他坚信客体有其重要性，即他的主观态度总是不断地受到客体的调整，并与客体相关联。</p>
         </blockquote>
-        <p class="cite">— 吴康、丁传林、赵善华译，《心理类型学》，华岳文艺出版社，1989，第十章「类型学总论」第一节。读者摘录与 Baynes 逐句对应。 [VERIFIED]</p>
+        <p class="cite">— 吴康、丁传林、赵善华译，《心理类型学》，华岳文艺出版社，1989，第十章「类型学总论」第一节。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>第十章 §620：插在知觉与行动之间的那个看法</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <p>As I have already explained in the previous section, the introvert is distinguished from the extravert by the fact that he does not, like the latter, orient himself by the object and by objective data, but by subjective factors. I also mentioned that the introvert interposes a subjective view between the perception of the object and his own action, which prevents the action from assuming a character that fits the objective situation.</p>
+        </blockquote>
+        <p class="cite">— CW 6, Chapter X, §620. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>如我在上一节已经说明的，内倾者与外倾者的区别在于：他不像后者那样按客体、按客观的 data（datum 的复数，给定的事实）来定向，而是按主观因素来定向。我也提到过，内倾者在对客体的知觉与他自己的行动之间插进一个主观的看法，这个看法使行动不再具有贴合客观处境的性质。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
       </div>
     </article>
 
@@ -243,7 +295,7 @@
         <blockquote>
           <p>Although the introverted consciousness is naturally aware of external conditions, it selects the subjective determinants as the decisive ones. […] For example, two people see the same object, but they never see it in such a way that the images they receive are absolutely identical. […] Whereas the extravert continually appeals to what comes to him from the object, the introvert relies principally on what the sense impression constellates in the subject.</p>
         </blockquote>
-        <p class="cite">— CW 6, Chapter X, §621. Hull, 1971. [VERIFIED]</p>
+        <p class="cite">— 同上，§621. [VERIFIED]</p>
       </div>
       <div class="translation">
         <div class="label">译文</div>
@@ -291,12 +343,11 @@
     </article>
 
     <h3 id="gainian">解析</h3>
-    <p>第一层是态度类型（attitude types）：力比多朝客体还是朝主体。第二层是功能类型（function-types）：思维、情感、感觉、直觉，每种再取方向。§7。MBTI 的 I 对应第一层。</p>
-    <p>§4：外倾时客体像磁铁，内倾时主体是磁铁。老陈的调动、阿宁一连串的问、国庆回不回都是客体。周衡筷子搁在碗沿，先挑「你没问我」还是「你先跟我说一声」——兴趣退回主体这边。</p>
-    <p>§621：阿宁那句「国庆我们回来，周衡也去」，对她是把一件顺理成章的事告诉家里；周衡在厨房听到的是一件与他有关的事没等他就成形了。同一句话，两人收到的影像不同一。</p>
-    <p>§622 的「主观因素」（subjective factor）是：客体产生效应之后，主体里那一层行动或反应与它融合，形成一个新的心理事实。测验里的 I 看话少、爱独处这类表现；荣格看的是，看见同一件事后，决定性的加工发生在客体一侧还是主体一侧。蒸鱼的火候他讲了三四分钟不打结，那是外公教过、早排好的。国庆答不上来，是加工还在主体一侧进行。</p>
-    <p>§6：人人两套机制，类型只是相对优势。这是我的推断：把 I 读成社交电量，等于用爱不爱说话替换了兴趣朝哪边走。</p>
-    <p>§623 写了自我和自性。更根本的主体是自性（self）；自我（ego）只是意识焦点。内倾者常把自我与自性弄混，把自我当作整个心理过程的主体。周衡打那行字时判断已经有了：他要一段自己想的时间。删掉「还没想好」，改成「想跟你聊聊」，再整行删掉——措辞没排到位就不出手。我把「排完才开口」从习惯走到不松手读成这一步。原文写的是临床偏差；饭桌那一幕原文没有规定，这是我的推断。</p>
+    <p>这一课只讲一层。§7 把类型分成态度类型（attitude types）与功能类型（function-types，思维、情感、感觉、直觉），MBTI 的 I 对应的是前一层。</p>
+    <p>这一层问的是决定发生在哪一侧。客体（object）指他面对的对象，另一个人、一件事、刚说出口的一句话；主体（subject）指他自己和他内部正在进行的心理过程。§4 里外倾时客体是磁铁，内倾时主体是磁铁。饭桌上老陈的调动、阿宁一连串的问都是客体，周衡在挑「你没问我」还是「你先跟我说一声」。</p>
+    <p>同一句话，两人收到的不一样。§621：内倾意识觉察外部条件，却挑选主观规定作为决定性的规定。阿宁那句话在她那边是把一件顺理成章的事告诉家里，在周衡那边是一件跟他有关的事没等他就成形了。</p>
+    <p>测验看表现，荣格看加工落在哪一侧。§622 的主观因素（subjective factor）指主体这边的反应与客体产生的效应融合，形成一个新的心理事实。火候他讲三四分钟不打结，国庆答不上来，两件事都在主体这边加工。（「外公教过、早排好了」是我的推断。）</p>
+    <p>代价写在同一节。§620：知觉与行动之间插进一个主观的看法，行动因此不贴合眼下的处境——他答完武侯祠才发现，不记得话题怎么从调动走过来。再往前一步是 §623 那个偏差，周衡走到哪儿，见第三问的讲解。</p>
   </section>
 
   <section id="ewai">
@@ -305,13 +356,13 @@
     <h3 id="meishuo">它没说什么</h3>
     <p>流行说法常加给他、原文没有的：</p>
     <ul>
-      <li>16 型、四字母代码、J/P 轴。§7 只有两种态度乘四种功能。J/P 是布里格斯和迈尔斯后来加的。</li>
-      <li>害羞、社恐、「社交电量」。他写的是兴趣和力比多离开客体。</li>
+      <li>16 型、四字母代码、J/P 轴。§7 只有两种态度乘四种功能，J/P 是布里格斯和迈尔斯后来加的。</li>
+      <li>害羞、社恐、社交电量。§4 写的是兴趣与力比多离开客体。</li>
       <li>纯类型。§6 写明另一套机制不会完全萎缩。</li>
     </ul>
 
     <h3 id="duili">对立并排</h3>
-    <p>两家不调和。一边是方向定义，一边是问卷用法。McCrae &amp; Costa 1989：荣格理论不能当作解释 MBTI 分数的可靠根据。</p>
+    <p>两家不调和：一边按方向定义，一边按精力来源和问卷用法。McCrae &amp; Costa 1989 说荣格理论不能当解释 MBTI 分数的可靠根据。</p>
     <div class="versus">
       <article class="pair">
         <h3>荣格 / IAAP</h3>
@@ -368,9 +419,43 @@
 
     <h3 id="feiman">费曼三问</h3>
     <ol class="feynman">
-      <li>「兴趣离开客体，退回到主体」。用自己的句子重说，不要出现电量、社恐、安静。</li>
-      <li>蒸鱼的火候周衡讲了三四分钟，国庆回不回却答不上来。两件事里，决定性的加工分别发生在哪一侧？</li>
-      <li>那行字打完又整行删掉。哪一步还是 §622 的 datum（给定的事实），删掉不发是否已经是 §623 里自我冒充自性？</li>
+      <li>
+        <p class="q">「兴趣离开客体，退回到主体」。用自己的句子重说，不要出现电量、社恐、安静。</p>
+        <details class="jiangjie">
+          <summary>看这一问的讲解</summary>
+          <div class="jiangjie-body">
+            <p>这句话说的是方向，跟场合无关。§4 把两种情形并排摆着：一种是兴趣朝客体（object，他面对的对象：另一个人、一件事、一句刚说出口的话）运动；另一种是兴趣离开客体，退回主体（subject，他自己以及他内部正在进行的心理过程）。这里的兴趣连着力比多（libido，在荣格笔下指心理上的能量投向哪里，不专指性欲）。</p>
+            <p>方向不等于人在不在场。§621 写内倾意识当然觉察外部条件，只是挑选主观规定作为决定性的规定。所以判断不看他说话多少，看决定性的那一步落在哪一侧。</p>
+            <p>§4 里磁铁出现两次，归属不同：外倾时客体是磁铁，把主体的种种倾向吸过去，甚至让他疏离自己；内倾时主体是磁铁，把客体吸向自己。§5 接着给价值排序：内倾态度把主体放在客体之上，客体的价值相应更低——你先前说的「客体存在，但位置低于主体」就落在这一段。</p>
+            <p>换成白话：一件事到了眼前，他得先在自己这边把它安顿好，才谈得上回应。安顿完之前，外面那件事在他这里还没有成形。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">蒸鱼的火候周衡讲了三四分钟，国庆回不回却答不上来。两件事里，决定性的加工分别发生在哪一侧？</p>
+        <details class="jiangjie">
+          <summary>看这一问的讲解</summary>
+          <div class="jiangjie-body">
+            <p>两件事都在主体那一侧。「分别」两个字容易引人去找一件落在客体那边，这里没有。</p>
+            <p>§621 给的是口径：内倾意识觉察外部条件，却挑选主观规定作为决定性的规定；他主要依赖感官印象在主体里 constellate（把主体里已有的内容召唤到一起）的东西。老陈问鱼里放了什么，火候这件事在他主体这边已经齐备，张口就来；国庆去不去是刚落到桌上的，主体这边还没有可以召唤的东西。</p>
+            <p>所以流利不流利跟类型无关。同一顿饭，一件答得出、一件答不出，两件都由主体一侧定。§6 写人人两套机制、类型只是相对占优，本来就不该指望一个人事事一致。</p>
+            <p>要单记一笔的是：「外公教过、早就排好了」是我的推断。§622 讲主观因素大体恒定，说的是各民族的基本知觉与认知几乎相同，没有讲某个人手上存了多少经验。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">那行字打完又整行删掉。哪一步还是 §622 的 datum（给定的事实），删掉不发是否已经是 §623 里自我冒充自性？</p>
+        <details class="jiangjie">
+          <summary>看这一问的讲解</summary>
+          <div class="jiangjie-body">
+            <p>这个故事里的 datum（给定的事实，不由你挑、也取消不掉的那一项）是：国庆去不去，他此刻确实没有答案。§622 给主观因素下定义时分三步——主体这边的一个反应，与客体产生的效应融合，合成一个新的心理事实。阿宁在阳台上那句话是客体那边的效应，他在厨房听见时发现自己没有答案，两样合起来才是这个事实。</p>
+            <p>那行打了又删的字不算。§622 说这个事实和外部客体一样牢固，像海的广度、地球的半径；那行字他挑了三次，改得动，整行删掉之后桌上什么也没少。</p>
+            <p>删掉不发落在 §620：内倾者在对客体的知觉与自己的行动之间插进一个主观的看法，行动因此不贴合眼下的处境。顺序是先没有答案，然后才在措辞上来回——改词是这件事没着落时他手上唯一能动的活。</p>
+            <p>还不到 §623。那一段的分界不在有没有发出去，在有没有把自我（ego，意识的焦点）当成整个心理过程的主体、让主观这一侧成了唯一的尺度。故事里他还给客体留着位置：老陈调成都是好事，阿宁想回家看爸妈也正常。这是我的推断。§623 说的又是习惯性偏差，一个晚上的一次删除判不了，要看「排好才出口」在多少件事上不松手。</p>
+            <p>你先前提的两条——不想伤害对方、不喜欢别人替自己做决定——位置在 §620 那个插进来的看法里，是它的内容。§622 下定义时不写动机，只写位置和结构，所以这两条不是那个 datum，是坐在它上面的东西。</p>
+          </div>
+        </details>
+      </li>
     </ol>
   </section>
 
