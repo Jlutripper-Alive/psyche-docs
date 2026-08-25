@@ -165,6 +165,39 @@
     @media (min-width: 48rem) {
       .pair { width: 100%; }
     }
+    .origin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+    .origin-head .label { margin-bottom: 0; }
+    button.speak {
+      flex: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.speak[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--card);
+    }
+    button.speak:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -422,37 +455,27 @@
       <li>
         <p class="q">「兴趣离开客体，退回到主体」。用自己的句子重说，不要出现电量、社恐、安静。</p>
         <details class="jiangjie">
-          <summary>看这一问的讲解</summary>
+          <summary>讲解</summary>
           <div class="jiangjie-body">
-            <p>这句话说的是方向，跟场合无关。§4 把两种情形并排摆着：一种是兴趣朝客体（object，他面对的对象：另一个人、一件事、一句刚说出口的话）运动；另一种是兴趣离开客体，退回主体（subject，他自己以及他内部正在进行的心理过程）。这里的兴趣连着力比多（libido，在荣格笔下指心理上的能量投向哪里，不专指性欲）。</p>
-            <p>方向不等于人在不在场。§621 写内倾意识当然觉察外部条件，只是挑选主观规定作为决定性的规定。所以判断不看他说话多少，看决定性的那一步落在哪一侧。</p>
-            <p>§4 里磁铁出现两次，归属不同：外倾时客体是磁铁，把主体的种种倾向吸过去，甚至让他疏离自己；内倾时主体是磁铁，把客体吸向自己。§5 接着给价值排序：内倾态度把主体放在客体之上，客体的价值相应更低——你先前说的「客体存在，但位置低于主体」就落在这一段。</p>
-            <p>换成白话：一件事到了眼前，他得先在自己这边把它安顿好，才谈得上回应。安顿完之前，外面那件事在他这里还没有成形。</p>
+            <p>这件事到了眼前，他得先在自己这边安顿好，才谈得上回应。§4：一种情形是兴趣朝客体运动，另一种是兴趣离开客体，退回主体及其自身的心理过程。§621：内倾意识当然觉察外部条件，却挑选主观规定作为决定性的规定。</p>
           </div>
         </details>
       </li>
       <li>
         <p class="q">蒸鱼的火候周衡讲了三四分钟，国庆回不回却答不上来。两件事里，决定性的加工分别发生在哪一侧？</p>
         <details class="jiangjie">
-          <summary>看这一问的讲解</summary>
+          <summary>讲解</summary>
           <div class="jiangjie-body">
-            <p>两件事都在主体那一侧。「分别」两个字容易引人去找一件落在客体那边，这里没有。</p>
-            <p>§621 给的是口径：内倾意识觉察外部条件，却挑选主观规定作为决定性的规定；他主要依赖感官印象在主体里 constellate（把主体里已有的内容召唤到一起）的东西。老陈问鱼里放了什么，火候这件事在他主体这边已经齐备，张口就来；国庆去不去是刚落到桌上的，主体这边还没有可以召唤的东西。</p>
-            <p>所以流利不流利跟类型无关。同一顿饭，一件答得出、一件答不出，两件都由主体一侧定。§6 写人人两套机制、类型只是相对占优，本来就不该指望一个人事事一致。</p>
-            <p>要单记一笔的是：「外公教过、早就排好了」是我的推断。§622 讲主观因素大体恒定，说的是各民族的基本知觉与认知几乎相同，没有讲某个人手上存了多少经验。</p>
+            <p>两件事的决定性加工都在主体那一侧，没有一件落在客体那边。§621：火候在他主体这边已经齐备，所以张口就来；国庆刚落到桌上，主体这边还没有可召唤的东西。同一顿饭一件答得出、一件答不出，两边都由主体一侧来定。</p>
           </div>
         </details>
       </li>
       <li>
         <p class="q">那行字打完又整行删掉。哪一步还是 §622 的 datum（给定的事实），删掉不发是否已经是 §623 里自我冒充自性？</p>
         <details class="jiangjie">
-          <summary>看这一问的讲解</summary>
+          <summary>讲解</summary>
           <div class="jiangjie-body">
-            <p>这个故事里的 datum（给定的事实，不由你挑、也取消不掉的那一项）是：国庆去不去，他此刻确实没有答案。§622 给主观因素下定义时分三步——主体这边的一个反应，与客体产生的效应融合，合成一个新的心理事实。阿宁在阳台上那句话是客体那边的效应，他在厨房听见时发现自己没有答案，两样合起来才是这个事实。</p>
-            <p>那行打了又删的字不算。§622 说这个事实和外部客体一样牢固，像海的广度、地球的半径；那行字他挑了三次，改得动，整行删掉之后桌上什么也没少。</p>
-            <p>删掉不发落在 §620：内倾者在对客体的知觉与自己的行动之间插进一个主观的看法，行动因此不贴合眼下的处境。顺序是先没有答案，然后才在措辞上来回——改词是这件事没着落时他手上唯一能动的活。</p>
-            <p>还不到 §623。那一段的分界不在有没有发出去，在有没有把自我（ego，意识的焦点）当成整个心理过程的主体、让主观这一侧成了唯一的尺度。故事里他还给客体留着位置：老陈调成都是好事，阿宁想回家看爸妈也正常。这是我的推断。§623 说的又是习惯性偏差，一个晚上的一次删除判不了，要看「排好才出口」在多少件事上不松手。</p>
-            <p>你先前提的两条——不想伤害对方、不喜欢别人替自己做决定——位置在 §620 那个插进来的看法里，是它的内容。§622 下定义时不写动机，只写位置和结构，所以这两条不是那个 datum，是坐在它上面的东西。</p>
+            <p>这个故事里的 datum（给定的事实）是他此刻没有答案，不是那行打了又删的字。§622：主观反应与客体产生的效应融合，形成一个改不掉的心理事实。删掉不发落在 §620 知觉与行动之间插进的看法，还不到 §623 把自我当成整个心理过程的主体。</p>
           </div>
         </details>
       </li>
@@ -464,5 +487,137 @@
     <p>CW 6；吴康等译《心理类型学》，华岳文艺，1989。</p>
     <p><a href="https://jlutripper-alive.github.io/psyche-docs/">返回目录</a></p>
   </footer>
+  <script>
+  (function () {
+    var synth = window.speechSynthesis || null;
+    var active = null;
+    var watchdog = null;
+
+    function voices() {
+      return synth ? (synth.getVoices() || []) : [];
+    }
+
+    function pickEn() {
+      var list = voices();
+      var us, gb, en, i, lang;
+      for (i = 0; i < list.length; i++) {
+        lang = String(list[i].lang || "").toLowerCase().replace("_", "-");
+        if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) continue;
+        if (lang.indexOf("en-us") === 0) us = us || list[i];
+        else if (lang.indexOf("en-gb") === 0) gb = gb || list[i];
+        else if (lang.indexOf("en") === 0) en = en || list[i];
+      }
+      return us || gb || en || null;
+    }
+
+    function englishText(origin) {
+      var bq = origin.querySelector("blockquote");
+      var text = bq ? String(bq.innerText || bq.textContent || "").replace(/\s+/g, " ").trim() : "";
+      if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
+      var latin = (text.match(/[A-Za-z]/g) || []).length;
+      var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+      return (latin >= 20 && latin > cjk) ? text : "";
+    }
+
+    function idle(btn) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = "朗读";
+    }
+
+    function stop() {
+      if (watchdog) { clearInterval(watchdog); watchdog = null; }
+      if (synth) synth.cancel();
+      idle(active);
+      active = null;
+    }
+
+    function whenVoices(fn) {
+      if (pickEn() || voices().length) { fn(); return; }
+      var done = false;
+      function once() {
+        if (done) return;
+        done = true;
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", once);
+        fn();
+      }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", once);
+      setTimeout(once, 700);
+    }
+
+    function speak(btn, text) {
+      if (!synth) return;
+      if (active === btn) { stop(); return; }
+      var needWait = !!(active || synth.speaking);
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          var v = pickEn();
+          u.lang = "en-US";
+          u.rate = 0.9;
+          if (v) u.voice = v;
+          u.onend = function () {
+            if (active !== btn) return;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            idle(btn);
+            active = null;
+          };
+          u.onerror = u.onend;
+          active = btn;
+          btn.setAttribute("aria-pressed", "true");
+          btn.textContent = "停止";
+          synth.speak(u);
+          if (watchdog) clearInterval(watchdog);
+          watchdog = setInterval(function () {
+            if (!synth.speaking) { clearInterval(watchdog); watchdog = null; return; }
+            if (synth.paused) synth.resume();
+          }, 400);
+        });
+      }
+      if (needWait) setTimeout(start, 80);
+      else start();
+    }
+
+    if (synth) {
+      voices();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
+    }
+
+    var origins = document.querySelectorAll(".origin");
+    var i, origin, label, row, btn;
+    for (i = 0; i < origins.length; i++) {
+      origin = origins[i];
+      if (!englishText(origin)) continue;
+      label = origin.querySelector(".label");
+      if (!label || (label.parentNode && label.parentNode.classList.contains("origin-head"))) continue;
+      row = document.createElement("div");
+      row.className = "origin-head";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "speak";
+      btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "朗读这段英文");
+      btn.textContent = "朗读";
+      if (!synth) {
+        btn.disabled = true;
+        btn.title = "这台设备不能朗读";
+      }
+      row.appendChild(btn);
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      var hit = t && t.closest ? t.closest("button.speak") : null;
+      if (!hit || hit.disabled) return;
+      var box = hit.closest(".origin");
+      var text = box ? englishText(box) : "";
+      if (!text) return;
+      speak(hit, text);
+    });
+  })();
+  </script>
 </body>
 </html>

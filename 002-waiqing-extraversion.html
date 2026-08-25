@@ -165,6 +165,39 @@
     @media (min-width: 48rem) {
       .pair { width: 100%; }
     }
+    .origin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+    .origin-head .label { margin-bottom: 0; }
+    button.speak {
+      flex: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.speak[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--card);
+    }
+    button.speak:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -400,35 +433,27 @@
       <li>
         <p class="q">用自己的句子说清 §563 分开的那两层：「这件事实是真的」，和「这件事实决定了我怎么做」。不要出现外向、开朗、社交。</p>
         <details class="jiangjie">
-          <summary>看这一问的讲解</summary>
+          <summary>讲解</summary>
           <div class="jiangjie-body">
-            <p>两层是两句话：「外面冷」是一句，「因为外面冷，所以我穿大衣」是另一句。前一句说事实成立，后一句说这个事实起了决定作用。</p>
-            <p>§563 的两个例子就是把这两句话拉开距离用的。外面冷，一个人被说服穿上大衣；另一个想让自己耐寒，觉得大可不必。同一个事实，两个行动。男高音那例同样：整个世界都在捧，一个人跟着捧；另一个不跟，照 §563 的说法，他并不讨厌这位歌手，只是认为众人普遍崇拜的对象并不见得已经证明值得崇拜。</p>
-            <p>所以事实本身只有相对的决定性（the data in themselves are only relatively decisive）。外面给的东西起多大作用，要看它落到谁身上。</p>
-            <p>类型的判断在第二层。§563 接着给标准：当朝客体与客观事实的定向占了显著优势，最经常、最根本的决定由客观关系左右，这叫外倾态度；成了习惯，才叫外倾型。§710 的定义条同样只讲主体对客体的关系与依赖，没有一个字讲话多话少。</p>
+            <p>两层是两句话：「外面冷」这件事成立，和「因为冷所以我穿大衣」这件事起了决定作用。§563：同一个天冷，一个人被说服穿上大衣，另一个想让自己耐寒，觉得不必。事实本身只有相对的决定性，类型看的是第二层由哪一侧左右。</p>
           </div>
         </details>
       </li>
       <li>
         <p class="q">阿宁那三句——她妈妈问过三次、去年没回、票只剩站票——都成立。按 §563，要到什么程度才算「左右了最经常和最根本的决定」？故事里哪一处可以拿来判断？</p>
         <details class="jiangjie">
-          <summary>看这一问的讲解</summary>
+          <summary>讲解</summary>
           <div class="jiangjie-body">
-            <p>一件事判不了，要看常态。§563 的落点在「最经常和最根本的决定」这几个字上：决定由客观关系左右，才叫外倾态度；这种状态成了习惯，才叫外倾型。她订票这一件，事实为真、她照着办，换谁都可能这样。</p>
-            <p>故事里可以拿来看的是第三天下午那一处：她妈妈问她假期剩下两天想干什么。这一次外面没给现成的理由，问的正是她自己那一侧。她先反问「您想去哪儿」，再说「明天再看吧」。同一个假期里，外面给了理由时她一件接一件；理由撤掉时她停在那儿。这是我的推断，§563 没有规定该拿哪种场合取样。</p>
-            <p>还有一层要留住：§563 自己写外倾型当然也有主观价值，只是其决定性作用不如客观条件；§6 说类型只是相对占优，另一套机制绝不会被完全压制。所以能说的是这两天里主观价值没参与决定，不能说她没有主观价值。</p>
+            <p>一件订票判不了类型，要看客观关系是否左右了最经常、最根本的决定。§563：事实为真、照着办，换谁都可能这样；这种状态成了习惯，才叫外倾型。可拿来看的是她妈妈问她自己想干什么，她先反问「您想去哪儿」。</p>
           </div>
         </details>
       </li>
       <li>
         <p class="q">高铁上她说「我没想过这个」。§564 与 §570 各能解释这句话的哪一部分，哪一部分两段都没覆盖？</p>
         <details class="jiangjie">
-          <summary>看这一问的讲解</summary>
+          <summary>讲解</summary>
           <div class="jiangjie-body">
-            <p>两段各管一头：§564 管「怎么会没想过」，§570 管「这句话为什么现在冒出来」。</p>
-            <p>§564 写外倾型的正常来自他能相对容易地与现存条件保持一致，要求限制在客观的可能性以内；弱点正落在是否顾及自己的主观需要和要求上，连他自己身体的状况这种最明显的主观事实都得不到恰当的对待。三天里每件事外面都给了理由，「我想做什么」这一项没被问起过，直到她妈妈问了一次，周衡在车上又问了一次。</p>
-            <p>§570 写无意识那一侧作为意识外倾态度的补偿，带内倾性质，把力比多集中在被意识态度压下去的那些需要和要求上。她是在没有安排、也没人等她答话的高铁上说出这句的，我读成那一侧在冒头。这是我的推断；§570 讲的是态度的方向，没有讲某一句话。</p>
-            <p>两段都没覆盖的是后面：她说完之后怎么办。§565 只写危险与代价——为客体所束缚，在客体那里迷失自己，功能性或生理的紊乱反过来逼他自我限制，那是临床上的描述。她当时是什么感受，哪一段也没管。</p>
+            <p>§564 管「怎么会没想过」，§570 管「这话为什么现在冒出来」。§564 写外倾型容易跟现存条件保持一致，他的弱点正好落在是否顾及自己的主观需要上。两段都没覆盖她说完这句之后怎么办，也没有写她当时是什么感受。</p>
           </div>
         </details>
       </li>
@@ -440,5 +465,137 @@
     <p>CW 6；储昭华等译，国际文化出版公司，2011。</p>
     <p><a href="https://jlutripper-alive.github.io/psyche-docs/">返回目录</a></p>
   </footer>
+  <script>
+  (function () {
+    var synth = window.speechSynthesis || null;
+    var active = null;
+    var watchdog = null;
+
+    function voices() {
+      return synth ? (synth.getVoices() || []) : [];
+    }
+
+    function pickEn() {
+      var list = voices();
+      var us, gb, en, i, lang;
+      for (i = 0; i < list.length; i++) {
+        lang = String(list[i].lang || "").toLowerCase().replace("_", "-");
+        if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) continue;
+        if (lang.indexOf("en-us") === 0) us = us || list[i];
+        else if (lang.indexOf("en-gb") === 0) gb = gb || list[i];
+        else if (lang.indexOf("en") === 0) en = en || list[i];
+      }
+      return us || gb || en || null;
+    }
+
+    function englishText(origin) {
+      var bq = origin.querySelector("blockquote");
+      var text = bq ? String(bq.innerText || bq.textContent || "").replace(/\s+/g, " ").trim() : "";
+      if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
+      var latin = (text.match(/[A-Za-z]/g) || []).length;
+      var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+      return (latin >= 20 && latin > cjk) ? text : "";
+    }
+
+    function idle(btn) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = "朗读";
+    }
+
+    function stop() {
+      if (watchdog) { clearInterval(watchdog); watchdog = null; }
+      if (synth) synth.cancel();
+      idle(active);
+      active = null;
+    }
+
+    function whenVoices(fn) {
+      if (pickEn() || voices().length) { fn(); return; }
+      var done = false;
+      function once() {
+        if (done) return;
+        done = true;
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", once);
+        fn();
+      }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", once);
+      setTimeout(once, 700);
+    }
+
+    function speak(btn, text) {
+      if (!synth) return;
+      if (active === btn) { stop(); return; }
+      var needWait = !!(active || synth.speaking);
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          var v = pickEn();
+          u.lang = "en-US";
+          u.rate = 0.9;
+          if (v) u.voice = v;
+          u.onend = function () {
+            if (active !== btn) return;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            idle(btn);
+            active = null;
+          };
+          u.onerror = u.onend;
+          active = btn;
+          btn.setAttribute("aria-pressed", "true");
+          btn.textContent = "停止";
+          synth.speak(u);
+          if (watchdog) clearInterval(watchdog);
+          watchdog = setInterval(function () {
+            if (!synth.speaking) { clearInterval(watchdog); watchdog = null; return; }
+            if (synth.paused) synth.resume();
+          }, 400);
+        });
+      }
+      if (needWait) setTimeout(start, 80);
+      else start();
+    }
+
+    if (synth) {
+      voices();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
+    }
+
+    var origins = document.querySelectorAll(".origin");
+    var i, origin, label, row, btn;
+    for (i = 0; i < origins.length; i++) {
+      origin = origins[i];
+      if (!englishText(origin)) continue;
+      label = origin.querySelector(".label");
+      if (!label || (label.parentNode && label.parentNode.classList.contains("origin-head"))) continue;
+      row = document.createElement("div");
+      row.className = "origin-head";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "speak";
+      btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "朗读这段英文");
+      btn.textContent = "朗读";
+      if (!synth) {
+        btn.disabled = true;
+        btn.title = "这台设备不能朗读";
+      }
+      row.appendChild(btn);
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      var hit = t && t.closest ? t.closest("button.speak") : null;
+      if (!hit || hit.disabled) return;
+      var box = hit.closest(".origin");
+      var text = box ? englishText(box) : "";
+      if (!text) return;
+      speak(hit, text);
+    });
+  })();
+  </script>
 </body>
 </html>
