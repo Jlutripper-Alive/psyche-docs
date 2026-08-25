@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>外倾 Extraversion · 荣格《心理类型》</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --fg: #1f1b16;
+      --muted: #5a5348;
+      --card: #fffdf8;
+      --line: #d8d0c2;
+      --accent: #2f4a3a;
+      --quote: #ebe4d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14120f;
+        --fg: #eee8dc;
+        --muted: #b4aa98;
+        --card: #1c1914;
+        --line: #3a342a;
+        --accent: #b7c9a8;
+        --quote: #242017;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0 auto;
+      max-width: 40rem;
+      padding: 1.2rem 1.1rem 3.5rem;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.7 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    }
+    header { margin-bottom: 2rem; }
+    .kicker {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.3;
+      font-weight: 650;
+      margin: 0.35rem 0 0.6rem;
+    }
+    h2 {
+      font-size: 1.28rem;
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font-weight: 650;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.4rem 0 0.4rem;
+      font-weight: 650;
+    }
+    p { margin: 0.85rem 0; }
+    a { color: var(--accent); }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.45rem 0; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--quote);
+      border-left: 3px solid var(--accent);
+    }
+    blockquote p { margin: 0.5rem 0; }
+    .cite, footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .story, .ask {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 1rem 0;
+    }
+    .versus {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    ol.feynman { padding-left: 1.2rem; }
+    ol.feynman li { margin: 0.8rem 0; }
+    nav {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    nav a { margin-right: 0.55rem; }
+    .pair {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      margin: 1.4rem 0;
+      overflow: hidden;
+    }
+    .pair h3 {
+      margin: 0;
+      padding: 0.85rem 1rem 0.55rem;
+      font-size: 1.02rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .origin, .translation { padding: 0.85rem 1rem 0.95rem; }
+    .origin {
+      background: var(--quote);
+      border-bottom: 1px dashed var(--line);
+    }
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      font-weight: 650;
+    }
+    .origin .label { color: var(--accent); }
+    .pair blockquote {
+      margin: 0.35rem 0 0.6rem;
+      padding: 0.65rem 0.75rem;
+      background: transparent;
+      border-left: 2px solid var(--line);
+    }
+    .pair .origin blockquote { border-left-color: var(--accent); }
+    .pair blockquote p { margin: 0.35rem 0; }
+    @media (min-width: 48rem) {
+      .pair { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">psyche-study · 002</div>
+    <h1>外倾（Extraversion）</h1>
+    <nav>
+      <a href="#xiezi">楔子</a>
+      <a href="#gushi">故事</a>
+      <a href="#yuanhe">原著核心</a>
+      <a href="#ewai">额外</a>
+    </nav>
+  </header>
+
+  <section id="xiezi">
+    <h2>1. 楔子</h2>
+    <p>《心理类型》第十章 A 节给「外倾」下的是方向判断：一个人最经常、最根本的决定，由客观关系左右还是由主观价值左右。荣格用天冷加不加大衣、男高音跟不跟着捧两件小事，把「外面给的事实」和「事实起了决定作用」分开，随后写下这种态度的正常之处与代价。</p>
+  </section>
+
+  <section id="gushi">
+    <h2>2. 故事</h2>
+    <div class="story">
+      <p>「我还没想。」</p>
+      <p>阿宁把手上的水在围裙上擦掉：「我妈问了三次。去年没回，前年也没回。」</p>
+      <p>「我知道。」</p>
+      <p>「票今天放出来，再等两天只剩站票。」</p>
+      <p>他点头。这三句他一句也没法反驳。当晚十一点阿宁订了两张，把订单截图发了过去。</p>
+      <p>到她家是十月一号早上。她妈妈在楼下站着等，说不知道他们几点到，早点下来。三天里阿宁一刻没闲：陪她妈妈去看一个远房舅舅，替她爸爸换阳台的纱窗，晚上跟表姐去了一家新开的店，说评分很高。周衡搬东西、洗碗，看她跟谁都能接上话，一句不打结。</p>
+      <p>第三天下午，她妈妈问她假期剩下两天想干什么。</p>
+      <p>「都行。」阿宁说，「您想去哪儿？」</p>
+      <p>「我问的是你。」</p>
+      <p>阿宁笑了一下。过了几秒她说：「明天再看吧。」</p>
+      <p>回程高铁上，她靠着窗，手机拿起来又放下。</p>
+      <p>「这几天挺满的。」周衡说。</p>
+      <p>「嗯。」</p>
+      <p>「你自己想做的，做上了吗？」</p>
+      <p>窗外过去一排杨树。阿宁说：「……我没想过这个。」</p>
+      <p>广播报下一站。他没有替她答。</p>
+    </div>
+  </section>
+
+  <section id="yuanhe">
+    <h2>3. 原著核心</h2>
+    <p>CW 6 第十章 A 节。英文取 Hull（1971）与 Baynes（1923），中译见各卡片出处。</p>
+
+    <article class="pair">
+      <h3>第十章 A 节开篇：对客体的肯定关系</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <p>The extravert, on the contrary, maintains a positive relation to the object. To such an extent does he affirm its importance that his subjective attitude is continually being orientated by, and related to the object. Au fond, the object can never have sufficient value; for him, therefore, its importance must always be paramount.</p>
+        </blockquote>
+        <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, A. The Extraverted Type. Baynes, 1923, p. 413. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>相反，外倾型则对客体持积极的态度。他非常重视客体以至于其主观态度就是由客体所定向并与客体密切相关的。他从内心里认为客体的价值永远不够充分；因此对他来说，其重要性总是至高无上的。</p>
+        </blockquote>
+        <p class="cite">— 储昭华等译，《心理类型》，国际文化出版公司，2011，第253页。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§563：大衣与男高音</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <p>Although it is true that everyone orients himself in accordance with the data supplied by the outside world, we see every day that the data in themselves are only relatively decisive. The fact that it is cold outside prompts one man to put on his overcoat, while another, who wants to get hardened, finds this superfluous. One man admires the latest tenor because everybody else does, another refuses to do so, not because he dislikes him, but because in his view the subject of universal admiration is far from having been proved admirable.</p>
+        </blockquote>
+        <p class="cite">— CW 6, Chapter X, §563. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>虽说每个人都按外部世界供给的 data（给定的事实）来给自己定向，这一点不假，可我们每天都看到，这些事实本身只是相对地起决定作用。外面冷，这件事让一个人穿上大衣；另一个人想把身体练结实，就觉得没这个必要。一个人赞赏当红的男高音，因为别人都赞赏；另一个人不肯，倒不是他不喜欢这位歌手，而是在他看来，众人赞赏的对象远没有被证明值得赞赏。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§563 后半：什么时候叫外倾态度</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <p>Now, when the orientation to the object and to objective facts is so predominant that the most frequent and essential decisions and actions are determined, not by subjective values but by objective relations, one speaks of an extraverted attitude. When this is habitual, one speaks of an extraverted type. If a man so thinks, feels, and acts, in a word so lives, as to correspond directly with objective conditions and their claims, whether in a good sense or ill, he is extraverted. His life makes it perfectly clear that it is the objective rather than the subjective value which plays the greater role as the determining factor of his consciousness. He naturally has subjective values, but their determining value is less than that of the objective conditions.</p>
+        </blockquote>
+        <p class="cite">— 同章同节，对应 Hull §563。Baynes, 1923. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>如果朝着客体和客观事实的定向占据显著的优势，以至于不是被主观的价值、而是被客观的关系左右了最经常和最根本的决策和行动，这就属于外倾性态度。当它成为一种习惯，就属于外倾类型。如果一个人直接地将客观的条件与其主张对应起来——不管是正面的意义上还是反面的意义上，并这样去思考、感受和行动，一句话这样去生活，则他就属于外倾型。他的生活清楚地显示出，在他的意识中，作为决定性因素的正是客观事实而不是主观价值。当然，他也有主观价值，但其所起的影响作用远不如外在的客观条件所起的作用重要。</p>
+        </blockquote>
+        <p class="cite">— 储昭华等译，《心理类型》，国际文化出版公司，2011，第253页。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§564 前后：正常之处，与危险</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <p class="cite">本轮未核到该段英文原文。</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>他的正常性一方面归因于他具有相对来说比较容易与现存环境保持一致的能力。他的要求局限于客观的可能性……主观需要和要求，而这正是他的弱点所在……这就是外倾型的危险：他为客体所束缚，在它们那里完全迷失了自己。</p>
+        </blockquote>
+        <p class="cite">— 1989 译本，第十章「类型总论」。省略号为摘录者跳读。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§570：无意识那一侧</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <p class="cite">本轮未核到该段英文原文。</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>作为意识的外倾态度的一种有效的补充，无意识的态度具有一种内倾性质，而且会把能量集中在主观因素上，也就是集中在所有受到过度外倾的意识态度所压制或压抑的需要和要求上。</p>
+        </blockquote>
+        <p class="cite">— 较晚中译本，第九章「类型概述」。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <h3 id="gainian">解析</h3>
+    <p>§563 分两步。先说人人都按外面给的事实定向，可事实本身只是相对地起决定作用；然后给出标准——客观关系而不是主观价值左右了最经常、最根本的决定，这叫外倾态度，成为习惯叫外倾型。阿宁那三句句句为真。为真是一层，替她定下这件事是另一层。</p>
+    <p>§564 把好处和代价写在一处：正常来自他容易与现存环境保持一致，要求限制在客观的可能性以内；弱点落在主观的需要和要求上；危险是为客体所束缚，在客体那里迷失自己。陪舅舅、换纱窗、去新店，每件事都有外面给的理由。她妈妈直接问她想干什么，她先反问「您想去哪儿」。</p>
+    <p>周衡在厨房门口也答不上来，两处来路不同：他的加工还在主体那一侧走（§621、§622，见 001）；阿宁这边，主观价值一开始就没参与决定。</p>
+    <p>§570：意识越外倾，无意识那一侧越带内倾性质，能量集中在被压下去的需要和要求上。高铁上那句「我没想过这个」，我读成那一侧在冒头。这是我的推断。</p>
+  </section>
+
+  <section id="ewai">
+    <h2>4. 额外</h2>
+
+    <h3 id="meishuo">它没说什么</h3>
+    <p>流行读法常加给他、原文没有的：</p>
+    <ul>
+      <li>外倾等于话多、外向、人缘好。§563 的标准只问决定由哪一侧左右。</li>
+      <li>外倾健康、内倾有毛病。§564 写了外倾自己的弱点和危险，§570 写无意识的补偿。</li>
+      <li>类型是能随时切换的模式。§561：类型翻转往往对身体大为有害，通常引起急性衰竭。</li>
+      <li>E 有分数、有百分比。导论 §6：只有相对占优。</li>
+    </ul>
+
+    <h3 id="duili">对立并排</h3>
+    <p>三家不调和：荣格写方向与依赖，迈尔斯官方写精力从哪里来，第三家指出通行用法换成了行为与社交能力。</p>
+    <div class="versus">
+      <article class="pair">
+        <h3>荣格 · 第十一章定义 §710</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <p>EXTRAVERSION is an outward-turning of libido (q.v.). I use this concept to denote a manifest relation of subject to object, a positive movement of subjective interest towards the object. Everyone in the extraverted state thinks, feels, and acts in relation to the object, and moreover in a direct and clearly observable fashion, so that no doubt can remain about his positive dependence on the object. [...] When extraversion is habitual, we speak of the extraverted type (q.v.).</p>
+          </blockquote>
+          <p class="cite">— CW 6, Chapter XI Definitions, §710. Hull, 1971. [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>外倾是力比多的向外转。我用这个概念指主体对客体的一种显明关系，即主观兴趣朝客体的一种正向运动。凡处在外倾状态中的人，其思考、感受和行动都关联着客体，而且是以直接、清楚可见的方式，因此他对客体的正向依赖不容置疑。[...] 外倾一旦成为习惯，我们就说外倾型。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+      <article class="pair">
+        <h3>迈尔斯官方</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <p>They represent natural orientations of energy—opposite ways to direct/receive energy and focus attention. People who prefer Extraversion feel energized by interaction in the outer world of people and things. Their attention is naturally drawn in this outward direction.</p>
+          </blockquote>
+          <p class="cite">— The Myers-Briggs Company. <a href="https://www.myersbriggs.org/my-mbti-personality-type/the-mbti-preferences/">myersbriggs.org</a> [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>它们代表精力的自然朝向——引导和接收精力、放置注意的两种相反方式。偏好 Extraversion 的人，在外部世界与人和事物互动时感到有精力。他们的注意自然被引向外面这个方向。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+      <article class="pair">
+        <h3>Olbert：通行定义换了轴</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <p>Contemporary psychology and popular usage tend to define extraversion and introversion in terms of behavior or social aptitude: one is seen as extraverted if one is outgoing, energetic and interpersonally skilled, and introverted if one is shy, withdrawn, or socially awkward. [...] Jung begins his “General Description of the Types” by distinguishing two types of people, defined by the direction of their interests.</p>
+          </blockquote>
+          <p class="cite">— Rain Mason Olbert, Ph.D., 2020-10-25. <a href="https://rainmasonphd.com/writing/jungs-notions-of-extraversion-and-introversion/">rainmasonphd.com</a> [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>当代心理学和流行用法倾向于按行为或社交能力来定义外倾与内倾：一个人若外向、精力充沛、人际上熟练，就被看成外倾；若害羞、退缩、社交上笨拙，就被看成内倾。[...] 荣格在《类型总论》开篇区分两类人，依据的是他们兴趣的方向。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+    </div>
+
+    <h3 id="feiman">费曼三问</h3>
+    <ol class="feynman">
+      <li>用自己的句子说清 §563 分开的那两层：「这件事实是真的」，和「这件事实决定了我怎么做」。不要出现外向、开朗、社交。</li>
+      <li>阿宁那三句——她妈妈问过三次、去年没回、票只剩站票——都成立。按 §563，要到什么程度才算「左右了最经常和最根本的决定」？故事里哪一处可以拿来判断？</li>
+      <li>高铁上她说「我没想过这个」。§564 与 §570 各能解释这句话的哪一部分，哪一部分两段都没覆盖？</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>广播报下一站。他没有替她答。</p>
+    <p>CW 6；储昭华等译，国际文化出版公司，2011。</p>
+    <p><a href="https://jlutripper-alive.github.io/psyche-docs/">返回目录</a></p>
+  </footer>
+</body>
+</html>
