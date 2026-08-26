@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>「这一句」讲解样稿 · 荣格《心理类型》第十章</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --fg: #1f1b16;
+      --muted: #5a5348;
+      --card: #fffdf8;
+      --line: #d8d0c2;
+      --accent: #2f4a3a;
+      --quote: #ebe4d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14120f;
+        --fg: #eee8dc;
+        --muted: #b4aa98;
+        --card: #1c1914;
+        --line: #3a342a;
+        --accent: #b7c9a8;
+        --quote: #242017;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0 auto;
+      max-width: 40rem;
+      padding: 1.2rem 1.1rem 3.5rem;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.7 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    }
+    header { margin-bottom: 2rem; }
+    .kicker {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.3;
+      font-weight: 650;
+      margin: 0.35rem 0 0.6rem;
+    }
+    h2 {
+      font-size: 1.28rem;
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font-weight: 650;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.4rem 0 0.4rem;
+      font-weight: 650;
+    }
+    p { margin: 0.85rem 0; }
+    a { color: var(--accent); }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.45rem 0; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--quote);
+      border-left: 3px solid var(--accent);
+    }
+    blockquote p { margin: 0.5rem 0; }
+    .cite, footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .story, .ask {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 1rem 0;
+    }
+    .versus {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    ol.feynman { padding-left: 1.2rem; }
+    ol.feynman > li { margin: 1.3rem 0; }
+    ol.feynman .q { margin: 0 0 0.55rem; }
+    details.jiangjie {
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    details.jiangjie > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.6rem 0.85rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--accent);
+      list-style: none;
+    }
+    details.jiangjie > summary::-webkit-details-marker { display: none; }
+    details.jiangjie > summary::after {
+      content: "展开";
+      flex: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+    }
+    details.jiangjie[open] > summary::after { content: "收起"; }
+    details.jiangjie[open] > summary { border-bottom: 1px solid var(--line); }
+    .jiangjie-body {
+      padding: 0.15rem 0.85rem 0.8rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .jiangjie-body p { margin: 0.8rem 0; }
+    nav {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    nav a { margin-right: 0.55rem; }
+    .pair {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      margin: 1.4rem 0;
+      overflow: visible;
+    }
+    .pair h3 {
+      margin: 0;
+      padding: 0.85rem 1rem 0.55rem;
+      font-size: 1.02rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .origin, .translation { padding: 0.85rem 1rem 0.95rem; }
+    .origin {
+      background: var(--quote);
+      border-bottom: 1px dashed var(--line);
+    }
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      font-weight: 650;
+    }
+    .origin .label { color: var(--accent); }
+    .pair blockquote {
+      margin: 0.35rem 0 0.6rem;
+      padding: 0.65rem 0.75rem;
+      background: transparent;
+      border-left: 2px solid var(--line);
+    }
+    .pair .origin blockquote { border-left-color: var(--accent); }
+    .pair blockquote p { margin: 0.35rem 0; }
+    @media (min-width: 48rem) {
+      .pair { width: 100%; }
+    }
+    .origin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+    .origin-head .label { margin-bottom: 0; }
+    button.speak {
+      flex: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.speak[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--card);
+    }
+    button.speak:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .origin audio {
+      display: block;
+      width: 100%;
+      margin-top: 0.65rem;
+    }
+
+    .pair { overflow: visible; }
+    .origin, .origin blockquote { overflow: visible; }
+    .sent { display: block; margin: 0.75rem 0; }
+    .sent:first-child { margin-top: 0.15rem; }
+    .sent:last-child { margin-bottom: 0.15rem; }
+    .sent .en {
+      display: block;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .sent .zh {
+      display: block;
+      margin: 0.18rem 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    button.wd {
+      display: inline;
+      position: relative;
+      margin: 0;
+      padding: 0.05em 0.02em;
+      border: 0;
+      border-bottom: 1px dotted var(--accent);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.wd::after {
+      content: "";
+      position: absolute;
+      top: -0.4em;
+      right: -0.25em;
+      bottom: -0.35em;
+      left: -0.25em;
+    }
+    button.wd .hint {
+      font-size: 11px;
+      line-height: 1;
+      color: var(--muted);
+      margin-left: 0.14em;
+      font-style: normal;
+      font-weight: 400;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+      vertical-align: super;
+    }
+    #wd-pop {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 80;
+      max-width: min(22rem, calc(100vw - 1.5rem));
+      padding: 0.7rem 0.85rem 0.75rem;
+      background: var(--card);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    #wd-pop[hidden] { display: none !important; }
+    #wd-pop .wd-line {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
+    #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
+    .pair:has(.origin .sent .zh) > .translation { display: none; }
+    details.yiwen {
+      border-top: 1px dashed var(--line);
+      background: var(--card);
+    }
+    details.yiwen > summary {
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-weight: 650;
+      color: var(--muted);
+      list-style: none;
+    }
+    details.yiwen > summary::-webkit-details-marker { display: none; }
+    details.yiwen[open] > summary { border-bottom: 1px dashed var(--line); }
+    details.yiwen .translation .label { display: none; }
+    #wd-pop .wd-say {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      border: 0;
+      background: none;
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    :root { --mark: #e6ddc7; }
+    @media (prefers-color-scheme: dark) {
+      :root { --mark: #2d2718; }
+    }
+    .demo-note {
+      margin: 0.7rem 0 0;
+      padding: 0.6rem 0.8rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .demo-note code { font-size: 0.88rem; }
+    .sent.marked {
+      background: var(--mark);
+      padding: 0.3rem 0.45rem;
+      margin-left: -0.45rem;
+      margin-right: -0.45rem;
+    }
+    details.zjj {
+      margin: 0.2rem 0 0.4rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    details.zjj > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.55rem 0.8rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--accent);
+      list-style: none;
+    }
+    details.zjj > summary::-webkit-details-marker { display: none; }
+    details.zjj > summary::after {
+      content: "展开";
+      flex: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+    }
+    details.zjj[open] > summary::after { content: "收起"; }
+    details.zjj[open] > summary { border-bottom: 1px solid var(--line); }
+    .zjj-body {
+      padding: 0.2rem 0.8rem 0.8rem;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .zjj-body p { margin: 0.75rem 0; }
+    .zjj-body .en-q {
+      font-style: italic;
+      font-size: 0.95em;
+    }
+    .zjj-body .tag {
+      display: inline-block;
+      margin-right: 0.4rem;
+      padding: 0 0.35rem;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      vertical-align: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">psyche-study · DEMO</div>
+    <h1>「这一句」讲解 · 样稿</h1>
+    <p class="demo-note">样稿，用 002「外倾」已核过的三段原文试做讲解写法。线上课文 <code>002-waiqing-extraversion.html</code> 本轮未改动。</p>
+  </header>
+
+  <section id="shuoming">
+    <h2>这份样稿在试什么</h2>
+    <p>原文下面挂一个默认收起的「这一句」。点开先给一句白话：荣格在这一章写到这里是要做什么。往下是没读前后文会丢掉的信息、判断词的落点，以及哪句是原文、哪句是我的推断。</p>
+    <p>第十章「类型总论」外倾型一节的顺序：开篇定方向（客体的重要性）→ §563 给判断标准 → §564 写正常与弱点 → §565 写危险 → §570 写无意识那一侧。下面三张卡片取开篇、§563、§565。</p>
+  </section>
+
+  <section id="yuanhe">
+    <h2>三段原文</h2>
+    <p>英文取 Hull（1971）与 Baynes（1923），中译见卡片出处。带底色的那几句下面有「这一句」。</p>
+
+    <article class="pair">
+      <h3>第十章 外倾型开篇：Au fond 那一句</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">The <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>, on the contrary, maintains a positive relation to the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="对客体持积极的态度">object<span class="hint">客体</span></button>.</span><span class="zh" lang="zh">相反，外倾型则对客体持积极的态度。</span></span>
+          <span class="sent"><span class="en" lang="en">To such an extent does he affirm its importance that his subjective attitude is continually being <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="主观态度由客体所定向">orientated<span class="hint">定向</span></button> by, and related to the object.</span><span class="zh" lang="zh">他非常重视客体以至于其主观态度就是由客体所定向并与客体密切相关的。</span></span>
+          <span class="sent marked"><span class="en" lang="en"><button type="button" class="wd" data-ipa="oʊ ˈfɒn" data-gloss="Au fond：从根子上、从内心里">Au fond<span class="hint">从内心里</span></button>, the object can never have sufficient value; for him, therefore, its importance must always be <button type="button" class="wd" data-ipa="ˈpærəmaʊnt" data-gloss="客体的重要性总是至高无上">paramount<span class="hint">至高无上</span></button>.</span><span class="zh" lang="zh">他从内心里认为客体的价值永远不够充分；因此对他来说，其重要性总是至高无上的。</span></span>
+        </blockquote>
+        <details class="zjj">
+          <summary>这一句</summary>
+          <div class="zjj-body">
+            <p>这一句给外倾定方向：客体在他那里怎么也算不上够，所以客体的重要性只能摆在最高位。前一句刚说他的主观态度一直由客体定向，这一句把那个定向推到底。</p>
+            <p>位置在「外倾型」一节的头三句。<span class="en-q">on the contrary</span>（相反）接的是前面刚写完的内倾那一侧，不知道这一点，三句会读成一串性格描写。§710 用同一个方向定义外倾：力比多向外转，主观兴趣朝客体的正向运动。荣格要先把方向说定，判断标准要到 §563 才给。</p>
+            <p><span class="tag">原文</span><span class="en-q">Au fond, the object can never have sufficient value; for him, therefore, its importance must always be paramount.</span> 这个 therefore 是原文的连词。sufficient 问的是够不够，paramount 说的是压倒其他。原文停在这里，没有再写这个「因此」是怎么来的。</p>
+            <p><span class="tag">推断</span>我把「怎么也算不上够」读成一句关于位置的话：主观态度既然由客体定向，客体就得一直待在最高位，这个定向才立得住。补偿要到 §565 才出现，那里说的是紊乱，不能挪到这一句上。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/002-ch10-intro.mp3"></audio>
+        <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, A. The Extraverted Type. Baynes, 1923, p. 413. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>相反，外倾型则对客体持积极的态度。他非常重视客体以至于其主观态度就是由客体所定向并与客体密切相关的。他从内心里认为客体的价值永远不够充分；因此对他来说，其重要性总是至高无上的。</p>
+        </blockquote>
+        <p class="cite">— 储昭华等译，《心理类型》，国际文化出版公司，2011，第253页。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§563：大衣与男高音</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent marked"><span class="en" lang="en">Although it is true that everyone <button type="button" class="wd" data-ipa="ˈɔːrients" data-gloss="被外部世界提供的事件所定向">orients<span class="hint">定向</span></button> himself in accordance with the <button type="button" class="wd" data-ipa="ˈdeɪtə" data-gloss="这里中译写成「事件」：外面给的那些事实">data<span class="hint">事件</span></button> supplied by the outside world, we see every day that the data in themselves are only relatively decisive.</span><span class="zh" lang="zh">众所周知，每一个人都被外部世界提供给他的事件所定向；但我们看到，这种可能如此的情形只具有相对的决定性。</span></span>
+          <span class="sent"><span class="en" lang="en">The fact that it is cold outside prompts one man to put on his overcoat, while another, who wants to get hardened, finds this <button type="button" class="wd" data-ipa="suːˈpɜːrfluəs" data-gloss="觉得穿大衣大可不必">superfluous<span class="hint">大可不必</span></button>.</span><span class="zh" lang="zh">例如因为室外天气寒冷，某人被说服穿上他的大衣，但另一个人出于一种变得冷酷的欲望而发现这是大可不必的事情。</span></span>
+          <span class="sent"><span class="en" lang="en">One man admires the latest <button type="button" class="wd" data-ipa="ˈtenər" data-gloss="新近成名的男高音歌手">tenor<span class="hint">男高音</span></button>, because everybody else does, another refuses to do so, not because he dislikes him, but because in his view the <button type="button" class="wd" data-ipa="ˈsʌbdʒekt" data-gloss="这里指被众人崇拜的那个对象">subject<span class="hint">对象</span></button> of universal admiration is far from having been proved admirable.</span><span class="zh" lang="zh">某人崇拜一个新近成名的男高音歌手是因为整个世界都崇拜他，而另一个人的不置可否则并不是因为他不喜欢他，而是因为他觉得公众所普遍崇拜的对象实际上并不值得崇拜。</span></span>
+        </blockquote>
+        <details class="zjj">
+          <summary>这一句</summary>
+          <div class="zjj-body">
+            <p>这一句把两层分开：外面给的事实成立，和这件事实决定了他怎么做。荣格先承认人人都按外面给的事实定向，再说这些事实本身只有相对的决定性。</p>
+            <p>位置在「意识的一般态度」的开头，他要给外倾找一个能判断的标准，所以得先把「谁都受外界影响」这一层挪开。后面两句是同一件事实上的两种做法：天冷是真的，一个人穿大衣，另一个想让自己耐寒，觉得不必。缺了开篇的方向（客体的重要性总在最高位）看这一段，会以为荣格在讲两个人性格不同。</p>
+            <p><span class="tag">原文</span><span class="en-q">only relatively decisive</span> 落在决定权上，事实真不真没有被质疑。同一段随后给出标准：当对客体和客观事实的定向占优势，以至于最经常和最根本的决定与行动由客观关系左右，这叫外倾态度；成为习惯，才叫外倾型。</p>
+            <p><span class="tag">推断</span>「最经常和最根本」与 <span class="en-q">habitual</span> 是并起来用的，所以一次照着外面办判不了类型。这是我的推断。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/002-s563.mp3"></audio>
+        <p class="cite">— CW 6, Chapter X, §563. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>众所周知，每一个人都被外部世界提供给他的事件所定向；但我们看到，这种可能如此的情形只具有相对的决定性。例如因为室外天气寒冷，某人被说服穿上他的大衣，但另一个人出于一种变得冷酷的欲望而发现这是大可不必的事情；某人崇拜一个新近成名的男高音歌手是因为整个世界都崇拜他，而另一个人的不置可否则并不是因为他不喜欢他，而是因为他觉得公众所普遍崇拜的对象实际上并不值得崇拜。</p>
+        </blockquote>
+        <p class="cite">— 吴康、丁传林、赵善华译，《心理类型学》，华岳文艺出版社，1989，第十章第二节「外倾型」。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§565：外倾型的危险</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent marked"><span class="en" lang="en">This is the <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>’s danger: he gets sucked into <button type="button" class="wd" data-ipa="ˈɑːbdʒekts" data-gloss="为客观所束缚">objects<span class="hint">客体</span></button> and completely loses himself in them.</span><span class="zh" lang="zh">这就是外倾型的危险：他为客观所束缚，在他们的辛劳中完全迷失了自己。</span></span>
+          <span class="sent marked"><span class="en" lang="en">The resultant functional disorders, nervous or physical, have a <button type="button" class="wd" data-ipa="kəmˈpensətɔːri" data-gloss="具有补偿意义">compensatory<span class="hint">补偿</span></button> value, as they force him into an involuntary self-restraint.</span><span class="zh" lang="zh">从这种状态产生出来的功能性（神经性）或实际的生理紊乱就具有一种补偿意义，它迫使主体进行一种不自觉的自我限制。</span></span>
+        </blockquote>
+        <details class="zjj">
+          <summary>这一句</summary>
+          <div class="zjj-body">
+            <p>危险落在主体这一侧：他按客体的要求活，到自己这一侧就没剩下什么。<span class="en-q">them</span> 指客体，<span class="en-q">loses himself</span> 是这一句的判断词，主语和丢掉的东西都是他自己。</p>
+            <p>这一句接着 §564 的弱点写。§564 说正常的外倾型的适应本身就是他的限制：他的正常一面来自容易跟现存条件保持一致，另一面要看他是否顾及自己的主观需要，而这正是弱点，连自己身体的状况都得不到多少注意。§565 写这个弱点走到头的样子。「危险」问的是他自己这一侧还剩下什么。原文没有写客体有害，§564 里那个跟条件保持一致的人还是正常的。</p>
+            <p><span class="tag">原文</span>紊乱带补偿意义（<span class="en-q">compensatory value</span>）这句话在 §565 里，理由也在同一句：它们迫使他进行一种不自觉的自我限制。限制由紊乱强加，他自己没定。§570 在同一侧另说一次：无意识那一侧带内倾性质，把力比多集中在被意识态度压下去的需要和要求上。</p>
+            <p><span class="tag">推断</span>这里写的是临床上的紊乱，拿它给某一次让步、某一个假期贴标签站不住。这是我的推断。</p>
+            <p><span class="tag">类比</span>002 里阿宁那三天，票、舅舅、纱窗、新店，件件办成，到高铁上才漏出一句「我没想过这个」——人还在办事，自己那一侧已经交出去了。这是我给的类比，荣格写的是紊乱。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/002-s565.mp3"></audio>
+        <p class="cite">— CW 6, Chapter X, §565. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>这就是外倾型的危险：他为客观所束缚，在他们的辛劳中完全迷失了自己。从这种状态产生出来的功能性（神经性）或实际的生理紊乱就具有一种补偿意义，它迫使主体进行一种不自觉的自我限制。</p>
+        </blockquote>
+        <p class="cite">— 吴康等译，《心理类型学》，华岳文艺出版社，1989，第十章第二节「外倾型」。 [VERIFIED]</p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>CW 6，Hull 1971 / Baynes 1923；中译见各卡片出处。</p>
+    <p>样稿，未接入课程目录。线上 002 为 <code>002-waiqing-extraversion.html</code>，本轮未改。</p>
+    <p><a href="https://jlutripper-alive.github.io/psyche-docs/">返回目录</a></p>
+  </footer>
+  <script>
+  (function () {
+    var synth = window.speechSynthesis || null;
+    var active = null;
+    var watchdog = null;
+    var pop = null;
+    var popWord = "";
+    var NOVELTY = /zarvox|albert|bad news|good news|pipe organ|cellos|boing|whisper|superstar|trinoids|junior|kathy|bells|hysterical|princess|ralph|bruce|fred|organiser|novelty/i;
+    var PREFERRED = [
+      "samantha",
+      "daniel",
+      "karen",
+      "moira",
+      "google us english",
+      "google uk english",
+      "microsoft aria"
+    ];
+
+    function voices() {
+      return synth ? (synth.getVoices() || []) : [];
+    }
+
+    function voiceLang(v) {
+      return String(v && v.lang || "").toLowerCase().replace(/_/g, "-");
+    }
+
+    function voiceName(v) {
+      return String(v && v.name || "");
+    }
+
+    function isChineseVoice(v) {
+      var lang = voiceLang(v);
+      var name = voiceName(v).toLowerCase();
+      if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) return true;
+      if (/chinese|中文|普通话|国语|粤语|cantonese|mandarin/.test(name)) return true;
+      return false;
+    }
+
+    function isEnglishVoice(v) {
+      return voiceLang(v).indexOf("en-") === 0;
+    }
+
+    function isNovelty(v) {
+      return NOVELTY.test(voiceName(v));
+    }
+
+    function looksLikePerson(name) {
+      var n = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
+      if (!n) return false;
+      if (/google|microsoft|siri|enhanced|compact|premium|neural|speech|voice|default|english/i.test(n)) return false;
+      return /^[A-Za-z][A-Za-z .'-]{0,40}$/.test(n) && n.split(/\s+/).length <= 3;
+    }
+
+    function pickEn() {
+      var list = voices();
+      var pool = [];
+      var i, v, lang, name;
+      for (i = 0; i < list.length; i++) {
+        v = list[i];
+        if (isChineseVoice(v) || !isEnglishVoice(v) || isNovelty(v)) continue;
+        pool.push(v);
+      }
+      function findPreferred(want) {
+        var j;
+        for (j = 0; j < pool.length; j++) {
+          if (voiceName(pool[j]).toLowerCase().indexOf(want) !== -1) return pool[j];
+        }
+        return null;
+      }
+      for (i = 0; i < PREFERRED.length; i++) {
+        v = findPreferred(PREFERRED[i]);
+        if (v) return v;
+      }
+      var usPerson, gbPerson, usDef, gbDef;
+      for (i = 0; i < pool.length; i++) {
+        v = pool[i];
+        lang = voiceLang(v);
+        name = voiceName(v);
+        if (lang.indexOf("en-us") === 0) {
+          if (looksLikePerson(name) && !usPerson) usPerson = v;
+          if (v.default && !usDef) usDef = v;
+        } else if (lang.indexOf("en-gb") === 0) {
+          if (looksLikePerson(name) && !gbPerson) gbPerson = v;
+          if (v.default && !gbDef) gbDef = v;
+        }
+      }
+      return usPerson || gbPerson || usDef || gbDef || pool[0] || null;
+    }
+
+    function applyVoice(u) {
+      var v = pickEn();
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (v) {
+        u.voice = v;
+        u.lang = voiceLang(v);
+      } else {
+        u.lang = "en-US";
+      }
+    }
+
+    function bareText(el) {
+      if (!el) return "";
+      var clone = el.cloneNode(true);
+      var junk = clone.querySelectorAll(".zh, .hint, rt");
+      var i;
+      for (i = 0; i < junk.length; i++) {
+        if (junk[i].parentNode) junk[i].parentNode.removeChild(junk[i]);
+      }
+      return String(clone.innerText || clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function englishText(origin) {
+      var bq = origin.querySelector("blockquote");
+      var text = bareText(bq);
+      if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
+      var latin = (text.match(/[A-Za-z]/g) || []).length;
+      var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+      return (latin >= 20 && latin > cjk) ? text : "";
+    }
+
+    function originAudio(origin) {
+      return origin ? origin.querySelector("audio[src]") : null;
+    }
+
+    function stopAllAudio() {
+      var clips = document.querySelectorAll(".origin audio[src]");
+      var i;
+      for (i = 0; i < clips.length; i++) clips[i].pause();
+    }
+
+    function idle(btn) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = "朗读";
+    }
+
+    function stop() {
+      if (watchdog) { clearInterval(watchdog); watchdog = null; }
+      if (synth) synth.cancel();
+      stopAllAudio();
+      idle(active);
+      active = null;
+    }
+
+    function whenVoices(fn) {
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", onChange);
+        fn();
+      }
+      function onChange() {
+        voices();
+        if (pickEn()) finish();
+      }
+      voices();
+      if (pickEn()) { fn(); return; }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", onChange);
+      setTimeout(finish, 1600);
+    }
+
+    function playClip(btn, audio) {
+      if (active === btn && !audio.paused) {
+        audio.pause();
+        idle(btn);
+        active = null;
+        return;
+      }
+      stop();
+      active = btn;
+      btn.setAttribute("aria-pressed", "true");
+      btn.textContent = "停止";
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          if (active === btn) {
+            idle(btn);
+            active = null;
+          }
+        });
+      }
+    }
+
+    function speak(btn, text) {
+      var box = btn.closest ? btn.closest(".origin") : null;
+      var clip = originAudio(box);
+      if (clip) {
+        playClip(btn, clip);
+        return;
+      }
+      if (!synth) return;
+      if (active === btn) { stop(); return; }
+      var needWait = !!(active || (synth && synth.speaking));
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          u.onend = function () {
+            if (active !== btn) return;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            idle(btn);
+            active = null;
+          };
+          u.onerror = u.onend;
+          active = btn;
+          btn.setAttribute("aria-pressed", "true");
+          btn.textContent = "停止";
+          synth.speak(u);
+          if (watchdog) clearInterval(watchdog);
+          watchdog = setInterval(function () {
+            if (!synth.speaking) { clearInterval(watchdog); watchdog = null; return; }
+            if (synth.paused) synth.resume();
+          }, 400);
+        });
+      }
+      if (needWait) setTimeout(start, 80);
+      else start();
+    }
+
+    function speakWord(text) {
+      if (!synth || !text) return;
+      var wasBusy = !!(active || synth.speaking);
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          synth.speak(u);
+        });
+      }
+      if (wasBusy) setTimeout(start, 80);
+      else start();
+    }
+
+    function closePop() {
+      if (!pop) return;
+      pop.hidden = true;
+      popWord = "";
+    }
+
+    function placePop(anchor) {
+      var r = anchor.getBoundingClientRect();
+      var pw = pop.offsetWidth;
+      var ph = pop.offsetHeight;
+      var pad = 10;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var x = r.left + (r.width / 2) - (pw / 2);
+      var y = r.bottom + 8;
+      if (x < pad) x = pad;
+      if (x + pw > vw - pad) x = Math.max(pad, vw - pw - pad);
+      if (y + ph > vh - pad) y = r.top - ph - 8;
+      if (y < pad) y = pad;
+      pop.style.left = Math.round(x) + "px";
+      pop.style.top = Math.round(y) + "px";
+    }
+
+    function openPop(btn) {
+      var word = bareText(btn);
+      pop.querySelector(".wd-word").textContent = word;
+      pop.querySelector(".wd-ipa").textContent = btn.getAttribute("data-ipa") || "";
+      pop.querySelector(".wd-gloss").textContent = btn.getAttribute("data-gloss") || "";
+      popWord = word;
+      pop.style.visibility = "hidden";
+      pop.hidden = false;
+      placePop(btn);
+      pop.style.visibility = "visible";
+    }
+
+    function foldTranslations() {
+      var pairs = document.querySelectorAll(".pair");
+      var p, origin, trans, details, summary;
+      for (p = 0; p < pairs.length; p++) {
+        origin = pairs[p].querySelector(".origin");
+        trans = null;
+        for (var c = pairs[p].firstElementChild; c; c = c.nextElementSibling) {
+          if (c.classList && c.classList.contains("translation")) { trans = c; break; }
+        }
+        if (!trans || !origin) continue;
+        if (!origin.querySelector(".sent .zh")) continue;
+        details = document.createElement("details");
+        details.className = "yiwen";
+        summary = document.createElement("summary");
+        summary.textContent = "译文";
+        trans.parentNode.insertBefore(details, trans);
+        details.appendChild(summary);
+        details.appendChild(trans);
+      }
+    }
+
+    if (synth) {
+      voices();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
+    }
+
+    foldTranslations();
+
+    pop = document.createElement("div");
+    pop.id = "wd-pop";
+    pop.hidden = true;
+    pop.setAttribute("role", "dialog");
+    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读音</button>';
+    document.body.appendChild(pop);
+
+    var origins = document.querySelectorAll(".origin");
+    var i, origin, label, row, btn;
+    for (i = 0; i < origins.length; i++) {
+      origin = origins[i];
+      if (!englishText(origin)) continue;
+      label = origin.querySelector(".label");
+      if (!label || (label.parentNode && label.parentNode.classList.contains("origin-head"))) continue;
+      row = document.createElement("div");
+      row.className = "origin-head";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "speak";
+      btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "朗读这段英文");
+      btn.textContent = "朗读";
+      if (!synth && !originAudio(origin)) {
+        btn.disabled = true;
+        btn.title = "这台设备不能朗读";
+      }
+      row.appendChild(btn);
+    }
+
+    var clips = document.querySelectorAll(".origin audio[src]");
+    for (i = 0; i < clips.length; i++) {
+      clips[i].addEventListener("ended", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        if (b && active === b) {
+          idle(b);
+          active = null;
+        }
+      });
+      clips[i].addEventListener("play", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        var others = document.querySelectorAll(".origin audio[src]");
+        var j;
+        if (watchdog) { clearInterval(watchdog); watchdog = null; }
+        if (synth) synth.cancel();
+        for (j = 0; j < others.length; j++) {
+          if (others[j] !== this) others[j].pause();
+        }
+        if (active && active !== b) idle(active);
+        if (b) {
+          active = b;
+          b.setAttribute("aria-pressed", "true");
+          b.textContent = "停止";
+        }
+      });
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t) return;
+      var say = t.closest ? t.closest("#wd-pop .wd-say") : null;
+      if (say) {
+        e.preventDefault();
+        speakWord(popWord);
+        return;
+      }
+      var wdBtn = t.closest ? t.closest("button.wd") : null;
+      if (wdBtn) {
+        e.preventDefault();
+        if (!pop.hidden && popWord === bareText(wdBtn)) closePop();
+        else openPop(wdBtn);
+        return;
+      }
+      var hit = t.closest ? t.closest("button.speak") : null;
+      if (hit && !hit.disabled) {
+        closePop();
+        var box = hit.closest(".origin");
+        if (originAudio(box)) {
+          speak(hit, "");
+          return;
+        }
+        var text = box ? englishText(box) : "";
+        if (!text) return;
+        speak(hit, text);
+        return;
+      }
+      if (pop && !pop.hidden && !(t.closest && t.closest("#wd-pop"))) closePop();
+    });
+
+    window.addEventListener("scroll", closePop, { passive: true });
+    window.addEventListener("resize", closePop);
+    window.addEventListener("orientationchange", closePop);
+  })();
+  </script>
+</body>
+</html>
