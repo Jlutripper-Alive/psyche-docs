@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>思维 Thinking · 荣格《心理类型》</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --fg: #1f1b16;
+      --muted: #5a5348;
+      --card: #fffdf8;
+      --line: #d8d0c2;
+      --accent: #2f4a3a;
+      --quote: #ebe4d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14120f;
+        --fg: #eee8dc;
+        --muted: #b4aa98;
+        --card: #1c1914;
+        --line: #3a342a;
+        --accent: #b7c9a8;
+        --quote: #242017;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0 auto;
+      max-width: 40rem;
+      padding: 1.2rem 1.1rem 3.5rem;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.7 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    }
+    header { margin-bottom: 2rem; }
+    .kicker {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.3;
+      font-weight: 650;
+      margin: 0.35rem 0 0.6rem;
+    }
+    h2 {
+      font-size: 1.28rem;
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font-weight: 650;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.4rem 0 0.4rem;
+      font-weight: 650;
+    }
+    p { margin: 0.85rem 0; }
+    a { color: var(--accent); }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.45rem 0; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--quote);
+      border-left: 3px solid var(--accent);
+    }
+    blockquote p { margin: 0.5rem 0; }
+    .cite, footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .story, .ask {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 1rem 0;
+    }
+    .versus {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    ol.feynman { padding-left: 1.2rem; }
+    ol.feynman > li { margin: 1.3rem 0; }
+    ol.feynman .q { margin: 0 0 0.55rem; }
+    details.jiangjie {
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    details.jiangjie > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.6rem 0.85rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--accent);
+      list-style: none;
+    }
+    details.jiangjie > summary::-webkit-details-marker { display: none; }
+    details.jiangjie > summary::after {
+      content: "展开";
+      flex: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+    }
+    details.jiangjie[open] > summary::after { content: "收起"; }
+    details.jiangjie[open] > summary { border-bottom: 1px solid var(--line); }
+    .jiangjie-body {
+      padding: 0.15rem 0.85rem 0.8rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .jiangjie-body p { margin: 0.8rem 0; }
+    nav {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    nav a { margin-right: 0.55rem; }
+    .pair {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      margin: 1.4rem 0;
+      overflow: visible;
+    }
+    .pair h3 {
+      margin: 0;
+      padding: 0.85rem 1rem 0.55rem;
+      font-size: 1.02rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .origin, .translation { padding: 0.85rem 1rem 0.95rem; }
+    .origin {
+      background: var(--quote);
+      border-bottom: 1px dashed var(--line);
+    }
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      font-weight: 650;
+    }
+    .origin .label { color: var(--accent); }
+    .pair blockquote {
+      margin: 0.35rem 0 0.6rem;
+      padding: 0.65rem 0.75rem;
+      background: transparent;
+      border-left: 2px solid var(--line);
+    }
+    .pair .origin blockquote { border-left-color: var(--accent); }
+    .pair blockquote p { margin: 0.35rem 0; }
+    @media (min-width: 48rem) {
+      .pair { width: 100%; }
+    }
+    .origin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+    .origin-head .label { margin-bottom: 0; }
+    button.speak {
+      flex: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.speak[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--card);
+    }
+    button.speak:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .origin audio {
+      display: block;
+      width: 100%;
+      margin-top: 0.65rem;
+    }
+
+    .pair { overflow: visible; }
+    .origin, .origin blockquote { overflow: visible; }
+    .sent { display: block; margin: 0.75rem 0; }
+    .sent:first-child { margin-top: 0.15rem; }
+    .sent:last-child { margin-bottom: 0.15rem; }
+    .sent .en {
+      display: block;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .sent .zh {
+      display: block;
+      margin: 0.18rem 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    button.wd {
+      display: inline;
+      position: relative;
+      margin: 0;
+      padding: 0.05em 0.02em;
+      border: 0;
+      border-bottom: 1px dotted var(--accent);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.wd::after {
+      content: "";
+      position: absolute;
+      top: -0.4em;
+      right: -0.25em;
+      bottom: -0.35em;
+      left: -0.25em;
+    }
+    button.wd .hint {
+      font-size: 11px;
+      line-height: 1;
+      color: var(--muted);
+      margin-left: 0.14em;
+      font-style: normal;
+      font-weight: 400;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+      vertical-align: super;
+    }
+    #wd-pop {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 80;
+      max-width: min(22rem, calc(100vw - 1.5rem));
+      padding: 0.7rem 0.85rem 0.75rem;
+      background: var(--card);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    #wd-pop[hidden] { display: none !important; }
+    #wd-pop .wd-line {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
+    #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
+    .pair:has(.origin .sent .zh) > .translation { display: none; }
+    details.yiwen {
+      border-top: 1px dashed var(--line);
+      background: var(--card);
+    }
+    details.yiwen > summary {
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-weight: 650;
+      color: var(--muted);
+      list-style: none;
+    }
+    details.yiwen > summary::-webkit-details-marker { display: none; }
+    details.yiwen[open] > summary { border-bottom: 1px dashed var(--line); }
+    details.yiwen .translation .label { display: none; }
+    #wd-pop .wd-say {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      border: 0;
+      background: none;
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">psyche-study · 003</div>
+    <h1>思维（Thinking）</h1>
+    <nav>
+      <a href="#xiezi">楔子</a>
+      <a href="#gushi">故事</a>
+      <a href="#yuanhe">原著核心</a>
+      <a href="#ewai">额外</a>
+    </nav>
+  </header>
+
+  <section id="xiezi">
+    <h2>1. 楔子</h2>
+    <p>001 与 002 分的是态度：兴趣朝主体还是朝客体。《心理类型》第十章接着分功能。荣格在「外倾思维型」开篇立的判据很窄——四种基本功能在同一个人身上很少一样强，只有当思维占首位、重要的行为都从理智考虑过的动机出发，才够称思维型；而这个类型可以是内倾的，也可以是外倾的。第十一章那条定义不谈占不占首位，只说思维是把观念的内容彼此纳入概念联系的一种功能。</p>
+  </section>
+
+  <section id="gushi">
+    <h2>2. 故事</h2>
+    <div class="story">
+      <p>「去。」老陈把筷子放下，「我算过。」</p>
+      <p>他说得出怎么算的：公司近三年调去成都的六个人，四个两年内升了一级；同期留在这边的九个，升了一个。六个人的名字他报得出来，九个也报得出来。</p>
+      <p>「那没升的两个呢？」周衡问。</p>
+      <p>「一个家里老人病了，一个我不知道。」老陈说，「所以这条得把那两个剔出去。剔出去就是四个里四个。这边是九个里一个。」</p>
+      <p>阿宁在盛汤：「你妈同意吗？」</p>
+      <p>「我把这套跟她讲过。」</p>
+      <p>「她怎么说？」</p>
+      <p>「她说你自己定。」老陈停了半秒，又接上，「她那句我算不进去。」</p>
+      <p>汤开了，锅盖响了一下。周衡把火关小。</p>
+      <p>吃到一半，老陈换了个话头：「你们国庆回去了，回程票谁订的？」</p>
+      <p>「我订的。」阿宁说。</p>
+      <p>「按什么订的？」</p>
+      <p>阿宁想了想：「按能买到的最早那趟。」</p>
+      <p>老陈点头，像是这句也进了他那张表。周衡夹着碗里那块鱼，没说自己也算过一遍——他算的是那个周六下午，自己那半天为什么答不出来。这一遍算完了，还压在嘴里。</p>
+    </div>
+  </section>
+
+  <section id="yuanhe">
+    <h2>3. 原著核心</h2>
+    <p>CW 6 第十章「外倾型」里「思维」与「外倾思维型」两小节，加第十一章定义第 53 条与第 55 条。英文取 Baynes（1923）与 Hull（1971），中译见卡片出处。</p>
+
+    <article class="pair">
+      <h3>第十章「思维」开篇：判断的标准取自哪里</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">As a result of the general attitude of <button type="button" class="wd" data-ipa="ˌekstrəˈvɜːrʒn" data-gloss="外倾这种一般态度">extraversion<span class="hint">外倾</span></button>, thinking is <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="思维由客体和客观材料所定向">orientated<span class="hint">定向</span></button> by the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="客体">object<span class="hint">客体</span></button> and <button type="button" class="wd" data-ipa="ˈɑːbdʒektɪv ˈdeɪtə" data-gloss="客观材料：外面给的那些事实与观念">objective data<span class="hint">客观材料</span></button>.</span><span class="zh" lang="zh">由于外倾这种一般态度，思维为客体和客观材料所定向。</span></span>
+          <span class="sent"><span class="en" lang="en">This orientation of thinking produces a noticeable <button type="button" class="wd" data-ipa="pɪkjuːliˈærəti" data-gloss="一个显眼的特点">peculiarity<span class="hint">特点</span></button>.</span><span class="zh" lang="zh">思维这样定向，就产生一个显眼的特点。</span></span>
+          <span class="sent"><span class="en" lang="en">Thinking in general is fed from two sources, firstly from <button type="button" class="wd" data-ipa="səbˈdʒektɪv" data-gloss="主观的、归根到底是无意识的根源">subjective<span class="hint">主观的</span></button> and in the last resort unconscious roots, and secondly from objective data transmitted through sense perceptions.</span><span class="zh" lang="zh">一般而言，思维有两个来源：一是主观的、归根到底是无意识的根源，二是由感官知觉传送来的客观材料。</span></span>
+          <span class="sent"><span class="en" lang="en">Extraverted thinking is <button type="button" class="wd" data-ipa="kənˈdɪʃnd" data-gloss="受某一侧的制约更多">conditioned<span class="hint">受制约</span></button> in a larger measure by these latter factors than by the former.</span><span class="zh" lang="zh">外倾思维受后者的制约多于受前者的制约。</span></span>
+          <span class="sent"><span class="en" lang="en"><button type="button" class="wd" data-ipa="ˈdʒʌdʒmənt" data-gloss="判断，这里指下判断这件事">Judgment<span class="hint">判断</span></button> always <button type="button" class="wd" data-ipa="ˌpriːsəˈpoʊzɪz" data-gloss="总要先预设一个标准">presupposes<span class="hint">预设</span></button> a <button type="button" class="wd" data-ipa="kraɪˈtɪriən" data-gloss="标准、判据">criterion<span class="hint">标准</span></button>; for the extraverted judgment, the valid and determining criterion is the standard taken from objective conditions, no matter whether this be directly represented by an objectively <button type="button" class="wd" data-ipa="pərˈseptəbl" data-gloss="可感知的客观事实">perceptible<span class="hint">可感知的</span></button> fact, or expressed in an objective idea.</span><span class="zh" lang="zh">判断总要预设一个标准；对外倾的判断来说，有效的、起决定作用的标准取自客观条件，不论这标准是由一个可感知的客观事实直接给出，还是由一个客观的观念说出来。</span></span>
+        </blockquote>
+        <audio controls preload="none" src="audio/003-s577.mp3"></audio>
+        <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, B. The Extraverted Type, (III) 1. Thinking. Baynes, 1923, p. 428–429（对应 Hull §577）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>由于外倾这种一般态度，思维为客体和客观材料所定向。思维这样定向，就产生一个显眼的特点。一般而言，思维有两个来源：一是主观的、归根到底是无意识的根源，二是由感官知觉传送来的客观材料。外倾思维受后者的制约多于受前者的制约。判断总要预设一个标准；对外倾的判断来说，有效的、起决定作用的标准取自客观条件，不论这标准是由一个可感知的客观事实直接给出，还是由一个客观的观念说出来。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§584：四种功能很少一样强</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">It is a fact of experience that all the basic psychological <button type="button" class="wd" data-ipa="ˈfʌŋkʃnz" data-gloss="思维、情感、感觉、直觉这四种基本功能">functions<span class="hint">功能</span></button> seldom or never have the same strength or <button type="button" class="wd" data-ipa="ɡreɪd" data-gloss="发展的程度">grade<span class="hint">程度</span></button> of development in one and the same individual.</span><span class="zh" lang="zh">所有基本的心理功能都很少或从不会在同一个体身上具有同样的力量或达到同样的发展程度，这是我们所体验到的事实。</span></span>
+          <span class="sent"><span class="en" lang="en">As a rule, one or other function <button type="button" class="wd" data-ipa="prɪˈdɑːmɪneɪts" data-gloss="总有一种功能处于决定性地位">predominates<span class="hint">占优势</span></button>, in both strength and development.</span><span class="zh" lang="zh">通常，总有一种功能无论在力量上还是在发展程度上都处于决定性地位。</span></span>
+          <span class="sent"><span class="en" lang="en">When <button type="button" class="wd" data-ipa="səˈpreməsi" data-gloss="首位、领先的地位">supremacy<span class="hint">首位</span></button> among the psychological functions is given to thinking, i.e. when the life of an individual is mainly ruled by <button type="button" class="wd" data-ipa="rɪˈflektɪv" data-gloss="反思的、经过回想推敲的">reflective<span class="hint">反思的</span></button> thinking so that every important action proceeds from <button type="button" class="wd" data-ipa="ˌɪntəˈlektʃuəli" data-gloss="理智考虑过的动机">intellectually<span class="hint">理智地</span></button> considered <button type="button" class="wd" data-ipa="ˈmoʊtɪvz" data-gloss="动机：做这件事的根据">motives<span class="hint">动机</span></button>, or when there is at least a tendency to conform to such motives, we may fairly call this a thinking type.</span><span class="zh" lang="zh">当思维在所有心理功能中占据领先的地位时，即当个体的生命主要受反思的思维统领，以致每一重要的行为都产生于理智思考的动机，或者至少倾向于遵从这种动机时，我们就可以恰当地将之称为思维型。</span></span>
+          <span class="sent"><span class="en" lang="en">Such a type can be either <button type="button" class="wd" data-ipa="ˈɪntrəvɜːrtɪd" data-gloss="内倾的">introverted<span class="hint">内倾的</span></button> or <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="外倾的">extraverted<span class="hint">外倾的</span></button>.</span><span class="zh" lang="zh">这一类型既可以是内倾的也可以是外倾的。</span></span>
+          <span class="sent"><span class="en" lang="en">We will first discuss the extraverted thinking type.</span><span class="zh" lang="zh">我们将首先讨论外倾思维型。</span></span>
+        </blockquote>
+        <audio controls preload="none" src="audio/003-s584.mp3"></audio>
+        <p class="cite">— 同章，2. The Extraverted Thinking Type 开篇。Baynes, 1923, p. 434（对应 Hull §584）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>所有基本的心理功能都很少或从不会在同一个体身上具有同样的力量或达到同样的发展程度，这是我们所体验到的事实。通常，总有一种功能无论在力量上还是在发展程度上都处于决定性地位。当思维在所有心理功能中占据领先的地位时，即当个体的生命主要受反思的思维统领，以致每一重要的行为都产生于理智思考的动机，或者至少倾向于遵从这种动机时，我们就可以恰当地将之称为思维型。这一类型既可以是内倾的也可以是外倾的。我们将首先讨论外倾思维型。</p>
+        </blockquote>
+        <p class="cite">— 吴康译，《心理类型》，上海三联书店，2009，第十章第二节「外倾型」。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§585 前半：结论的最终依据</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <p lang="en">In accordance with his definition, we must picture a man whose constant aim — in so far, of course, as he is a <button type="button" class="wd" data-ipa="pjʊr taɪp" data-gloss="纯粹的类型：只作说明用的极端例子">pure type<span class="hint">纯粹类型</span></button> — is to bring his total life-activities into relation with <button type="button" class="wd" data-ipa="ˌɪntəˈlektʃuəl kənˈkluːʒnz" data-gloss="理智的结论">intellectual conclusions<span class="hint">理智的结论</span></button>, which in the last resort are always <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="最终总是由客观材料所定向">orientated<span class="hint">定向</span></button> by <button type="button" class="wd" data-ipa="ˈɑːbdʒektɪv ˈdeɪtə" data-gloss="客观材料">objective data<span class="hint">客观材料</span></button>, whether objective facts or <button type="button" class="wd" data-ipa="ˈdʒenrəli ˈvælɪd aɪˈdiːəz" data-gloss="普遍被接受的观念">generally valid ideas<span class="hint">普遍有效的观念</span></button>.</p>
+        </blockquote>
+        <audio controls preload="none" src="audio/003-s585.mp3"></audio>
+        <p class="cite">— 同节，紧接上段。Baynes, 1923, p. 434–435（对应 Hull §585 前半）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>从定义来看，该类型指这样的一个人，他的全部努力——当然，仅就他是一种纯粹的类型而言——在于要求他的所有行为皆服从理智的结论，总是以定向于客观材料作为其最终的手段，无论这些材料是外在事实还是普遍被接受的观念。</p>
+        </blockquote>
+        <p class="cite">— 吴康译，同上，第十章第二节「外倾型」。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>第十一章 §830：思维的定义</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">THINKING. This I regard as one of the four basic psychological functions.</span><span class="zh" lang="zh">思维。我把它看作四种基本心理功能之一。</span></span>
+          <span class="sent"><span class="en" lang="en">Thinking is the psychological function which, following its own laws, brings the contents of <button type="button" class="wd" data-ipa="ˌaɪdiˈeɪʃn" data-gloss="ideation：观念活动，脑子里成形的那些观念内容">ideation<span class="hint">观念活动</span></button> into <button type="button" class="wd" data-ipa="kənˈseptʃuəl kəˈnekʃn" data-gloss="概念上的联系">conceptual connection<span class="hint">概念联系</span></button> with one another.</span><span class="zh" lang="zh">思维是这样一种心理功能：它遵循自身的规律，把观念的内容彼此纳入概念的联系之中。</span></span>
+          <span class="sent"><span class="en" lang="en">It is an <button type="button" class="wd" data-ipa="ˌæpərˈseptɪv" data-gloss="统觉的：把新内容接到已有内容上，使它变得可以理解">apperceptive<span class="hint">统觉的</span></button> activity, and as such may be divided into active and passive thinking.</span><span class="zh" lang="zh">它是一种统觉活动，因此可以分为主动思维和被动思维。</span></span>
+          <span class="sent"><span class="en" lang="en">Active thinking is an act of the <button type="button" class="wd" data-ipa="wɪl" data-gloss="意志">will<span class="hint">意志</span></button>, passive thinking is a mere <button type="button" class="wd" data-ipa="əˈkɜːrəns" data-gloss="只是一件自行发生的事">occurrence<span class="hint">自行发生</span></button>.</span><span class="zh" lang="zh">主动思维是意志的行动，被动思维只是一件自行发生的事。</span></span>
+          <span class="sent"><span class="en" lang="en">In the former case, I submit the contents of ideation to a <button type="button" class="wd" data-ipa="ˈvɑːlənteri" data-gloss="自愿的、出于意图的">voluntary<span class="hint">自愿的</span></button> act of judgment; in the latter, conceptual connections establish themselves of their own accord, and judgments are formed that may even contradict my intention.</span><span class="zh" lang="zh">前一种情形里，我把观念的内容交给一次自愿的判断；后一种情形里，概念上的联系自行建立起来，形成的判断甚至可能与我的意图相反。</span></span>
+        </blockquote>
+        <audio controls preload="none" src="audio/003-s830.mp3"></audio>
+        <p class="cite">— CW 6, Chapter XI Definitions, 53. THINKING, §830. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>思维。我把它看作四种基本心理功能之一。思维是这样一种心理功能：它遵循自身的规律，把观念的内容彼此纳入概念的联系之中。它是一种统觉活动，因此可以分为主动思维和被动思维。主动思维是意志的行动，被动思维只是一件自行发生的事。前一种情形里，我把观念的内容交给一次自愿的判断；后一种情形里，概念上的联系自行建立起来，形成的判断甚至可能与我的意图相反。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>第十一章 §835：思维型可内可外</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">TYPE. A type is a <button type="button" class="wd" data-ipa="ˈspesɪmən" data-gloss="样式、范本">specimen<span class="hint">范本</span></button> or example which reproduces in a characteristic way the character of a species or class.</span><span class="zh" lang="zh">类型是一种样式或范本，它以一种典型的方式再现某一个种类或类别的性格。</span></span>
+          <span class="sent"><span class="en" lang="en">In the narrower sense used in this particular work, a type is a characteristic specimen of a <button type="button" class="wd" data-ipa="ˈdʒenrəl ˈætɪtuːd" data-gloss="一般态度：内倾／外倾这一层">general attitude<span class="hint">一般态度</span></button> occurring in many individual forms.</span><span class="zh" lang="zh">在本书所使用的狭义中，类型是指出现在许多个体形式中的一[种]态度的典型模式。</span></span>
+          <span class="sent"><span class="en" lang="en">When any of these attitudes is <button type="button" class="wd" data-ipa="həˈbɪtʃuəl" data-gloss="成为习惯性的">habitual<span class="hint">习惯性的</span></button>, thus setting a definite <button type="button" class="wd" data-ipa="stæmp" data-gloss="给性格盖上明确的印记">stamp<span class="hint">印记</span></button> on the character of an individual, I speak of a psychological type.</span><span class="zh" lang="zh">只要这些态度中的任何一种成为习惯性的，并因此而赋予个体性格以明确的印记，我就可以称其为心理类型。</span></span>
+          <span class="sent"><span class="en" lang="en">A thinking type may belong either to the introverted or to the extraverted class, and the same holds good for the other types.</span><span class="zh" lang="zh">思维型既可以属于内倾型，又可以属于外倾型，这同样适用于其他的类型。</span></span>
+          <span class="sent"><span class="en" lang="en">The distinction between <button type="button" class="wd" data-ipa="ˈræʃnl" data-gloss="理性的：思维与情感属这一类">rational<span class="hint">理性的</span></button> and <button type="button" class="wd" data-ipa="ɪˈræʃnl" data-gloss="非理性的：感觉与直觉属这一类">irrational<span class="hint">非理性的</span></button> types is simply another point of view and has nothing to do with introversion and extraversion.</span><span class="zh" lang="zh">理性和非理性类型的区分是另一方面的问题，它们与内倾和外倾没有关系。</span></span>
+        </blockquote>
+        <audio controls preload="none" src="audio/003-s835.mp3"></audio>
+        <p class="cite">— CW 6, Chapter XI Definitions, 55. TYPE, §835. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>类型是一种样式或范本，它以一种典型的方式再现某一个种类或类别的性格。在本书所使用的狭义中，类型是指出现在许多个体形式中的一[种]态度（参见该条）的典型模式。从大量存在的或可能存在的态度中，我挑选出四种态度，即主要定向于四种基本心理功能（参见该条）——思维、情感、直觉、感觉（参见诸条）——的态度。只要这些态度中的任何一种成为习惯性的，并因此而赋予个体性格以明确的印记，我就可以称其为心理类型。[……] 思维型既可以属于内倾型，又可以属于外倾型，这同样适用于其他的类型。理性和非理性类型的区分是另一方面的问题，它们与内倾和外倾没有关系。</p>
+        </blockquote>
+        <p class="cite">— 吴康译，同上，第十一章「定义」。方括号内一字据上下文补。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <h3 id="gainian">解析</h3>
+    <p>§584 把门槛立在「动机」上：重要的行为从理智考虑过的动机出发，或至少倾向于遵从这种动机。老陈报得出六个人里四个、九个人里一个，还报得出这条要剔掉哪两个才算准。他给的是根据。</p>
+    <p>同一段紧接着写「这一类型既可以是内倾的也可以是外倾的」。所以这一顿饭判不出内倾外倾，只看得见他拿什么下判断。</p>
+    <p>§585 前半说这类人的结论「总是以定向于客观材料作为其最终的手段，无论这些材料是外在事实还是普遍被接受的观念」。四个里四个是他数出来的外在事实；「调出去的升得快」是外面已经在说的话。</p>
+    <p>§577 补一层：判断总要预设一个标准，外倾的判断，标准取自客观条件。阿宁那句「按能买到的最早那趟」也给了标准，标准落在票能不能买到（§563，见 002）。</p>
+    <p>§830 的定义不排强弱：思维遵循自身规律，把观念的内容彼此纳入概念的联系，是一种统觉活动。老陈说「她那句我算不进去」——他母亲那句「你自己定」没给他可纳入的东西。这是我的推断。</p>
+    <p>§835 再说一遍思维型可内可外。周衡在算自己那半天为什么答不出来，也在算，只是他的加工还在自己这一侧走（§621，见 001）。</p>
+  </section>
+
+  <section id="ewai">
+    <h2>4. 额外</h2>
+
+    <h3 id="meishuo">它没说什么</h3>
+    <p>流行读法常加给他、原文没有的：</p>
+    <ul>
+      <li>思维等于聪明、智商高。§830 只把思维列为四种基本功能之一；§832 另给「定向思维的能力」一个名字——理智（intellect）。两处都不打分。</li>
+      <li>思维型就是外倾。§584 与 §835 都写明这一类型可以是内倾的，也可以是外倾的。</li>
+      <li>思维等于不讲感情。§833 写「受情感支配的思维」，那是思维服从了情感的原则；§835 把思维型与情感型同列为理性功能。</li>
+      <li>「冷酷理智」就是思维的定义。§830 那条定义里没有这一层。</li>
+      <li>荣格给了 T 字母、给了 T/F 分数。§835：某种态度成为习惯、给性格盖上明确印记，才叫心理类型。</li>
+    </ul>
+
+    <h3 id="duili">对立并排</h3>
+    <p>三家各说各的：荣格给思维下的是功能定义，迈尔斯把 T–F 做成一对偏好，麦克雷与科斯塔说这份量表量不出类型。</p>
+    <div class="versus">
+      <article class="pair">
+        <h3>荣格 · 第十一章 §831–§832</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <span class="sent"><span class="en" lang="en">To my mind, a mere stringing together of ideas, such as is described by certain psychologists as <button type="button" class="wd" data-ipa="əˈsoʊʃətɪv" data-gloss="联想式的：一个观念接一个观念串下去">associative<span class="hint">联想式的</span></button> thinking, is not thinking at all, but mere <button type="button" class="wd" data-ipa="ˌaɪdiˈeɪʃn" data-gloss="ideation：观念作用，观念只是在动，还没接成概念">ideation<span class="hint">观念作用</span></button>.</span><span class="zh" lang="zh">在我看来，某些心理学家所说的联想式思维，只是把观念一个接一个串起来，那根本不是思维，只是观念作用。</span></span>
+            <span class="sent"><span class="en" lang="en">The term “thinking” should, in my view, be confined to the linking up of ideas by means of a <button type="button" class="wd" data-ipa="ˈkɑːnsept" data-gloss="概念">concept<span class="hint">概念</span></button>, in other words, to an act of <button type="button" class="wd" data-ipa="ˈdʒʌdʒmənt" data-gloss="一次判断">judgment<span class="hint">判断</span></button>, no matter whether this act is intentional or not.</span><span class="zh" lang="zh">依我看，「思维」一词应当限于借一个概念把诸观念连接起来，换句话说，限于一次判断，不论这次判断是否出于意图。</span></span>
+            <span class="sent"><span class="en" lang="en">The capacity for <button type="button" class="wd" data-ipa="dəˈrektɪd" data-gloss="定向的、有引导的思维">directed<span class="hint">定向的</span></button> thinking I call <button type="button" class="wd" data-ipa="ˈɪntəlekt" data-gloss="intellect：通行中译作「理智」，指定向思维的能力">intellect<span class="hint">理智</span></button>; the capacity for passive or undirected thinking I call <button type="button" class="wd" data-ipa="ˌɪntəˈlektʃuəl ˌɪntuˈɪʃn" data-gloss="intellectual intuition：不加引导时那种直接得出判断的能力">intellectual intuition<span class="hint">直观式的理智</span></button>.</span><span class="zh" lang="zh">定向思维的能力我称为理智；被动的或无定向的思维的能力我称为 intellectual intuition（不加引导时那种直接得出判断的能力）。</span></span>
+          </blockquote>
+          <audio controls preload="none" src="audio/003-s832.mp3"></audio>
+          <p class="cite">— CW 6, Chapter XI Definitions, §831–§832. Hull, 1971. [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>在我看来，某些心理学家所说的联想式思维，只是把观念一个接一个串起来，那根本不是思维，只是观念作用。依我看，「思维」一词应当限于借一个概念把诸观念连接起来，换句话说，限于一次判断，不论这次判断是否出于意图。定向思维的能力我称为理智；被动的或无定向的思维的能力我称为 intellectual intuition（不加引导时那种直接得出判断的能力）。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+      <article class="pair">
+        <h3>迈尔斯官方 · 第三对偏好</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <span class="sent"><span class="en" lang="en">The third <button type="button" class="wd" data-ipa="ˈprefrəns per" data-gloss="偏好对：问卷把 T 与 F 摆成一对">preference pair<span class="hint">偏好对</span></button> is Thinking (T) and Feeling (F).</span><span class="zh" lang="zh">第三对偏好是思维（T）与情感（F）。</span></span>
+            <span class="sent"><span class="en" lang="en">They represent the <button type="button" class="wd" data-ipa="ˈdʒʌdʒɪŋ" data-gloss="判断性的心理过程：用来得出结论">judging<span class="hint">判断性的</span></button> mental processes for coming to conclusions—opposite ways to decide.</span><span class="zh" lang="zh">它们代表用来得出结论的判断性心理过程——两种相反的决定方式。</span></span>
+            <span class="sent"><span class="en" lang="en">People who prefer Thinking put more weight on objective principles and <button type="button" class="wd" data-ipa="ɪmˈpɜːrsnl" data-gloss="不带个人色彩的事实">impersonal<span class="hint">非个人的</span></button> facts when decision-making.</span><span class="zh" lang="zh">偏好 Thinking 的人在做决定时，更看重客观原则和不带个人色彩的事实。</span></span>
+            <span class="sent"><span class="en" lang="en">It has nothing to do with the everyday definitions of feeling (emotion) and thinking (intellect), nor do these terms indicate that people are <button type="button" class="wd" data-ipa="dʒʌdʒˈmentl" data-gloss="爱评判、爱下断语">judgmental<span class="hint">爱评判的</span></button>.</span><span class="zh" lang="zh">这与日常意义上的情感（情绪）和思维（智力）无关，这两个词也不表示一个人爱评判。</span></span>
+          </blockquote>
+          <audio controls preload="none" src="audio/003-myers.mp3"></audio>
+          <p class="cite">— The Myers &amp; Briggs Foundation, "The Preferences." <a href="https://www.myersbriggs.org/my-mbti-personality-type/the-mbti-preferences/">myersbriggs.org</a> [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>第三对偏好是思维（T）与情感（F）。它们代表用来得出结论的判断性心理过程——两种相反的决定方式。偏好 Thinking 的人在做决定时，更看重客观原则和不带个人色彩的事实。[...] 这与日常意义上的情感（情绪）和思维（智力）无关，这两个词也不表示一个人爱评判。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+      <article class="pair">
+        <h3>麦克雷与科斯塔 1989：量表量不出类型</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <span class="sent"><span class="en" lang="en">Consistent with earlier research and evaluations, there was no support for the view that the MBTI measures truly <button type="button" class="wd" data-ipa="daɪˈkɑːtəməs" data-gloss="真正二分的：要么这边要么那边">dichotomous<span class="hint">二分的</span></button> preferences or qualitatively distinct types; instead, the instrument measures four relatively independent <button type="button" class="wd" data-ipa="dɪˈmenʃnz" data-gloss="维度：一条连续的量，不按两个格子分">dimensions<span class="hint">维度</span></button>.</span><span class="zh" lang="zh">与先前的研究和评价一致，没有证据支持 MBTI 测量的是真正二分的偏好或性质上互相区别的类型；这份工具测的是四个相对独立的维度。</span></span>
+            <span class="sent"><span class="en" lang="en">The data suggest that Jung's theory is either incorrect or inadequately <button type="button" class="wd" data-ipa="ˌɑːpəreɪʃnəˈlaɪzd" data-gloss="被操作化：把概念改写成可测的题目">operationalized<span class="hint">操作化</span></button> by the MBTI and cannot provide a sound basis for interpreting it.</span><span class="zh" lang="zh">数据表明，要么荣格的理论不对，要么 MBTI 没有把它恰当地操作化，因此荣格的理论不能为解释这份量表提供可靠依据。</span></span>
+          </blockquote>
+          <audio controls preload="none" src="audio/003-mccrae.mp3"></audio>
+          <p class="cite">— McCrae &amp; Costa, <em>Journal of Personality</em> 57(1), 1989, pp. 17–40. 已刊摘要。 <a href="https://doi.org/10.1111/j.1467-6494.1989.tb00759.x">doi.org</a> [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>与先前的研究和评价一致，没有证据支持 MBTI 测量的是真正二分的偏好或性质上互相区别的类型；这份工具测的是四个相对独立的维度。[...] 数据表明，要么荣格的理论不对，要么 MBTI 没有把它恰当地操作化，因此荣格的理论不能为解释这份量表提供可靠依据。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+    </div>
+
+    <h3 id="feiman">费曼三问</h3>
+    <ol class="feynman">
+      <li>
+        <p class="q">用自己的句子说清 §584 立的那道门槛：什么叫「重要的行为都从理智考虑过的动机出发」。不要出现聪明、逻辑强、理科。</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>门槛落在「动机」两个字上。§584 说的是重要的行为从理智考虑过的动机出发，或至少倾向于遵从这种动机——说得出根据，并且真按这根据办。答得快、算得对、道理讲得漂亮，都不在这道门槛里面。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">老陈那条「调出去的两年内升一级」，按 §585 前半，它的最终依据落在哪里？故事里哪一句让你看出这一点？</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>落在客观材料上。§585 前半写这类人的结论总是以定向于客观材料作为最终的手段，无论是外在事实还是普遍被接受的观念。可拿来看的是他报得出六个人里四个、九个人里一个，还报得出要剔掉哪两个才算准；他的依据是外面数出来的。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">老陈说「她那句我算不进去」。按 §830 的定义，这句话说的是思维这个功能的什么处境？哪一部分定义管不到？</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>说的是有些内容接不进概念的联系里。§830 把思维定义成遵循自身规律、把观念的内容彼此纳入概念联系的功能，他母亲那句「你自己定」没给他可纳入的东西。定义没管接不上之后怎么办，也没说这算不算毛病——后半句是我的推断。</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>这一遍算完了，还压在嘴里。</p>
+    <p>CW 6；吴康译，上海三联书店，2009。</p>
+    <p><a href="https://jlutripper-alive.github.io/psyche-docs/">返回目录</a></p>
+  </footer>
+  <script>
+  (function () {
+    var synth = window.speechSynthesis || null;
+    var active = null;
+    var watchdog = null;
+    var pop = null;
+    var popWord = "";
+    var NOVELTY = /zarvox|albert|bad news|good news|pipe organ|cellos|boing|whisper|superstar|trinoids|junior|kathy|bells|hysterical|princess|ralph|bruce|fred|organiser|novelty/i;
+    var PREFERRED = [
+      "samantha",
+      "daniel",
+      "karen",
+      "moira",
+      "google us english",
+      "google uk english",
+      "microsoft aria"
+    ];
+
+    function voices() {
+      return synth ? (synth.getVoices() || []) : [];
+    }
+
+    function voiceLang(v) {
+      return String(v && v.lang || "").toLowerCase().replace(/_/g, "-");
+    }
+
+    function voiceName(v) {
+      return String(v && v.name || "");
+    }
+
+    function isChineseVoice(v) {
+      var lang = voiceLang(v);
+      var name = voiceName(v).toLowerCase();
+      if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) return true;
+      if (/chinese|中文|普通话|国语|粤语|cantonese|mandarin/.test(name)) return true;
+      return false;
+    }
+
+    function isEnglishVoice(v) {
+      return voiceLang(v).indexOf("en-") === 0;
+    }
+
+    function isNovelty(v) {
+      return NOVELTY.test(voiceName(v));
+    }
+
+    function looksLikePerson(name) {
+      var n = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
+      if (!n) return false;
+      if (/google|microsoft|siri|enhanced|compact|premium|neural|speech|voice|default|english/i.test(n)) return false;
+      return /^[A-Za-z][A-Za-z .'-]{0,40}$/.test(n) && n.split(/\s+/).length <= 3;
+    }
+
+    function pickEn() {
+      var list = voices();
+      var pool = [];
+      var i, v, lang, name;
+      for (i = 0; i < list.length; i++) {
+        v = list[i];
+        if (isChineseVoice(v) || !isEnglishVoice(v) || isNovelty(v)) continue;
+        pool.push(v);
+      }
+      function findPreferred(want) {
+        var j;
+        for (j = 0; j < pool.length; j++) {
+          if (voiceName(pool[j]).toLowerCase().indexOf(want) !== -1) return pool[j];
+        }
+        return null;
+      }
+      for (i = 0; i < PREFERRED.length; i++) {
+        v = findPreferred(PREFERRED[i]);
+        if (v) return v;
+      }
+      var usPerson, gbPerson, usDef, gbDef;
+      for (i = 0; i < pool.length; i++) {
+        v = pool[i];
+        lang = voiceLang(v);
+        name = voiceName(v);
+        if (lang.indexOf("en-us") === 0) {
+          if (looksLikePerson(name) && !usPerson) usPerson = v;
+          if (v.default && !usDef) usDef = v;
+        } else if (lang.indexOf("en-gb") === 0) {
+          if (looksLikePerson(name) && !gbPerson) gbPerson = v;
+          if (v.default && !gbDef) gbDef = v;
+        }
+      }
+      return usPerson || gbPerson || usDef || gbDef || pool[0] || null;
+    }
+
+    function applyVoice(u) {
+      var v = pickEn();
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (v) {
+        u.voice = v;
+        u.lang = voiceLang(v);
+      } else {
+        u.lang = "en-US";
+      }
+    }
+
+    function bareText(el) {
+      if (!el) return "";
+      var clone = el.cloneNode(true);
+      var junk = clone.querySelectorAll(".zh, .hint, rt");
+      var i;
+      for (i = 0; i < junk.length; i++) {
+        if (junk[i].parentNode) junk[i].parentNode.removeChild(junk[i]);
+      }
+      return String(clone.innerText || clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function englishText(origin) {
+      var bq = origin.querySelector("blockquote");
+      var text = bareText(bq);
+      if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
+      var latin = (text.match(/[A-Za-z]/g) || []).length;
+      var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+      return (latin >= 20 && latin > cjk) ? text : "";
+    }
+
+    function originAudio(origin) {
+      return origin ? origin.querySelector("audio[src]") : null;
+    }
+
+    function stopAllAudio() {
+      var clips = document.querySelectorAll(".origin audio[src]");
+      var i;
+      for (i = 0; i < clips.length; i++) clips[i].pause();
+    }
+
+    function idle(btn) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = "朗读";
+    }
+
+    function stop() {
+      if (watchdog) { clearInterval(watchdog); watchdog = null; }
+      if (synth) synth.cancel();
+      stopAllAudio();
+      idle(active);
+      active = null;
+    }
+
+    function whenVoices(fn) {
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", onChange);
+        fn();
+      }
+      function onChange() {
+        voices();
+        if (pickEn()) finish();
+      }
+      voices();
+      if (pickEn()) { fn(); return; }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", onChange);
+      setTimeout(finish, 1600);
+    }
+
+    function playClip(btn, audio) {
+      if (active === btn && !audio.paused) {
+        audio.pause();
+        idle(btn);
+        active = null;
+        return;
+      }
+      stop();
+      active = btn;
+      btn.setAttribute("aria-pressed", "true");
+      btn.textContent = "停止";
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          if (active === btn) {
+            idle(btn);
+            active = null;
+          }
+        });
+      }
+    }
+
+    function speak(btn, text) {
+      var box = btn.closest ? btn.closest(".origin") : null;
+      var clip = originAudio(box);
+      if (clip) {
+        playClip(btn, clip);
+        return;
+      }
+      if (!synth) return;
+      if (active === btn) { stop(); return; }
+      var needWait = !!(active || (synth && synth.speaking));
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          u.onend = function () {
+            if (active !== btn) return;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            idle(btn);
+            active = null;
+          };
+          u.onerror = u.onend;
+          active = btn;
+          btn.setAttribute("aria-pressed", "true");
+          btn.textContent = "停止";
+          synth.speak(u);
+          if (watchdog) clearInterval(watchdog);
+          watchdog = setInterval(function () {
+            if (!synth.speaking) { clearInterval(watchdog); watchdog = null; return; }
+            if (synth.paused) synth.resume();
+          }, 400);
+        });
+      }
+      if (needWait) setTimeout(start, 80);
+      else start();
+    }
+
+    function speakWord(text) {
+      if (!synth || !text) return;
+      var wasBusy = !!(active || synth.speaking);
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          synth.speak(u);
+        });
+      }
+      if (wasBusy) setTimeout(start, 80);
+      else start();
+    }
+
+    function closePop() {
+      if (!pop) return;
+      pop.hidden = true;
+      popWord = "";
+    }
+
+    function placePop(anchor) {
+      var r = anchor.getBoundingClientRect();
+      var pw = pop.offsetWidth;
+      var ph = pop.offsetHeight;
+      var pad = 10;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var x = r.left + (r.width / 2) - (pw / 2);
+      var y = r.bottom + 8;
+      if (x < pad) x = pad;
+      if (x + pw > vw - pad) x = Math.max(pad, vw - pw - pad);
+      if (y + ph > vh - pad) y = r.top - ph - 8;
+      if (y < pad) y = pad;
+      pop.style.left = Math.round(x) + "px";
+      pop.style.top = Math.round(y) + "px";
+    }
+
+    function openPop(btn) {
+      var word = bareText(btn);
+      pop.querySelector(".wd-word").textContent = word;
+      pop.querySelector(".wd-ipa").textContent = btn.getAttribute("data-ipa") || "";
+      pop.querySelector(".wd-gloss").textContent = btn.getAttribute("data-gloss") || "";
+      popWord = word;
+      pop.style.visibility = "hidden";
+      pop.hidden = false;
+      placePop(btn);
+      pop.style.visibility = "visible";
+    }
+
+    function foldTranslations() {
+      var pairs = document.querySelectorAll(".pair");
+      var p, origin, trans, details, summary;
+      for (p = 0; p < pairs.length; p++) {
+        origin = pairs[p].querySelector(".origin");
+        trans = null;
+        for (var c = pairs[p].firstElementChild; c; c = c.nextElementSibling) {
+          if (c.classList && c.classList.contains("translation")) { trans = c; break; }
+        }
+        if (!trans || !origin) continue;
+        if (!origin.querySelector(".sent .zh")) continue;
+        details = document.createElement("details");
+        details.className = "yiwen";
+        summary = document.createElement("summary");
+        summary.textContent = "译文";
+        trans.parentNode.insertBefore(details, trans);
+        details.appendChild(summary);
+        details.appendChild(trans);
+      }
+    }
+
+    if (synth) {
+      voices();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
+    }
+
+    foldTranslations();
+
+    pop = document.createElement("div");
+    pop.id = "wd-pop";
+    pop.hidden = true;
+    pop.setAttribute("role", "dialog");
+    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读音</button>';
+    document.body.appendChild(pop);
+
+    var origins = document.querySelectorAll(".origin");
+    var i, origin, label, row, btn;
+    for (i = 0; i < origins.length; i++) {
+      origin = origins[i];
+      if (!englishText(origin)) continue;
+      label = origin.querySelector(".label");
+      if (!label || (label.parentNode && label.parentNode.classList.contains("origin-head"))) continue;
+      row = document.createElement("div");
+      row.className = "origin-head";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "speak";
+      btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "朗读这段英文");
+      btn.textContent = "朗读";
+      if (!synth && !originAudio(origin)) {
+        btn.disabled = true;
+        btn.title = "这台设备不能朗读";
+      }
+      row.appendChild(btn);
+    }
+
+    var clips = document.querySelectorAll(".origin audio[src]");
+    for (i = 0; i < clips.length; i++) {
+      clips[i].addEventListener("ended", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        if (b && active === b) {
+          idle(b);
+          active = null;
+        }
+      });
+      clips[i].addEventListener("play", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        var others = document.querySelectorAll(".origin audio[src]");
+        var j;
+        if (watchdog) { clearInterval(watchdog); watchdog = null; }
+        if (synth) synth.cancel();
+        for (j = 0; j < others.length; j++) {
+          if (others[j] !== this) others[j].pause();
+        }
+        if (active && active !== b) idle(active);
+        if (b) {
+          active = b;
+          b.setAttribute("aria-pressed", "true");
+          b.textContent = "停止";
+        }
+      });
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t) return;
+      var say = t.closest ? t.closest("#wd-pop .wd-say") : null;
+      if (say) {
+        e.preventDefault();
+        speakWord(popWord);
+        return;
+      }
+      var wdBtn = t.closest ? t.closest("button.wd") : null;
+      if (wdBtn) {
+        e.preventDefault();
+        if (!pop.hidden && popWord === bareText(wdBtn)) closePop();
+        else openPop(wdBtn);
+        return;
+      }
+      var hit = t.closest ? t.closest("button.speak") : null;
+      if (hit && !hit.disabled) {
+        closePop();
+        var box = hit.closest(".origin");
+        if (originAudio(box)) {
+          speak(hit, "");
+          return;
+        }
+        var text = box ? englishText(box) : "";
+        if (!text) return;
+        speak(hit, text);
+        return;
+      }
+      if (pop && !pop.hidden && !(t.closest && t.closest("#wd-pop"))) closePop();
+    });
+
+    window.addEventListener("scroll", closePop, { passive: true });
+    window.addEventListener("resize", closePop);
+    window.addEventListener("orientationchange", closePop);
+  })();
+  </script>
+</body>
+</html>
