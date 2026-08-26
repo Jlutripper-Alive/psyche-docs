@@ -273,15 +273,35 @@
     }
     #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
     #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
-    #wd-pop .wd-say {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0 0.85rem;
-      border: 1px solid var(--line);
+    .pair:has(.origin .sent .zh) > .translation { display: none; }
+    details.yiwen {
+      border-top: 1px dashed var(--line);
       background: var(--card);
+    }
+    details.yiwen > summary {
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-weight: 650;
+      color: var(--muted);
+      list-style: none;
+    }
+    details.yiwen > summary::-webkit-details-marker { display: none; }
+    details.yiwen[open] > summary { border-bottom: 1px dashed var(--line); }
+    details.yiwen .translation .label { display: none; }
+    #wd-pop .wd-say {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      border: 0;
+      background: none;
       color: var(--accent);
       font: inherit;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
       cursor: pointer;
       -webkit-appearance: none;
       appearance: none;
@@ -606,22 +626,98 @@
     var watchdog = null;
     var pop = null;
     var popWord = "";
+    var NOVELTY = /zarvox|albert|bad news|good news|pipe organ|cellos|boing|whisper|superstar|trinoids|junior|kathy|bells|hysterical|princess|ralph|bruce|fred|organiser|novelty/i;
+    var PREFERRED = [
+      "samantha",
+      "daniel",
+      "karen",
+      "moira",
+      "google us english",
+      "google uk english",
+      "microsoft aria"
+    ];
 
     function voices() {
       return synth ? (synth.getVoices() || []) : [];
     }
 
+    function voiceLang(v) {
+      return String(v && v.lang || "").toLowerCase().replace(/_/g, "-");
+    }
+
+    function voiceName(v) {
+      return String(v && v.name || "");
+    }
+
+    function isChineseVoice(v) {
+      var lang = voiceLang(v);
+      var name = voiceName(v).toLowerCase();
+      if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) return true;
+      if (/chinese|中文|普通话|国语|粤语|cantonese|mandarin/.test(name)) return true;
+      return false;
+    }
+
+    function isEnglishVoice(v) {
+      return voiceLang(v).indexOf("en-") === 0;
+    }
+
+    function isNovelty(v) {
+      return NOVELTY.test(voiceName(v));
+    }
+
+    function looksLikePerson(name) {
+      var n = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
+      if (!n) return false;
+      if (/google|microsoft|siri|enhanced|compact|premium|neural|speech|voice|default|english/i.test(n)) return false;
+      return /^[A-Za-z][A-Za-z .'-]{0,40}$/.test(n) && n.split(/\s+/).length <= 3;
+    }
+
     function pickEn() {
       var list = voices();
-      var us, gb, en, i, lang;
+      var pool = [];
+      var i, v, lang, name;
       for (i = 0; i < list.length; i++) {
-        lang = String(list[i].lang || "").toLowerCase().replace("_", "-");
-        if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) continue;
-        if (lang.indexOf("en-us") === 0) us = us || list[i];
-        else if (lang.indexOf("en-gb") === 0) gb = gb || list[i];
-        else if (lang.indexOf("en") === 0) en = en || list[i];
+        v = list[i];
+        if (isChineseVoice(v) || !isEnglishVoice(v) || isNovelty(v)) continue;
+        pool.push(v);
       }
-      return us || gb || en || null;
+      function findPreferred(want) {
+        var j;
+        for (j = 0; j < pool.length; j++) {
+          if (voiceName(pool[j]).toLowerCase().indexOf(want) !== -1) return pool[j];
+        }
+        return null;
+      }
+      for (i = 0; i < PREFERRED.length; i++) {
+        v = findPreferred(PREFERRED[i]);
+        if (v) return v;
+      }
+      var usPerson, gbPerson, usDef, gbDef;
+      for (i = 0; i < pool.length; i++) {
+        v = pool[i];
+        lang = voiceLang(v);
+        name = voiceName(v);
+        if (lang.indexOf("en-us") === 0) {
+          if (looksLikePerson(name) && !usPerson) usPerson = v;
+          if (v.default && !usDef) usDef = v;
+        } else if (lang.indexOf("en-gb") === 0) {
+          if (looksLikePerson(name) && !gbPerson) gbPerson = v;
+          if (v.default && !gbDef) gbDef = v;
+        }
+      }
+      return usPerson || gbPerson || usDef || gbDef || pool[0] || null;
+    }
+
+    function applyVoice(u) {
+      var v = pickEn();
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (v) {
+        u.voice = v;
+        u.lang = voiceLang(v);
+      } else {
+        u.lang = "en-US";
+      }
     }
 
     function bareText(el) {
@@ -658,16 +754,21 @@
     }
 
     function whenVoices(fn) {
-      if (pickEn() || voices().length) { fn(); return; }
       var done = false;
-      function once() {
+      function finish() {
         if (done) return;
         done = true;
-        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", once);
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", onChange);
         fn();
       }
-      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", once);
-      setTimeout(once, 700);
+      function onChange() {
+        voices();
+        if (pickEn()) finish();
+      }
+      voices();
+      if (pickEn()) { fn(); return; }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", onChange);
+      setTimeout(finish, 1600);
     }
 
     function speak(btn, text) {
@@ -678,10 +779,7 @@
       function start() {
         whenVoices(function () {
           var u = new SpeechSynthesisUtterance(text);
-          var v = pickEn();
-          u.lang = "en-US";
-          u.rate = 0.9;
-          if (v) u.voice = v;
+          applyVoice(u);
           u.onend = function () {
             if (active !== btn) return;
             if (watchdog) { clearInterval(watchdog); watchdog = null; }
@@ -709,12 +807,11 @@
       var wasBusy = !!(active || synth.speaking);
       stop();
       function start() {
-        var u = new SpeechSynthesisUtterance(text);
-        var v = pickEn();
-        u.lang = "en-US";
-        u.rate = 0.9;
-        if (v) u.voice = v;
-        synth.speak(u);
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          synth.speak(u);
+        });
       }
       if (wasBusy) setTimeout(start, 80);
       else start();
@@ -755,16 +852,39 @@
       pop.style.visibility = "visible";
     }
 
+    function foldTranslations() {
+      var pairs = document.querySelectorAll(".pair");
+      var p, origin, trans, details, summary;
+      for (p = 0; p < pairs.length; p++) {
+        origin = pairs[p].querySelector(".origin");
+        trans = null;
+        for (var c = pairs[p].firstElementChild; c; c = c.nextElementSibling) {
+          if (c.classList && c.classList.contains("translation")) { trans = c; break; }
+        }
+        if (!trans || !origin) continue;
+        if (!origin.querySelector(".sent .zh")) continue;
+        details = document.createElement("details");
+        details.className = "yiwen";
+        summary = document.createElement("summary");
+        summary.textContent = "译文";
+        trans.parentNode.insertBefore(details, trans);
+        details.appendChild(summary);
+        details.appendChild(trans);
+      }
+    }
+
     if (synth) {
       voices();
       if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
     }
 
+    foldTranslations();
+
     pop = document.createElement("div");
     pop.id = "wd-pop";
     pop.hidden = true;
     pop.setAttribute("role", "dialog");
-    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读这个词</button>';
+    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读音</button>';
     document.body.appendChild(pop);
 
     var origins = document.querySelectorAll(".origin");
