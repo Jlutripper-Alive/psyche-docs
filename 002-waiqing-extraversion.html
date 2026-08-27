@@ -122,6 +122,9 @@
       line-height: 1.7;
     }
     .jiangjie-body p { margin: 0.8rem 0; }
+    .origin > details.jiangjie { margin: 0.2rem 0 0.55rem; }
+    .origin > details.jiangjie > summary { padding: 0.55rem 0.8rem; }
+    .origin > details.jiangjie .jiangjie-body { padding: 0.2rem 0.8rem 0.8rem; }
     nav {
       font-size: 0.92rem;
       line-height: 1.6;
@@ -278,7 +281,7 @@
     }
     #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
     #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
-    .pair:has(.origin .sent .zh) > .translation { display: none; }
+    html.js .pair:has(.origin .sent .zh) > .translation { display: none; }
     details.yiwen {
       border-top: 1px dashed var(--line);
       background: var(--card);
@@ -364,9 +367,17 @@
         <div class="label">原文</div>
         <blockquote>
           <span class="sent"><span class="en" lang="en">The <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>, on the contrary, maintains a positive relation to the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="对客体持积极的态度">object<span class="hint">客体</span></button>.</span><span class="zh" lang="zh">相反，外倾型则对客体持积极的态度。</span></span>
-          <span class="sent"><span class="en" lang="en">To such an extent does he affirm its importance that his subjective attitude is continually being <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="主观态度由客体所定向">orientated<span class="hint">定向</span></button> by, and related to the object.</span><span class="zh" lang="zh">他非常重视客体以至于其主观态度就是由客体所定向并与客体密切相关的。</span></span>
+          <span class="sent"><span class="en" lang="en">To such an extent does he affirm its importance that his subjective attitude is continually being <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="定向。中译「就是由客体所定向」把 continually（不停地）译平了：原文是他的主观态度一直在被客体定向。">orientated<span class="hint">定向</span></button> by, and related to the object.</span><span class="zh" lang="zh">他非常重视客体以至于其主观态度就是由客体所定向并与客体密切相关的。</span></span>
           <span class="sent"><span class="en" lang="en"><button type="button" class="wd" data-ipa="oʊ ˈfɒn" data-gloss="Au fond：从根子上、从内心里">Au fond<span class="hint">从内心里</span></button>, the object can never have sufficient value; for him, therefore, its importance must always be <button type="button" class="wd" data-ipa="ˈpærəmaʊnt" data-gloss="客体的重要性总是至高无上">paramount<span class="hint">至高无上</span></button>.</span><span class="zh" lang="zh">他从内心里认为客体的价值永远不够充分；因此对他来说，其重要性总是至高无上的。</span></span>
         </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>这三句一句比一句重。同一段的前一句写内倾者：他一直在把力比多从客体那里撤回来，像要防着客体占上风。on the contrary 掉头掉的就是那一句。第二句量这个「肯定」有多重：重到他内心的朝向都交给客体来定，而且一直在定，没有定完的时候。印的中译「就是由客体所定向」把这份不停译平了，读着像一次定好、往后照办。</p>
+            <p>第三句是判断落地的地方：在他心里，客体的价值评不到「够了」，所以它的分量必须永远排第一。这写的是他心里那本账怎么算；客体本身值多少，荣格这里没有谈。中译加的「他从内心里认为」是译者用来扛 Au fond 的，读时当心，别把这句缩成他个人对客体的一种看法。</p>
+            <p>阿宁订那两张票，理由三句都摆在外面。这一段只说到分量排第一，代价还没提。这是我的推断。</p>
+          </div>
+        </details>
         <audio controls preload="none" src="audio/002-ch10-intro.mp3"></audio>
         <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, A. The Extraverted Type. Baynes, 1923, p. 413. [VERIFIED]</p>
       </div>
@@ -384,8 +395,8 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <span class="sent"><span class="en" lang="en">Although it is true that everyone <button type="button" class="wd" data-ipa="ˈɔːrients" data-gloss="被外部世界提供的事件所定向">orients<span class="hint">定向</span></button> himself in accordance with the <button type="button" class="wd" data-ipa="ˈdeɪtə" data-gloss="这里中译写成「事件」：外面给的那些事实">data<span class="hint">事件</span></button> supplied by the outside world, we see every day that the data in themselves are only relatively decisive.</span><span class="zh" lang="zh">众所周知，每一个人都被外部世界提供给他的事件所定向；但我们看到，这种可能如此的情形只具有相对的决定性。</span></span>
-          <span class="sent"><span class="en" lang="en">The fact that it is cold outside prompts one man to put on his overcoat, while another, who wants to get hardened, finds this <button type="button" class="wd" data-ipa="suːˈpɜːrfluəs" data-gloss="觉得穿大衣大可不必">superfluous<span class="hint">大可不必</span></button>.</span><span class="zh" lang="zh">例如因为室外天气寒冷，某人被说服穿上他的大衣，但另一个人出于一种变得冷酷的欲望而发现这是大可不必的事情。</span></span>
+          <span class="sent"><span class="en" lang="en">Although it is true that everyone <button type="button" class="wd" data-ipa="ˈɔːrients" data-gloss="被外部世界提供的事件所定向">orients<span class="hint">定向</span></button> himself in accordance with the <button type="button" class="wd" data-ipa="ˈdeɪtə" data-gloss="这里中译写成「事件」：外面给的那些事实">data<span class="hint">事件</span></button> supplied by the outside world, we see every day that the data in themselves are <button type="button" class="wd" data-ipa="ˈoʊnli ˈrelətɪvli dɪˈsaɪsɪv" data-gloss="中译「这种可能如此的情形只具有相对的决定性」读不成话：原文是那些事实本身只在相对的程度上起决定作用。">only relatively decisive<span class="hint">中译</span></button>.</span><span class="zh" lang="zh">众所周知，每一个人都被外部世界提供给他的事件所定向；但我们看到，这种可能如此的情形只具有相对的决定性。</span></span>
+          <span class="sent"><span class="en" lang="en">The fact that it is cold outside prompts one man to put on his overcoat, while another, who wants to <button type="button" class="wd" data-ipa="ɡet ˈhɑːrdnd" data-gloss="这里中译写成「一种变得冷酷的欲望」：原文是他想把自己练得耐冻。">get hardened<span class="hint">变得冷酷</span></button>, finds this <button type="button" class="wd" data-ipa="suːˈpɜːrfluəs" data-gloss="觉得穿大衣大可不必">superfluous<span class="hint">大可不必</span></button>.</span><span class="zh" lang="zh">例如因为室外天气寒冷，某人被说服穿上他的大衣，但另一个人出于一种变得冷酷的欲望而发现这是大可不必的事情。</span></span>
           <span class="sent"><span class="en" lang="en">One man admires the latest <button type="button" class="wd" data-ipa="ˈtenər" data-gloss="新近成名的男高音歌手">tenor<span class="hint">男高音</span></button>, because everybody else does, another refuses to do so, not because he dislikes him, but because in his view the <button type="button" class="wd" data-ipa="ˈsʌbdʒekt" data-gloss="这里指被众人崇拜的那个对象">subject<span class="hint">对象</span></button> of universal admiration is far from having been proved admirable.</span><span class="zh" lang="zh">某人崇拜一个新近成名的男高音歌手是因为整个世界都崇拜他，而另一个人的不置可否则并不是因为他不喜欢他，而是因为他觉得公众所普遍崇拜的对象实际上并不值得崇拜。</span></span>
         </blockquote>
         <audio controls preload="none" src="audio/002-s563.mp3"></audio>
@@ -431,7 +442,7 @@
           <span class="sent"><span class="en" lang="en">The very adjustment of the normal <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="正常的外倾型">extraverted<span class="hint">外倾的</span></button> type is his limitation.</span><span class="zh" lang="zh">单纯的调节是对正常的外倾型的限制。</span></span>
           <span class="sent"><span class="en" lang="en">He owes his normality on the one hand to his ability to fit into existing conditions with comparative ease.</span><span class="zh" lang="zh">一方面外倾型把他的正常归功于他以相对的安定去适应现存条件的能力。</span></span>
           <span class="sent"><span class="en" lang="en">His requirements are limited to the objectively possible</span><span class="zh" lang="zh">当然，他所主张的只不过是满足于现存的客观可能性</span></span>
-          <span class="sent"><span class="en" lang="en">On the other hand, his normality must also depend essentially on whether he takes account of his <button type="button" class="wd" data-ipa="səbˈdʒektɪv" data-gloss="是否顾及主观需要">subjective<span class="hint">主观的</span></button> needs and requirements, and this is just his weak point, for the tendency of his type is so <button type="button" class="wd" data-ipa="ˈaʊtər dɪˈrektɪd" data-gloss="外部倾向太强">outer-directed<span class="hint">朝外</span></button> that even the most obvious of all subjective facts, the condition of his own body, receives scant attention.</span><span class="zh" lang="zh">但是另一方面，他的正常性也必定根本上依赖外倾型是否考虑到了他的主观需求和需求之事物的具体性；并且，这正是他的弱点所在，因为他的类型具有如此强烈的外部倾向，以至于最为明显的主观事实，即他自己身体的状况也会非常容易地接受并不恰当的思考。</span></span>
+          <span class="sent"><span class="en" lang="en">On the other hand, his normality must also depend essentially on whether he takes account of his <button type="button" class="wd" data-ipa="səbˈdʒektɪv" data-gloss="是否顾及主观需要">subjective<span class="hint">主观的</span></button> needs and requirements, and this is just his weak point, for the tendency of his type is so <button type="button" class="wd" data-ipa="ˈaʊtər dɪˈrektɪd" data-gloss="外部倾向太强">outer-directed<span class="hint">朝外</span></button> that even the most obvious of all subjective facts, the condition of his own body, <button type="button" class="wd" data-ipa="rɪˈsiːvz skænt əˈtenʃn" data-gloss="这里中译写成「也会非常容易地接受并不恰当的思考」：原文是他自己的身体几乎得不到注意。">receives scant attention<span class="hint">中译</span></button>.</span><span class="zh" lang="zh">但是另一方面，他的正常性也必定根本上依赖外倾型是否考虑到了他的主观需求和需求之事物的具体性；并且，这正是他的弱点所在，因为他的类型具有如此强烈的外部倾向，以至于最为明显的主观事实，即他自己身体的状况也会非常容易地接受并不恰当的思考。</span></span>
         </blockquote>
         <audio controls preload="none" src="audio/002-s564.mp3"></audio>
         <p class="cite">— CW 6, Chapter X, §564. Hull, 1971. [VERIFIED]</p>
@@ -450,9 +461,17 @@
       <div class="origin">
         <div class="label">原文</div>
         <blockquote>
-          <span class="sent"><span class="en" lang="en">This is the <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>’s danger: he gets sucked into <button type="button" class="wd" data-ipa="ˈɑːbdʒekts" data-gloss="为客观所束缚">objects<span class="hint">客体</span></button> and completely loses himself in them.</span><span class="zh" lang="zh">这就是外倾型的危险：他为客观所束缚，在他们的辛劳中完全迷失了自己。</span></span>
+          <span class="sent"><span class="en" lang="en">This is the <button type="button" class="wd" data-ipa="ˈekstrəvɜːrt" data-gloss="外倾型">extravert<span class="hint">外倾者</span></button>’s danger: he gets sucked into <button type="button" class="wd" data-ipa="ˈɑːbdʒekts" data-gloss="这里中译写成「客观」：原文是一件一件具体的客体，不是抽象的客观性。">objects<span class="hint">客观</span></button> and completely loses himself <button type="button" class="wd" data-ipa="ɪn ðəm" data-gloss="这里中译写成「在他们的辛劳中」：原文只说他在那些客体里面把自己丢了，没有「辛劳」。">in them<span class="hint">辛劳</span></button>.</span><span class="zh" lang="zh">这就是外倾型的危险：他为客观所束缚，在他们的辛劳中完全迷失了自己。</span></span>
           <span class="sent"><span class="en" lang="en">The resultant functional disorders, nervous or physical, have a <button type="button" class="wd" data-ipa="kəmˈpensətɔːri" data-gloss="具有补偿意义">compensatory<span class="hint">补偿</span></button> value, as they force him into an involuntary self-restraint.</span><span class="zh" lang="zh">从这种状态产生出来的功能性（神经性）或实际的生理紊乱就具有一种补偿意义，它迫使主体进行一种不自觉的自我限制。</span></span>
         </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>上一段停在一个弱点上：连他自己身体的状况都几乎得不到注意。这一段说的是照这样下去会怎样。危险是安静的：他做的每件事外面都有理由，件件也做得成，人看着正常；「我自己想要什么」这个问题渐渐不再出现。</p>
+            <p>决定还在一个一个做，想要的那个人不在场。荣格把这个叫做被客体吸进去、在客体那里完全迷失自己。后半句说，这样拖出来的神经或生理紊乱有补偿意义：它逼他停下来，而这个停他自己不会去做。</p>
+            <p>印的中译有两处要提着心读：「为客观所束缚」的「客观」在原文是一件一件具体的客体；「在他们的辛劳中」原文没有这几个字。照「辛劳」读，这一段就成了劝人少熬夜。高铁上阿宁那句「我没想过这个」，是这个问题还冒得出头的样子；§565 写的是它再也冒不出头的年头。这是我的推断。</p>
+          </div>
+        </details>
         <audio controls preload="none" src="audio/002-s565.mp3"></audio>
         <p class="cite">— 同上，§565. [VERIFIED]</p>
       </div>
@@ -471,7 +490,7 @@
         <div class="label">原文</div>
         <blockquote>
           <span class="sent"><span class="en" lang="en">The attitude of the unconscious as an effective complement to the conscious <button type="button" class="wd" data-ipa="ˈekstrəvɜːrtɪd" data-gloss="意识的外倾态度">extraverted<span class="hint">外倾的</span></button> attitude has a definitely <button type="button" class="wd" data-ipa="ˌɪntrəˈvɜːrtɪŋ" data-gloss="无意识那一侧带内倾性质">introverting<span class="hint">内倾的</span></button> character.</span><span class="zh" lang="zh">作为意识的外倾态度的一种有效的补充，无意识的态度具有一种内倾性质。</span></span>
-          <span class="sent"><span class="en" lang="en">It concentrates the <button type="button" class="wd" data-ipa="lɪˈbiːdoʊ" data-gloss="这里中译写成「能量」：力比多集中到主观因素上">libido<span class="hint">力比多</span></button> on the <button type="button" class="wd" data-ipa="səbˈdʒektɪv ˈfæktər" data-gloss="被意识态度压下去的那些需要">subjective factor<span class="hint">主观因素</span></button>, that is, on all those needs and demands that are <button type="button" class="wd" data-ipa="ˈstaɪfəld" data-gloss="被压制或压抑">stifled<span class="hint">压制</span></button> or repressed by the conscious attitude.</span><span class="zh" lang="zh">而且会把能量集中在主观因素上，也就是集中在所有受到过度外倾的意识态度所压制或压抑的需要和要求上。</span></span>
+          <span class="sent"><span class="en" lang="en">It concentrates the <button type="button" class="wd" data-ipa="lɪˈbiːdoʊ" data-gloss="这里中译写成「能量」：力比多集中到主观因素上">libido<span class="hint">力比多</span></button> on the <button type="button" class="wd" data-ipa="səbˈdʒektɪv ˈfæktər" data-gloss="被意识态度压下去的那些需要">subjective factor<span class="hint">主观因素</span></button>, that is, on all those needs and demands that are <button type="button" class="wd" data-ipa="ˈstaɪfəld" data-gloss="被压制或压抑">stifled<span class="hint">压制</span></button> or repressed by <button type="button" class="wd" data-ipa="ðə ˈkɑːnʃəs ˈætɪtuːd" data-gloss="这里中译加了「过度」：原文只说被意识的（外倾）态度压制或压抑，没有「外倾过度才压制」这个条件。">the conscious attitude<span class="hint">过度</span></button>.</span><span class="zh" lang="zh">而且会把能量集中在主观因素上，也就是集中在所有受到过度外倾的意识态度所压制或压抑的需要和要求上。</span></span>
         </blockquote>
         <audio controls preload="none" src="audio/002-s570.mp3"></audio>
         <p class="cite">— 同上，§570. [VERIFIED]</p>
@@ -610,6 +629,7 @@
   </footer>
   <script>
   (function () {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "js";
     var synth = window.speechSynthesis || null;
     var active = null;
     var watchdog = null;
