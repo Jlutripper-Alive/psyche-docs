@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>情感 Feeling · 荣格《心理类型》</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --fg: #1f1b16;
+      --muted: #5a5348;
+      --card: #fffdf8;
+      --line: #d8d0c2;
+      --accent: #2f4a3a;
+      --quote: #ebe4d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14120f;
+        --fg: #eee8dc;
+        --muted: #b4aa98;
+        --card: #1c1914;
+        --line: #3a342a;
+        --accent: #b7c9a8;
+        --quote: #242017;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0 auto;
+      max-width: 40rem;
+      padding: 1.2rem 1.1rem 3.5rem;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.7 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    }
+    header { margin-bottom: 2rem; }
+    .kicker {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.3;
+      font-weight: 650;
+      margin: 0.35rem 0 0.6rem;
+    }
+    h2 {
+      font-size: 1.28rem;
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font-weight: 650;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.4rem 0 0.4rem;
+      font-weight: 650;
+    }
+    p { margin: 0.85rem 0; }
+    a { color: var(--accent); }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.45rem 0; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--quote);
+      border-left: 3px solid var(--accent);
+    }
+    blockquote p { margin: 0.5rem 0; }
+    .cite, footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .story, .ask {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 1rem 0;
+    }
+    .versus {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    ol.feynman { padding-left: 1.2rem; }
+    ol.feynman > li { margin: 1.3rem 0; }
+    ol.feynman .q { margin: 0 0 0.55rem; }
+    details.jiangjie {
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    details.jiangjie > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.6rem 0.85rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--accent);
+      list-style: none;
+    }
+    details.jiangjie > summary::-webkit-details-marker { display: none; }
+    details.jiangjie > summary::after {
+      content: "展开";
+      flex: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+    }
+    details.jiangjie[open] > summary::after { content: "收起"; }
+    details.jiangjie[open] > summary { border-bottom: 1px solid var(--line); }
+    .jiangjie-body {
+      padding: 0.15rem 0.85rem 0.8rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .jiangjie-body p { margin: 0.8rem 0; }
+    .origin > details.jiangjie { margin: 0.2rem 0 0.55rem; }
+    .origin > details.jiangjie > summary { padding: 0.55rem 0.8rem; }
+    .origin > details.jiangjie .jiangjie-body { padding: 0.2rem 0.8rem 0.8rem; }
+    nav {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    nav a { margin-right: 0.55rem; }
+    .pair {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      margin: 1.4rem 0;
+      overflow: visible;
+    }
+    .pair h3 {
+      margin: 0;
+      padding: 0.85rem 1rem 0.55rem;
+      font-size: 1.02rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .origin, .translation { padding: 0.85rem 1rem 0.95rem; }
+    .origin {
+      background: var(--quote);
+      border-bottom: 1px dashed var(--line);
+    }
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      font-weight: 650;
+    }
+    .origin .label { color: var(--accent); }
+    .pair blockquote {
+      margin: 0.35rem 0 0.6rem;
+      padding: 0.65rem 0.75rem;
+      background: transparent;
+      border-left: 2px solid var(--line);
+    }
+    .pair .origin blockquote { border-left-color: var(--accent); }
+    .pair blockquote p { margin: 0.35rem 0; }
+    @media (min-width: 48rem) {
+      .pair { width: 100%; }
+    }
+    .origin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+    .origin-head .label { margin-bottom: 0; }
+    button.speak {
+      flex: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.speak[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--card);
+    }
+    button.speak:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .origin audio {
+      display: block;
+      width: 100%;
+      margin-top: 0.65rem;
+    }
+
+    .pair { overflow: visible; }
+    .origin, .origin blockquote { overflow: visible; }
+    .sent { display: block; margin: 0.75rem 0; }
+    .sent:first-child { margin-top: 0.15rem; }
+    .sent:last-child { margin-bottom: 0.15rem; }
+    .sent .en {
+      display: block;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .sent .zh {
+      display: block;
+      margin: 0.18rem 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    button.wd {
+      display: inline;
+      position: relative;
+      margin: 0;
+      padding: 0.05em 0.02em;
+      border: 0;
+      border-bottom: 1px dotted var(--accent);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.wd::after {
+      content: "";
+      position: absolute;
+      top: -0.4em;
+      right: -0.25em;
+      bottom: -0.35em;
+      left: -0.25em;
+    }
+    button.wd .hint {
+      font-size: 11px;
+      line-height: 1;
+      color: var(--muted);
+      margin-left: 0.14em;
+      font-style: normal;
+      font-weight: 400;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+      vertical-align: super;
+    }
+    #wd-pop {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 80;
+      max-width: min(22rem, calc(100vw - 1.5rem));
+      padding: 0.7rem 0.85rem 0.75rem;
+      background: var(--card);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    #wd-pop[hidden] { display: none !important; }
+    #wd-pop .wd-line {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
+    #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
+    html.js .pair:has(.origin .sent .zh) > .translation { display: none; }
+    details.yiwen {
+      border-top: 1px dashed var(--line);
+      background: var(--card);
+    }
+    details.yiwen > summary {
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-weight: 650;
+      color: var(--muted);
+      list-style: none;
+    }
+    details.yiwen > summary::-webkit-details-marker { display: none; }
+    details.yiwen[open] > summary { border-bottom: 1px dashed var(--line); }
+    details.yiwen .translation .label { display: none; }
+    #wd-pop .wd-say {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      border: 0;
+      background: none;
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">psyche-study · 004</div>
+    <h1>情感（Feeling）</h1>
+    <nav>
+      <a href="#xiezi">楔子</a>
+      <a href="#gushi">故事</a>
+      <a href="#yuanhe">原著核心</a>
+      <a href="#ewai">额外</a>
+    </nav>
+  </header>
+
+  <section id="xiezi">
+    <h2>1. 楔子</h2>
+    <p>003 把思维立成一种可以内倾也可以外倾的功能。同一章接着写另一条理性功能：情感。它给内容的是价值，接受或拒绝。日常把这个词用在情绪、人好、问卷 F 上；荣格写的是判断。</p>
+  </section>
+
+  <section id="gushi">
+    <h2>2. 故事</h2>
+    <div class="story">
+      <p>汤喝完。阿宁把碗叠好，问老陈：「你自己想去吗。」</p>
+      <p>老陈看她一眼：「我不是说了，四个里四个。」</p>
+      <p>「我问的不是那个。」</p>
+      <p>老陈把杯子转了一圈。那六个名字他还报得出来。报完还是那句：「想不想，我算不进去。」</p>
+      <p>周衡在收筷子。刚才阿宁说「她没拦，这就定了」。国庆那张票她也是这样订的：最早，没问值不值得回。他那半天为什么答不出来，这一遍还压在嘴里。</p>
+    </div>
+  </section>
+
+  <section id="yuanhe">
+    <h2>3. 原著核心</h2>
+    <p>CW 6 第十章「外倾型」里「情感」与「外倾情感型」两小节，加第十一章定义第 21 条。英文取 Baynes（1923）与 Hull（1971），中译见卡片出处。</p>
+
+    <article class="pair">
+      <h3>第十章「情感」开篇：判断的标准取自哪里</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en"><button type="button" class="wd" data-ipa="ˈfiːlɪŋ" data-gloss="情感：一种给内容价值的理性功能">Feeling<span class="hint">情感</span></button> in the extraverted attitude is <button type="button" class="wd" data-ipa="ˈɔːrientɪd" data-gloss="情感由客观材料所定向">orientated<span class="hint">定向</span></button> by <button type="button" class="wd" data-ipa="ˈɑːbdʒektɪv ˈdeɪtə" data-gloss="客观材料：外面给的那些事实与价值">objective data<span class="hint">客观材料</span></button>, i.e. the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="客体">object<span class="hint">客体</span></button> is the indispensable determinant of the kind of feeling.</span><span class="zh" lang="zh">情感外倾态度的情感定向于客观事物，换句话说，客体是这种情感所不可或缺的决定要素。</span></span>
+          <span class="sent"><span class="en" lang="en">It agrees with <button type="button" class="wd" data-ipa="ˈɑːbdʒektɪv ˈvæljuːz" data-gloss="客观价值：外面已经成立的那些好坏标准">objective values<span class="hint">客观价值</span></button>.</span><span class="zh" lang="zh">也与客观价值一致。</span></span>
+          <span class="sent"><span class="en" lang="en">If one has always known feeling as a <button type="button" class="wd" data-ipa="səbˈdʒektɪv fækt" data-gloss="这里中译写成「主观的事实情况」：原文是主观的事实。">subjective fact<span class="hint">事实情况</span></button>, the nature of extraverted feeling will not immediately be understood, since it has freed itself as fully as possible from the <button type="button" class="wd" data-ipa="səbˈdʒektɪv ˈfæktər" data-gloss="主观因素">subjective factor<span class="hint">主观因素</span></button>, and has, instead, become wholly <button type="button" class="wd" data-ipa="səˈbɔːrdɪneɪtɪd" data-gloss="这里中译写成「臣服」：原文是完全从属于客体的影响。">subordinated<span class="hint">臣服</span></button> to the influence of the object.</span><span class="zh" lang="zh">如果有谁认为情感只是一种主观的事实情况，他就无法理解外倾情感的本质，因为外倾情感已经尽可能地摆脱主观因素，并已完全臣服于客体的影响。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>上一课 §577 把外倾思维的定向立在客体和客观材料上。这一段用同一句话式写情感。荣格要挡住的是：有人只把情感当成心里私有的事实，于是外倾情感读不懂。他主张：外倾态度里，情感由客观材料定向，客体决定这种情感是哪一种，并且它跟客观价值一致。</p>
+            <p>只拿「跟客观价值一致」这一句，容易读成虚伪、顺着别人说。同段后半才写这种判断绝不是装出来的。庄仲黎把 wholly subordinated 写成「臣服」，读着像投降；原文是完全从属于客体的影响。「主观的事实情况」把 a subjective fact 说软了，原文就是主观的事实。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/004-s595.mp3"></audio>
+        <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, B. The Extraverted Type, (III) 3. Feeling. Baynes, 1923, p. 446（对应 Hull §595）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>情感外倾态度的情感定向于客观事物，也与客观价值一致，换句话说，客体是这种情感所不可或缺的决定要素。如果有谁认为情感只是一种主观的事实情况，他就无法理解外倾情感的本质，因为外倾情感已经尽可能地摆脱主观因素，并已完全臣服于客体的影响。</p>
+        </blockquote>
+        <p class="cite">— 庄仲黎译，《心理类型》，湖南文艺出版社，2024，第九章「类型概述」。 [VERIFIED]</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§595 后半：情感判断是 accommodation</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">I may feel constrained, for instance, to use the predicate ‘beautiful’ or ‘good’, not because I find the <button type="button" class="wd" data-ipa="ˈɑːbdʒekt" data-gloss="客体">object<span class="hint">客体</span></button> ‘beautiful’ or ‘good’ from my own <button type="button" class="wd" data-ipa="səbˈdʒektɪv ˈfiːlɪŋ" data-gloss="自己这一侧的情感">subjective feeling<span class="hint">主观情感</span></button>, but because it is fitting and politic so to do; and fitting it certainly is, inasmuch as a contrary opinion would disturb the general <button type="button" class="wd" data-ipa="ˈfiːlɪŋ ˌsɪtʃuˈeɪʃn" data-gloss="当场总的情感局面">feeling situation<span class="hint">情感局面</span></button>.</span><span class="zh" lang="zh">比方说，我可能觉得非用「美」或「好」这个谓语不可，并不是因为我从自己的主观情感里觉得这个客体「美」或「好」，而是因为这样说才合宜、才得体；而它确实合宜，因为相反的意见会搅乱当下总的情感局面。</span></span>
+          <span class="sent"><span class="en" lang="en">A <button type="button" class="wd" data-ipa="ˈfiːlɪŋ ˈdʒʌdʒmənt" data-gloss="情感判断：用情感给出的接受或拒绝">feeling-judgment<span class="hint">情感判断</span></button> such as this is in no way a simulation or a lie -- it is merely an act of <button type="button" class="wd" data-ipa="əˌkɒməˈdeɪʃn" data-gloss="accommodation：迁就、照着场面调整。Hull 写成 adjustment。">accommodation<span class="hint">迁就</span></button>.</span><span class="zh" lang="zh">这样一种情感判断绝不是装出来的，也不是谎话。它只是一次 accommodation（迁就、照着场面调整）。</span></span>
+          <span class="sent"><span class="en" lang="en">A picture, for instance, may be termed beautiful, because a picture that is hung in a drawing-room and bearing a well-known signature is generally assumed to be beautiful, or because the predicate ‘ugly’ might offend the family of the fortunate possessor, or because there is a benevolent intention on the part of the visitor to create a pleasant feeling-atmosphere, to which end everything must be felt as agreeable.</span><span class="zh" lang="zh">比方说，一幅画可以被称为美，因为挂在客厅里、带着一个出名署名的画，一般就被当成是美的；或者因为说它「丑」会得罪那位幸运藏家的家人；或者因为来客有意造出一种愉快的情感气氛，为此样样都得被感到是合意的。</span></span>
+          <span class="sent"><span class="en" lang="en">Such feelings are governed by the standard of the <button type="button" class="wd" data-ipa="ˈɑːbdʒektɪv dɪˈtɜːrmɪnənts" data-gloss="客观决定因素">objective determinants<span class="hint">客观决定因素</span></button>.</span><span class="zh" lang="zh">这样的情感由客观决定因素的标准来管辖。</span></span>
+          <span class="sent"><span class="en" lang="en">As such they are <button type="button" class="wd" data-ipa="ˈdʒenjuɪn" data-gloss="真的：就这个标准而言成立">genuine<span class="hint">真的</span></button>, and represent the total visible feeling-function.</span><span class="zh" lang="zh">就这一点而论，它们是真的，并且代表整个看得见的情感功能。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>上一段只说定向在客体一侧。读者会问：那说「美」的时候，还算真的情感吗。这一段用客厅里的画把这个问题摊开。荣格写：我用「美」或「好」，可以不是因为我自己觉得美。相反的意见会搅乱当场的情感局面，所以这样说才合宜。</p>
+            <p>他接着写：这种情感判断绝不是装出来的，也不是谎话。它只是一次 accommodation（迁就、照着场面调整）。只读「可以不是因为我自己觉得美」，容易判成装。他写了 genuine：就客观决定因素的标准而言，它们是真的，并且就是看得见的那整个情感功能。</p>
+            <p>这一张没有出版中译。自译里 accommodation 留着英文。译成「适应」容易滑到 Hull 的 adjustment，也容易滑到「会做人」。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/004-s595b.mp3"></audio>
+        <p class="cite">— 同段后半。Baynes, 1923, p. 446–447（对应 Hull §595）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>比方说，我可能觉得非用「美」或「好」这个谓语不可，并不是因为我从自己的主观情感里觉得这个客体「美」或「好」，而是因为这样说才合宜、才得体；而它确实合宜，因为相反的意见会搅乱当下总的情感局面。这样一种情感判断绝不是装出来的，也不是谎话。它只是一次 accommodation（迁就、照着场面调整）。比方说，一幅画可以被称为美，因为挂在客厅里、带着一个出名署名的画，一般就被当成是美的；或者因为说它「丑」会得罪那位幸运藏家的家人；或者因为来客有意造出一种愉快的情感气氛，为此样样都得被感到是合意的。这样的情感由客观决定因素的标准来管辖。就这一点而论，它们是真的，并且代表整个看得见的情感功能。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§596：跟外倾思维一样是理性功效</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">In precisely the same way as extraverted thinking strives to rid itself of subjective influences, extraverted feeling has also to undergo a certain process of <button type="button" class="wd" data-ipa="ˌdɪfərenʃiˈeɪʃn" data-gloss="分化：把功能从别的东西里拆清楚">differentiation<span class="hint">分化</span></button>, before it is finally denuded of every subjective trimming.</span><span class="zh" lang="zh">正像外倾思维力求去掉主观影响一样，外倾情感也必须经过一定的分化过程，最后才能剥去一切主观的边角。</span></span>
+          <span class="sent"><span class="en" lang="en">The <button type="button" class="wd" data-ipa="ˌvæljuˈeɪʃnz" data-gloss="评价：情感行为给出的那些价值">valuations<span class="hint">评价</span></button> resulting from the act of feeling either correspond directly with objective values or at least chime in with certain traditional and generally known standards of value.</span><span class="zh" lang="zh">由情感行为产生的评价，要么直接对应客观价值，要么至少跟某些传统的、普遍知道的价值标准合拍。</span></span>
+          <span class="sent"><span class="en" lang="en">This kind of feeling is very largely responsible for the fact that so many people flock to the theatre, to concerts, or to Church, and what is more, with correctly adjusted positive feelings.</span><span class="zh" lang="zh">有这么多人涌向剧院、音乐会或教堂，而且带着调整得正确的正面情感，很大程度上要归因于这种情感。</span></span>
+          <span class="sent"><span class="en" lang="en">Fashions, too, owe their existence to it, and, what is far more valuable, the whole positive and wide-spread support of social, philanthropic, and such like cultural enterprises.</span><span class="zh" lang="zh">时髦也靠它才存在；更有价值的是，对社会的、慈善的以及诸如此类文化事业的那一整份正面而广泛的支持。</span></span>
+          <span class="sent"><span class="en" lang="en">In such matters, extraverted feeling proves itself a creative factor.</span><span class="zh" lang="zh">在这些事情上，外倾情感证明自己是一个创造因素。</span></span>
+          <span class="sent"><span class="en" lang="en">Without this feeling, for instance, a beautiful and harmonious sociability would be unthinkable.</span><span class="zh" lang="zh">没有这种情感，比方说，一种美而和谐的社交生活是不可设想的。</span></span>
+          <span class="sent"><span class="en" lang="en">So far extraverted feeling is just as beneficent and <button type="button" class="wd" data-ipa="ˈræʃnəli ɪˈfektɪv" data-gloss="在理性上有效：跟外倾思维同一等级">rationally effective<span class="hint">理性有效</span></button> as extraverted thinking.</span><span class="zh" lang="zh">到这一步为止，外倾情感跟外倾思维一样有益，一样在理性上有效。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>功能的定向给完了，还没说它在生活里干什么。这一段把它跟外倾思维并排。荣格主张：外倾情感也要经过分化，去掉主观边角；由此给出的评价要么直接对应客观价值，要么跟传统的、普遍知道的价值标准合拍。剧院、音乐会、教堂、时髦、慈善事业，他都算在这一侧。</p>
+            <p>到这一步，外倾情感跟外倾思维一样有益，一样在理性上有效。只读剧院和时髦，容易读成从众。他写的是理性功效，跟 §577 的思维同一等级。同段后半写客体过强时情感变冷、不可信，本课没印那半段。从众那条读法把后半提前安上来了。这是我的推断。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/004-s596.mp3"></audio>
+        <p class="cite">— 同节。Baynes, 1923, p. 447（对应 Hull §596 前半）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>正像外倾思维力求去掉主观影响一样，外倾情感也必须经过一定的分化过程，最后才能剥去一切主观的边角。由情感行为产生的评价，要么直接对应客观价值，要么至少跟某些传统的、普遍知道的价值标准合拍。有这么多人涌向剧院、音乐会或教堂，而且带着调整得正确的正面情感，很大程度上要归因于这种情感。时髦也靠它才存在；更有价值的是，对社会的、慈善的以及诸如此类文化事业的那一整份正面而广泛的支持。在这些事情上，外倾情感证明自己是一个创造因素。没有这种情感，比方说，一种美而和谐的社交生活是不可设想的。到这一步为止，外倾情感跟外倾思维一样有益，一样在理性上有效。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§597：外倾情感占优先才叫这一型</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">When extraverted feeling possesses the <button type="button" class="wd" data-ipa="praɪˈɒrəti" data-gloss="优先、占首位：跟 §584 思维占领先同一条判据">priority<span class="hint">优先</span></button> we speak of an extraverted feeling-type.</span><span class="zh" lang="zh">当外倾情感占有优先地位，我们就说外倾情感型。</span></span>
+          <span class="sent"><span class="en" lang="en">Examples of this type that I can call to mind are, almost without exception, women.</span><span class="zh" lang="zh">我能想起的这种类型的例子，几乎无一例外都是女性。</span></span>
+          <span class="sent"><span class="en" lang="en">She is a woman who follows the guiding-line of her feeling.</span><span class="zh" lang="zh">她是一个跟随自己情感的导引线的女人。</span></span>
+          <span class="sent"><span class="en" lang="en">As the result of education her feeling has become developed into an <button type="button" class="wd" data-ipa="əˈdʒʌstɪd" data-gloss="经过调整的、受意识控制的功能">adjusted<span class="hint">经过调整的</span></button> function, subject to conscious control.</span><span class="zh" lang="zh">由于教育的结果，她的情感已经发展成一种经过调整的、受意识控制的功能。</span></span>
+          <span class="sent"><span class="en" lang="en">Except in extreme cases, feeling has a personal character, in spite of the fact that the subjective factor may be already, to a large extent, repressed.</span><span class="zh" lang="zh">除了极端情形，情感仍有个人性质，尽管主观因素可能已经在很大程度上被压抑。</span></span>
+          <span class="sent"><span class="en" lang="en">The personality appears to be adjusted in relation to objective conditions.</span><span class="zh" lang="zh">人格显得是就客观条件调整过的。</span></span>
+          <span class="sent"><span class="en" lang="en">Her feelings correspond with objective situations and <button type="button" class="wd" data-ipa="ˈdʒenrəl ˈvæljuːz" data-gloss="一般价值">general values<span class="hint">一般价值</span></button>.</span><span class="zh" lang="zh">她的情感与客观情境和一般价值相符。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>§595–§596 说的是功能。跟 003 的 §584 一样，这里才说什么时候够称这一型：外倾情感占优先，才叫外倾情感型。荣格主张：这个类型的情感与客观情境和一般价值相符；人格显得就客观条件调整过。</p>
+            <p>只读「几乎都是女性」，容易把这一课收成性别画像。要看的是 priority，占优先。他写的是他能想起的例子。这一顿饭判不出谁是情感型。阿宁问「你自己想去吗」，问的是价值，还不够成习惯、占首位。这是我的推断。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/004-s597.mp3"></audio>
+        <p class="cite">— 同章，4. The Extraverted Feeling-Type 开篇。Baynes, 1923, p. 448–449（对应 Hull §597）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>当外倾情感占有优先地位，我们就说外倾情感型。我能想起的这种类型的例子，几乎无一例外都是女性。她是一个跟随自己情感的导引线的女人。由于教育的结果，她的情感已经发展成一种经过调整的、受意识控制的功能。除了极端情形，情感仍有个人性质，尽管主观因素可能已经在很大程度上被压抑。人格显得是就客观条件调整过的。她的情感与客观情境和一般价值相符。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>第十一章 §724：情感的定义</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">Feeling is primarily a process that takes place between the <button type="button" class="wd" data-ipa="ˈiːɡoʊ" data-gloss="自我">ego<span class="hint">自我</span></button> and a given content, a process, moreover, that imparts to the content a definite <button type="button" class="wd" data-ipa="ˈvæljuː" data-gloss="价值：接受或拒绝">value<span class="hint">价值</span></button> in the sense of acceptance or rejection (“like” or “dislike”).</span><span class="zh" lang="zh">情感首先是发生在自我与一个给定内容之间的过程，而且这个过程给该内容一个确定的价值，意义是接受或拒绝（「喜欢」或「不喜欢」）。</span></span>
+          <span class="sent"><span class="en" lang="en">The process can also appear isolated, as it were, in the form of a “mood,” regardless of the momentary contents of consciousness or momentary sensations.</span><span class="zh" lang="zh">这个过程也可以仿佛孤立地出现，以「心情」的形式，不管当时意识的内容或当时的感觉。</span></span>
+          <span class="sent"><span class="en" lang="en">But even a mood, whether it be a general or only a partial feeling, implies a <button type="button" class="wd" data-ipa="ˌvæljuˈeɪʃn" data-gloss="评价">valuation<span class="hint">评价</span></button>; not of one definite, individual conscious content, but of the whole conscious situation at the moment, and, once again, with special reference to the question of acceptance or rejection.</span><span class="zh" lang="zh">可是，即便是一种心情，不论它是总体的还是局部的情感，也意味着一次评价；评价的不是某一个确定的、个别的意识内容，而是当下整个意识处境，而且再一次特别关系到接受还是拒绝这个问题。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>第十章一直在外倾态度里看情感朝哪边。第十一章把功能本身拆出来，跟 003 的 §830 同一层。荣格主张：情感是自我与一个给定内容之间的过程，给这个内容一个确定的价值，意义是接受或拒绝。心情也是评价，评的是当下整个意识处境。</p>
+            <p>只读 like / dislike，容易读成心情好坏。like / dislike 在这里是接受或拒绝，是判断。老陈说「想不想我算不进去」，算是 §830 那一侧；「想去吗」问的是接受或拒绝。这是我的推断。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/004-s724.mp3"></audio>
+        <p class="cite">— CW 6, Chapter XI Definitions, 21. FEELING, §724. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>情感首先是发生在自我与一个给定内容之间的过程，而且这个过程给该内容一个确定的价值，意义是接受或拒绝（「喜欢」或「不喜欢」）。这个过程也可以仿佛孤立地出现，以「心情」的形式，不管当时意识的内容或当时的感觉。可是，即便是一种心情，不论它是总体的还是局部的情感，也意味着一次评价；评价的不是某一个确定的、个别的意识内容，而是当下整个意识处境，而且再一次特别关系到接受还是拒绝这个问题。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§725：情感是判断；与 affect 的分界</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">Feeling, therefore, is an entirely <button type="button" class="wd" data-ipa="səbˈdʒektɪv" data-gloss="主观的：评价标准在主体一侧">subjective<span class="hint">主观的</span></button> process, which may be in every respect independent of external stimuli, though it allies itself with every sensation.</span><span class="zh" lang="zh">因此，情感是一个完全主观的过程，它尽可以在每一方面都不依赖外部刺激，虽然它会跟每一种感觉结盟。</span></span>
+          <span class="sent"><span class="en" lang="en">Hence feeling is a kind of <button type="button" class="wd" data-ipa="ˈdʒʌdʒmənt" data-gloss="判断">judgement<span class="hint">判断</span></button>, differing from intellectual judgment in that its aim is not to establish conceptual relations but to set up a subjective <button type="button" class="wd" data-ipa="kraɪˈtɪəriən" data-gloss="标准：接受或拒绝">criterion<span class="hint">标准</span></button> of acceptance or rejection.</span><span class="zh" lang="zh">所以情感是一种判断，它与理智判断的不同在于：它的目的不是建立概念关系，而是立起一个接受或拒绝的主观标准。</span></span>
+          <span class="sent"><span class="en" lang="en">Valuation by feeling extends to every content of consciousness, of whatever kind it may be.</span><span class="zh" lang="zh">情感的评价伸及意识的每一个内容，不论是哪一种。</span></span>
+          <span class="sent"><span class="en" lang="en">When the intensity of feeling increases, it turns into an <button type="button" class="wd" data-ipa="əˈfekt" data-gloss="affect：情绪/affect，荣格把它写成 emotion 的同义词">affect<span class="hint">情绪/affect</span></button>, i.e., a feeling-state accompanied by marked physical innervations.</span><span class="zh" lang="zh">情感的强度增加时，它就变成 affect（情绪/affect），也就是伴随明显 physical innervations（身体被发动）的情感状态。</span></span>
+          <span class="sent"><span class="en" lang="en">Feeling is distinguished from affect by the fact that it produces no perceptible physical innervations, i.e., neither more nor less than an ordinary thinking process.</span><span class="zh" lang="zh">情感与 affect 的区别在于：它不产生可察觉的 physical innervations（身体被发动），也就是说，不多不少，跟一次普通的思维过程一样。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>§724 给了价值，还没把它跟日常说的情绪切开。这一段补这一刀。荣格主张：情感是一种判断。它的目的是立起接受或拒绝的主观标准。概念关系是思维那一条（§830）。强度上去，它变成 affect（情绪/affect），带明显的身体发动。情感跟一次普通的思维过程一样，不产生可察觉的身体发动。</p>
+            <p>只读「主观过程」，容易退回「情感就是私心里的感觉」。主观在这里指评价标准在主体一侧。§681 把 emotion 写成 affect 的同义词。问卷上的 F 不在这两段里。</p>
+          </div>
+        </details>
+        <audio controls preload="none" src="audio/004-s725.mp3"></audio>
+        <p class="cite">— 同上，§725. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>因此，情感是一个完全主观的过程，它尽可以在每一方面都不依赖外部刺激，虽然它会跟每一种感觉结盟。所以情感是一种判断，它与理智判断的不同在于：它的目的不是建立概念关系，而是立起一个接受或拒绝的主观标准。情感的评价伸及意识的每一个内容，不论是哪一种。情感的强度增加时，它就变成 affect（情绪/affect），也就是伴随明显 physical innervations（身体被发动）的情感状态。情感与 affect 的区别在于：它不产生可察觉的 physical innervations（身体被发动），也就是说，不多不少，跟一次普通的思维过程一样。</p>
+        </blockquote>
+        <p class="cite">(本段无出版中译，此为自译)</p>
+      </div>
+    </article>
+
+    <h3 id="gainian">解析</h3>
+    <p>§595 先立功能的定向，对的是 003 的 §577：外倾态度里，判断的标准取自客观条件。思维取的是客观材料里的概念关系；情感取的是客观价值。老陈报得出四个里四个，是 §577 那一侧。阿宁问「你自己想去吗」，问的是接受或拒绝。</p>
+    <p>§596 把两条理性功能并排：到这一步，外倾情感跟外倾思维一样在理性上有效。理性在这里指按理给价值。</p>
+    <p>§597 才给类型：占优先才叫外倾情感型。这一顿饭看得见两个人下判断的根据不一样，看不见谁的情感占了首位。这是我的推断。</p>
+    <p>§724–§725 回到功能定义。情感给内容一个价值；强度上去才变成 affect。老陈说「想不想我算不进去」，是他这一次把「想」放在算不进去的格子里。这是我的推断。</p>
+    <p>周衡那半天还压在嘴里。他在算自己为什么答不出来，也在给那天下午一个值。值还没出口。</p>
+  </section>
+
+  <section id="ewai">
+    <h2>4. 额外</h2>
+
+    <h3 id="meishuo">它没说什么</h3>
+    <p>流行读法常加给他、原文没有的：</p>
+    <ul>
+      <li>情感等于情绪、心软、人好。§724 只写给内容一个接受或拒绝；§725 把强度上去的那一层划给 affect。</li>
+      <li>情感型就是外倾。§597 写的是外倾情感占优先的那一型；003 的 §835 写明情感型可以是内倾的，也可以是外倾的。</li>
+      <li>说「美」就是装。§595 后半写这种情感判断绝不是装出来的，就客观决定因素的标准而言是 genuine。</li>
+      <li>荣格给了 F 字母、给了 F 分数。§597 要占优先；§835 要习惯、给性格盖上印记。</li>
+      <li>情感与思维有高下。§596：到这一步，两条一样在理性上有效。§727：价值按理性的法则来给，概念按同样的法则来形成。</li>
+    </ul>
+
+    <h3 id="duili">对立并排</h3>
+    <p>三家各问各的：荣格给情感下的是功能定义，并把 emotion 写成 affect 的同义词；迈尔斯把 T–F 做成一对偏好；Luton 把流行用法里的 emotion 指回 affect。</p>
+    <div class="versus">
+      <article class="pair">
+        <h3>荣格 · 第十一章 §681</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <span class="sent"><span class="en" lang="en">By the term <button type="button" class="wd" data-ipa="əˈfekt" data-gloss="affect：情绪/affect">affect<span class="hint">情绪/affect</span></button> I mean a state of feeling characterized by marked physical innervation on the one hand and a peculiar disturbance of the ideational process on the other.</span><span class="zh" lang="zh">我说的 affect，指的是一种情感状态：一方面有明显的 physical innervations（身体被发动），另一方面观念过程受到一种特别的扰乱。</span></span>
+            <span class="sent"><span class="en" lang="en">I use <button type="button" class="wd" data-ipa="ɪˈmoʊʃn" data-gloss="emotion：荣格把它当作 affect 的同义词">emotion<span class="hint">emotion</span></button> as synonymous with affect.</span><span class="zh" lang="zh">我把 emotion 当作 affect 的同义词。</span></span>
+            <span class="sent"><span class="en" lang="en">I distinguish feeling from affect, in spite of the fact that the dividing line is fluid, since every feeling, after attaining a certain strength, releases physical innervations, thus becoming an affect.</span><span class="zh" lang="zh">我把情感与 affect 区分开，尽管分界是流动的，因为每一种情感达到一定强度就会放出 physical innervations（身体被发动），从而变成 affect。</span></span>
+            <span class="sent"><span class="en" lang="en">For practical reasons, however, it is advisable to distinguish affect from feeling, since feeling can be a voluntarily disposable function, whereas affect is usually not.</span><span class="zh" lang="zh">可是为了实际的理由，宜于把 affect 与情感分开，因为情感可以是一种可自愿支配的功能，affect 通常不是。</span></span>
+          </blockquote>
+          <audio controls preload="none" src="audio/004-s681.mp3"></audio>
+          <p class="cite">— CW 6, Chapter XI Definitions, 2. AFFECT, §681. Hull, 1971. [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>我说的 affect，指的是一种情感状态：一方面有明显的 physical innervations（身体被发动），另一方面观念过程受到一种特别的扰乱。我把 emotion 当作 affect 的同义词。我把情感与 affect 区分开，尽管分界是流动的，因为每一种情感达到一定强度就会放出 physical innervations（身体被发动），从而变成 affect。可是为了实际的理由，宜于把 affect 与情感分开，因为情感可以是一种可自愿支配的功能，affect 通常不是。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+      <article class="pair">
+        <h3>迈尔斯官方 · Feeling 这一侧</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <span class="sent"><span class="en" lang="en">People who prefer Feeling put more weight on personal concerns and the people involved when decision making.</span><span class="zh" lang="zh">偏好 Feeling 的人在做决定时，更看重个人关切和牵涉到的人。</span></span>
+            <span class="sent"><span class="en" lang="en">They focus on values and relationships.</span><span class="zh" lang="zh">他们把注意放在价值和关系上。</span></span>
+            <span class="sent"><span class="en" lang="en">People who prefer Feeling use values-based decision-making (focus on people), whereas people who prefer Thinking use logic-based decision-making (focus on systems).</span><span class="zh" lang="zh">偏好 Feeling 的人用基于价值的决定方式（注意放在人上），偏好 Thinking 的人用基于逻辑的决定方式（注意放在系统上）。</span></span>
+            <span class="sent"><span class="en" lang="en">It has nothing to do with the everyday definitions of feeling (emotion) and thinking (intellect).</span><span class="zh" lang="zh">这与日常意义上的情感（情绪）和思维（智力）无关。</span></span>
+          </blockquote>
+          <audio controls preload="none" src="audio/004-myers.mp3"></audio>
+          <p class="cite">— The Myers &amp; Briggs Foundation, "The Preferences." <a href="https://www.myersbriggs.org/my-mbti-personality-type/the-mbti-preferences/">myersbriggs.org</a> [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>偏好 Feeling 的人在做决定时，更看重个人关切和牵涉到的人。他们把注意放在价值和关系上。偏好 Feeling 的人用基于价值的决定方式（注意放在人上），偏好 Thinking 的人用基于逻辑的决定方式（注意放在系统上）。这与日常意义上的情感（情绪）和思维（智力）无关。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+      <article class="pair">
+        <h3>Luton：功能与发作不要混</h3>
+        <div class="origin">
+          <div class="label">原文</div>
+          <blockquote>
+            <span class="sent"><span class="en" lang="en">Indeed, the feeling function, as a mode of psychological orientation, must above all not be confused with <button type="button" class="wd" data-ipa="ɪˈmoʊʃn" data-gloss="emotion：日常说的情绪发作">emotion<span class="hint">情绪</span></button>.</span><span class="zh" lang="zh">作为心理定向的一种方式，情感功能尤其不能跟 emotion 混在一起。</span></span>
+            <span class="sent"><span class="en" lang="en">The latter, more properly called <button type="button" class="wd" data-ipa="əˈfekt" data-gloss="affect">affect<span class="hint">affect</span></button>, is invariably the consequence of an active complex.</span><span class="zh" lang="zh">后者更妥当的名字是 affect，它总是一个被激活的情结的后果。</span></span>
+          </blockquote>
+          <audio controls preload="none" src="audio/004-luton.mp3"></audio>
+          <p class="cite">— Frith Luton, "Jungian Definition of Feeling Function – Distinctions." <a href="https://frithluton.com/articles/jungian-definition-feeling-function/">frithluton.com</a> [VERIFIED]</p>
+        </div>
+        <div class="translation">
+          <div class="label">译文</div>
+          <blockquote>
+            <p>作为心理定向的一种方式，情感功能尤其不能跟 emotion 混在一起。后者更妥当的名字是 affect，它总是一个被激活的情结的后果。</p>
+          </blockquote>
+          <p class="cite">(本段无出版中译，此为自译)</p>
+        </div>
+      </article>
+    </div>
+
+    <details class="jiangjie">
+      <summary>讲解</summary>
+      <div class="jiangjie-body">
+        <p>三条轴不能合并。荣格问的是：给内容的是概念联系还是接受或拒绝；情感与 affect 分开，emotion 写成 affect 的同义词（§681、§725）。迈尔斯问的是做决定时先看人还是先看系统，并且自己声明跟日常的 emotion 无关。Luton 把流行用法里的 emotion 指回 affect，说功能与发作不要混。</p>
+        <p>阿宁问「想去吗」，老陈答四个里四个。按荣格，一个在问价值，一个在给概念联系。按迈尔斯，阿宁像 F，老陈像 T。按日常「情绪」，这一桌谁都没发作。三条都用得上，也分不开他们是不是「情感型」。这是我的推断。</p>
+      </div>
+    </details>
+
+    <h3 id="feiman">费曼三问</h3>
+    <ol class="feynman">
+      <li>
+        <p class="q">用自己的句子说清 §724：情感给一个内容的是什么。不要出现情绪、人好、F。</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>给的是一个价值，意义是接受或拒绝。心情也是评价，评的是当下整个处境。like / dislike 在这里是判断。</p>
+            <p>§724 把过程写在自我与一个给定内容之间。它给这个内容的不是概念联系，那是 §830 的思维。它给的是接受还是拒绝。心情看起来像发作，荣格仍把它算作评价：评的是当下整个意识处境，仍然落到接受或拒绝。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">阿宁问「你自己想去吗」，老陈说「想不想，我算不进去」。按 §724 和 §830，这两句话各停在哪一种判断上？</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>阿宁问的是接受或拒绝。老陈停在概念联系上，「想」没有可纳入的格子。</p>
+            <p>§724 管她问的那一刀：给成都调动一个值。§830 管他算不进去：思维要把观念纳入概念联系，母亲那句、自己想不想，都没给他可纳入的东西。003 已经写过「她那句我算不进去」；这一问把同一句话拆到两条理性功能上。这一顿饭还不够判类型。§597 要占优先。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">有人把阿宁那句读成心软，有人读成价值判断。两种读法各要什么下文才站得住？</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>平凡读法：她心软，想让他承认自己想去。荣格读法：她在要一个接受或拒绝。只这一句，两种都读得通。</p>
+            <p>要检验荣格那条，看她后面还要不要价值：票是不是也按「该回」订的，母亲那句她是不是一直当「让你定」。要检验平凡那条，看她是不是只在劝他，话说完就过去了。一句问话定不了。这是我的推断。</p>
+            <p>§725 给了一条可核对的标记：强度上去、身体先发动，才走到 affect。她把碗叠好再问，没有这一层。标记管得到的是发作和判断的分界，管不到她是不是心软。心软那条要另找下文。</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>值还没出口。</p>
+    <p>CW 6；庄仲黎译，湖南文艺出版社，2024。</p>
+    <p><a href="https://jlutripper-alive.github.io/psyche-docs/">返回目录</a></p>
+  </footer>
+
+  <script>
+  (function () {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "js";
+    var synth = window.speechSynthesis || null;
+    var active = null;
+    var watchdog = null;
+    var pop = null;
+    var popWord = "";
+    var NOVELTY = /zarvox|albert|bad news|good news|pipe organ|cellos|boing|whisper|superstar|trinoids|junior|kathy|bells|hysterical|princess|ralph|bruce|fred|organiser|novelty/i;
+    var PREFERRED = [
+      "samantha",
+      "daniel",
+      "karen",
+      "moira",
+      "google us english",
+      "google uk english",
+      "microsoft aria"
+    ];
+
+    function voices() {
+      return synth ? (synth.getVoices() || []) : [];
+    }
+
+    function voiceLang(v) {
+      return String(v && v.lang || "").toLowerCase().replace(/_/g, "-");
+    }
+
+    function voiceName(v) {
+      return String(v && v.name || "");
+    }
+
+    function isChineseVoice(v) {
+      var lang = voiceLang(v);
+      var name = voiceName(v).toLowerCase();
+      if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) return true;
+      if (/chinese|中文|普通话|国语|粤语|cantonese|mandarin/.test(name)) return true;
+      return false;
+    }
+
+    function isEnglishVoice(v) {
+      return voiceLang(v).indexOf("en-") === 0;
+    }
+
+    function isNovelty(v) {
+      return NOVELTY.test(voiceName(v));
+    }
+
+    function looksLikePerson(name) {
+      var n = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
+      if (!n) return false;
+      if (/google|microsoft|siri|enhanced|compact|premium|neural|speech|voice|default|english/i.test(n)) return false;
+      return /^[A-Za-z][A-Za-z .'-]{0,40}$/.test(n) && n.split(/\s+/).length <= 3;
+    }
+
+    function pickEn() {
+      var list = voices();
+      var pool = [];
+      var i, v, lang, name;
+      for (i = 0; i < list.length; i++) {
+        v = list[i];
+        if (isChineseVoice(v) || !isEnglishVoice(v) || isNovelty(v)) continue;
+        pool.push(v);
+      }
+      function findPreferred(want) {
+        var j;
+        for (j = 0; j < pool.length; j++) {
+          if (voiceName(pool[j]).toLowerCase().indexOf(want) !== -1) return pool[j];
+        }
+        return null;
+      }
+      for (i = 0; i < PREFERRED.length; i++) {
+        v = findPreferred(PREFERRED[i]);
+        if (v) return v;
+      }
+      var usPerson, gbPerson, usDef, gbDef;
+      for (i = 0; i < pool.length; i++) {
+        v = pool[i];
+        lang = voiceLang(v);
+        name = voiceName(v);
+        if (lang.indexOf("en-us") === 0) {
+          if (looksLikePerson(name) && !usPerson) usPerson = v;
+          if (v.default && !usDef) usDef = v;
+        } else if (lang.indexOf("en-gb") === 0) {
+          if (looksLikePerson(name) && !gbPerson) gbPerson = v;
+          if (v.default && !gbDef) gbDef = v;
+        }
+      }
+      return usPerson || gbPerson || usDef || gbDef || pool[0] || null;
+    }
+
+    function applyVoice(u) {
+      var v = pickEn();
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (v) {
+        u.voice = v;
+        u.lang = voiceLang(v);
+      } else {
+        u.lang = "en-US";
+      }
+    }
+
+    function bareText(el) {
+      if (!el) return "";
+      var clone = el.cloneNode(true);
+      var junk = clone.querySelectorAll(".zh, .hint, rt");
+      var i;
+      for (i = 0; i < junk.length; i++) {
+        if (junk[i].parentNode) junk[i].parentNode.removeChild(junk[i]);
+      }
+      return String(clone.innerText || clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function englishText(origin) {
+      var bq = origin.querySelector("blockquote");
+      var text = bareText(bq);
+      if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
+      var latin = (text.match(/[A-Za-z]/g) || []).length;
+      var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+      return (latin >= 20 && latin > cjk) ? text : "";
+    }
+
+    function originAudio(origin) {
+      return origin ? origin.querySelector("audio[src]") : null;
+    }
+
+    function stopAllAudio() {
+      var clips = document.querySelectorAll(".origin audio[src]");
+      var i;
+      for (i = 0; i < clips.length; i++) clips[i].pause();
+    }
+
+    function idle(btn) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = "朗读";
+    }
+
+    function stop() {
+      if (watchdog) { clearInterval(watchdog); watchdog = null; }
+      if (synth) synth.cancel();
+      stopAllAudio();
+      idle(active);
+      active = null;
+    }
+
+    function whenVoices(fn) {
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", onChange);
+        fn();
+      }
+      function onChange() {
+        voices();
+        if (pickEn()) finish();
+      }
+      voices();
+      if (pickEn()) { fn(); return; }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", onChange);
+      setTimeout(finish, 1600);
+    }
+
+    function playClip(btn, audio) {
+      if (active === btn && !audio.paused) {
+        audio.pause();
+        idle(btn);
+        active = null;
+        return;
+      }
+      stop();
+      active = btn;
+      btn.setAttribute("aria-pressed", "true");
+      btn.textContent = "停止";
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          if (active === btn) {
+            idle(btn);
+            active = null;
+          }
+        });
+      }
+    }
+
+    function speak(btn, text) {
+      var box = btn.closest ? btn.closest(".origin") : null;
+      var clip = originAudio(box);
+      if (clip) {
+        playClip(btn, clip);
+        return;
+      }
+      if (!synth) return;
+      if (active === btn) { stop(); return; }
+      var needWait = !!(active || (synth && synth.speaking));
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          u.onend = function () {
+            if (active !== btn) return;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            idle(btn);
+            active = null;
+          };
+          u.onerror = u.onend;
+          active = btn;
+          btn.setAttribute("aria-pressed", "true");
+          btn.textContent = "停止";
+          synth.speak(u);
+          if (watchdog) clearInterval(watchdog);
+          watchdog = setInterval(function () {
+            if (!synth.speaking) { clearInterval(watchdog); watchdog = null; return; }
+            if (synth.paused) synth.resume();
+          }, 400);
+        });
+      }
+      if (needWait) setTimeout(start, 80);
+      else start();
+    }
+
+    function speakWord(text) {
+      if (!synth || !text) return;
+      var wasBusy = !!(active || synth.speaking);
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          synth.speak(u);
+        });
+      }
+      if (wasBusy) setTimeout(start, 80);
+      else start();
+    }
+
+    function closePop() {
+      if (!pop) return;
+      pop.hidden = true;
+      popWord = "";
+    }
+
+    function placePop(anchor) {
+      var r = anchor.getBoundingClientRect();
+      var pw = pop.offsetWidth;
+      var ph = pop.offsetHeight;
+      var pad = 10;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var x = r.left + (r.width / 2) - (pw / 2);
+      var y = r.bottom + 8;
+      if (x < pad) x = pad;
+      if (x + pw > vw - pad) x = Math.max(pad, vw - pw - pad);
+      if (y + ph > vh - pad) y = r.top - ph - 8;
+      if (y < pad) y = pad;
+      pop.style.left = Math.round(x) + "px";
+      pop.style.top = Math.round(y) + "px";
+    }
+
+    function openPop(btn) {
+      var word = bareText(btn);
+      pop.querySelector(".wd-word").textContent = word;
+      pop.querySelector(".wd-ipa").textContent = btn.getAttribute("data-ipa") || "";
+      pop.querySelector(".wd-gloss").textContent = btn.getAttribute("data-gloss") || "";
+      popWord = word;
+      pop.style.visibility = "hidden";
+      pop.hidden = false;
+      placePop(btn);
+      pop.style.visibility = "visible";
+    }
+
+    function foldTranslations() {
+      var pairs = document.querySelectorAll(".pair");
+      var p, origin, trans, details, summary;
+      for (p = 0; p < pairs.length; p++) {
+        origin = pairs[p].querySelector(".origin");
+        trans = null;
+        for (var c = pairs[p].firstElementChild; c; c = c.nextElementSibling) {
+          if (c.classList && c.classList.contains("translation")) { trans = c; break; }
+        }
+        if (!trans || !origin) continue;
+        if (!origin.querySelector(".sent .zh")) continue;
+        details = document.createElement("details");
+        details.className = "yiwen";
+        summary = document.createElement("summary");
+        summary.textContent = "译文";
+        trans.parentNode.insertBefore(details, trans);
+        details.appendChild(summary);
+        details.appendChild(trans);
+      }
+    }
+
+    if (synth) {
+      voices();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
+    }
+
+    foldTranslations();
+
+    pop = document.createElement("div");
+    pop.id = "wd-pop";
+    pop.hidden = true;
+    pop.setAttribute("role", "dialog");
+    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读音</button>';
+    document.body.appendChild(pop);
+
+    var origins = document.querySelectorAll(".origin");
+    var i, origin, label, row, btn;
+    for (i = 0; i < origins.length; i++) {
+      origin = origins[i];
+      if (!englishText(origin)) continue;
+      label = origin.querySelector(".label");
+      if (!label || (label.parentNode && label.parentNode.classList.contains("origin-head"))) continue;
+      row = document.createElement("div");
+      row.className = "origin-head";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "speak";
+      btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "朗读这段英文");
+      btn.textContent = "朗读";
+      if (!synth && !originAudio(origin)) {
+        btn.disabled = true;
+        btn.title = "这台设备不能朗读";
+      }
+      row.appendChild(btn);
+    }
+
+    var clips = document.querySelectorAll(".origin audio[src]");
+    for (i = 0; i < clips.length; i++) {
+      clips[i].addEventListener("ended", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        if (b && active === b) {
+          idle(b);
+          active = null;
+        }
+      });
+      clips[i].addEventListener("play", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        var others = document.querySelectorAll(".origin audio[src]");
+        var j;
+        if (watchdog) { clearInterval(watchdog); watchdog = null; }
+        if (synth) synth.cancel();
+        for (j = 0; j < others.length; j++) {
+          if (others[j] !== this) others[j].pause();
+        }
+        if (active && active !== b) idle(active);
+        if (b) {
+          active = b;
+          b.setAttribute("aria-pressed", "true");
+          b.textContent = "停止";
+        }
+      });
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t) return;
+      var say = t.closest ? t.closest("#wd-pop .wd-say") : null;
+      if (say) {
+        e.preventDefault();
+        speakWord(popWord);
+        return;
+      }
+      var wdBtn = t.closest ? t.closest("button.wd") : null;
+      if (wdBtn) {
+        e.preventDefault();
+        if (!pop.hidden && popWord === bareText(wdBtn)) closePop();
+        else openPop(wdBtn);
+        return;
+      }
+      var hit = t.closest ? t.closest("button.speak") : null;
+      if (hit && !hit.disabled) {
+        closePop();
+        var box = hit.closest(".origin");
+        if (originAudio(box)) {
+          speak(hit, "");
+          return;
+        }
+        var text = box ? englishText(box) : "";
+        if (!text) return;
+        speak(hit, text);
+        return;
+      }
+      if (pop && !pop.hidden && !(t.closest && t.closest("#wd-pop"))) closePop();
+    });
+
+    window.addEventListener("scroll", closePop, { passive: true });
+    window.addEventListener("resize", closePop);
+    window.addEventListener("orientationchange", closePop);
+  })();
+  </script>
+</body>
+</html>
