@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>感觉 Sensation · 荣格《心理类型》</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --fg: #1f1b16;
+      --muted: #5a5348;
+      --card: #fffdf8;
+      --line: #d8d0c2;
+      --accent: #2f4a3a;
+      --quote: #ebe4d6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14120f;
+        --fg: #eee8dc;
+        --muted: #b4aa98;
+        --card: #1c1914;
+        --line: #3a342a;
+        --accent: #b7c9a8;
+        --quote: #242017;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0 auto;
+      max-width: 40rem;
+      padding: 1.2rem 1.1rem 3.5rem;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.7 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    }
+    header { margin-bottom: 2rem; }
+    .kicker {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.3;
+      font-weight: 650;
+      margin: 0.35rem 0 0.6rem;
+    }
+    h2 {
+      font-size: 1.28rem;
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font-weight: 650;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.4rem 0 0.4rem;
+      font-weight: 650;
+    }
+    p { margin: 0.85rem 0; }
+    a { color: var(--accent); }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.45rem 0; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      background: var(--quote);
+      border-left: 3px solid var(--accent);
+    }
+    blockquote p { margin: 0.5rem 0; }
+    .cite, footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .story, .ask {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 1rem 0;
+    }
+    .versus {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    ol.feynman { padding-left: 1.2rem; }
+    ol.feynman > li { margin: 1.3rem 0; }
+    ol.feynman .q { margin: 0 0 0.55rem; }
+    details.jiangjie {
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    details.jiangjie > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.6rem 0.85rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--accent);
+      list-style: none;
+    }
+    details.jiangjie > summary::-webkit-details-marker { display: none; }
+    details.jiangjie > summary::after {
+      content: "展开";
+      flex: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+    }
+    details.jiangjie[open] > summary::after { content: "收起"; }
+    details.jiangjie[open] > summary { border-bottom: 1px solid var(--line); }
+    .jiangjie-body {
+      padding: 0.15rem 0.85rem 0.8rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .jiangjie-body p { margin: 0.8rem 0; }
+    .origin > details.jiangjie { margin: 0.2rem 0 0.55rem; }
+    .origin > details.jiangjie > summary { padding: 0.55rem 0.8rem; }
+    .origin > details.jiangjie .jiangjie-body { padding: 0.2rem 0.8rem 0.8rem; }
+    nav {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    nav a { margin-right: 0.55rem; }
+    .pair {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      margin: 1.4rem 0;
+      overflow: visible;
+    }
+    .pair h3 {
+      margin: 0;
+      padding: 0.85rem 1rem 0.55rem;
+      font-size: 1.02rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .origin, .translation { padding: 0.85rem 1rem 0.95rem; }
+    .origin {
+      background: var(--quote);
+      border-bottom: 1px dashed var(--line);
+    }
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      font-weight: 650;
+    }
+    .origin .label { color: var(--accent); }
+    .pair blockquote {
+      margin: 0.35rem 0 0.6rem;
+      padding: 0.65rem 0.75rem;
+      background: transparent;
+      border-left: 2px solid var(--line);
+    }
+    .pair .origin blockquote { border-left-color: var(--accent); }
+    .pair blockquote p { margin: 0.35rem 0; }
+    @media (min-width: 48rem) {
+      .pair { width: 100%; }
+    }
+    .origin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+    .origin-head .label { margin-bottom: 0; }
+    button.speak {
+      flex: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.speak[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--card);
+    }
+    button.speak:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .origin audio {
+      display: block;
+      width: 100%;
+      margin-top: 0.65rem;
+    }
+
+    .pair { overflow: visible; }
+    .origin, .origin blockquote { overflow: visible; }
+    .sent { display: block; margin: 0.75rem 0; }
+    .sent:first-child { margin-top: 0.15rem; }
+    .sent:last-child { margin-bottom: 0.15rem; }
+    .sent .en {
+      display: block;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .sent .zh {
+      display: block;
+      margin: 0.18rem 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    button.wd {
+      display: inline;
+      position: relative;
+      margin: 0;
+      padding: 0.05em 0.02em;
+      border: 0;
+      border-bottom: 1px dotted var(--accent);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    button.wd::after {
+      content: "";
+      position: absolute;
+      top: -0.4em;
+      right: -0.25em;
+      bottom: -0.35em;
+      left: -0.25em;
+    }
+    button.wd .hint {
+      font-size: 11px;
+      line-height: 1;
+      color: var(--muted);
+      margin-left: 0.14em;
+      font-style: normal;
+      font-weight: 400;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+      vertical-align: super;
+    }
+    #wd-pop {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 80;
+      max-width: min(22rem, calc(100vw - 1.5rem));
+      padding: 0.7rem 0.85rem 0.75rem;
+      background: var(--card);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    #wd-pop[hidden] { display: none !important; }
+    #wd-pop .wd-line {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    #wd-pop .wd-ipa { font-family: Georgia, "Times New Roman", serif; }
+    #wd-pop .wd-gloss { margin: 0 0 0.55rem; }
+    html.js .pair:has(.origin .sent .zh) > .translation { display: none; }
+    details.yiwen {
+      border-top: 1px dashed var(--line);
+      background: var(--card);
+    }
+    details.yiwen > summary {
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-weight: 650;
+      color: var(--muted);
+      list-style: none;
+    }
+    details.yiwen > summary::-webkit-details-marker { display: none; }
+    details.yiwen[open] > summary { border-bottom: 1px dashed var(--line); }
+    details.yiwen .translation .label { display: none; }
+    #wd-pop .wd-say {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      border: 0;
+      background: none;
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">psyche-study · 005</div>
+    <h1>感觉（Sensation）</h1>
+    <nav>
+      <a href="#xiezi">楔子</a>
+      <a href="#gushi">故事</a>
+      <a href="#yuanhe">原著核心</a>
+      <a href="#ewai">额外</a>
+    </nav>
+  </header>
+
+  <section id="xiezi">
+    <h2>1. 楔子</h2>
+    <p>004 把情感立成给价值的理性功能。同一章接着写非理性功能：感觉。它把物理刺激传到知觉。外倾态度里，这一份最明确地由客体制约；占优先才叫外倾感觉型。日常把这个词用在享受、细节、问卷 S 上；荣格写的是知觉。</p>
+  </section>
+
+  <section id="gushi">
+    <h2>2. 故事</h2>
+    <div class="story">
+      <p>汤凉了。周衡把火拧小了一点。</p>
+      <p>老陈还在看手机。户型图。</p>
+      <p>「南边那间窗大。」他说。</p>
+      <p>阿宁看窗外。已经黑了。</p>
+      <p>周衡用筷子碰了碰碗边。「汤不烫了。」</p>
+    </div>
+  </section>
+
+  <section id="yuanhe">
+    <h2>3. 原著核心</h2>
+    <p>CW 6 第十章「外倾型」里「感觉」与「外倾感觉型」两小节，加第十一章定义。英文取 Baynes（1923）与 Hull（1971），中译见卡片出处。</p>
+
+    <article class="pair">
+      <h3>第十章「感觉」开篇：外倾态度里感觉由什么制约</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en"><button type="button" class="wd" data-ipa="senˈseɪʃn" data-gloss="感觉：把物理刺激传到知觉的功能">Sensation<span class="hint">感觉</span></button>, in the extraverted attitude, is most definitely conditioned by the <button type="button" class="wd" data-ipa="ˈɒbdʒɪkt" data-gloss="客体">object<span class="hint">客体</span></button>.</span><span class="zh" lang="zh">外倾态度里的感觉，最明确地由客体制约。</span></span>
+          <span class="sent"><span class="en" lang="en">As <button type="button" class="wd" data-ipa="sens pəˈsepʃn" data-gloss="感官知觉：经由感官传过来的知觉">sense-perception<span class="hint">感官知觉</span></button>, sensation is naturally dependent upon the object. But, just as naturally, it is also dependent upon the subject; hence, there is also a <button type="button" class="wd" data-ipa="səbˈdʒektɪv senˈseɪʃn" data-gloss="主观感觉：主体自己这一份，跟客观感觉不是同一种">subjective sensation<span class="hint">主观感觉</span></button>, which after its kind is entirely different from the objective.</span><span class="zh" lang="zh">作为感官知觉，感觉自然依赖客体。可它同样自然地也依赖主体；因此还有一种主观感觉，按它自己的方式，跟客观感觉完全不同。</span></span>
+          <span class="sent"><span class="en" lang="en">In the extraverted attitude this subjective share of sensation, in so far as its conscious application is concerned, is either inhibited or repressed.</span><span class="zh" lang="zh">外倾态度里，感觉的这一份主观份额，就其意识上的运用而言，要么被抑制，要么被压抑。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>003、004 写的是判断。感觉不是判断。荣格先挡住一句常见读法：感觉当然依赖客体，因为它是感官知觉。他立刻补：它也依赖主体，所以有一种主观感觉，跟客观感觉不是同一种。外倾态度里，主体这一份不拿来定向。只读「由客体制约」，容易当成外倾总论再抄一遍。他要分的是：感觉功能里本来有两份，外倾态度把主观那一份压下去。</p>
+          </div>
+        </details>
+        <p class="cite">— C. G. Jung, <em>Psychological Types</em>, Chapter X, B. The Extraverted Type, (III) 5. Sensation. Baynes, 1923（对应 Hull §604 前半）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>外倾态度里的感觉，最明确地由客体制约。作为感官知觉，感觉自然依赖客体。可它同样自然地也依赖主体；因此还有一种主观感觉，按它自己的方式，跟客观感觉完全不同。外倾态度里，感觉的这一份主观份额，就其意识上的运用而言，要么被抑制，要么被压抑。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§604 后半：什么客体能定一个人的心理</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">It is a different matter when sensation itself possesses <button type="button" class="wd" data-ipa="praɪˈɒrəti" data-gloss="优先：这一功能占首位">priority<span class="hint">优先</span></button>, instead of merely seconding another function.</span><span class="zh" lang="zh">感觉自己占优先、而不只是给别的功能当副手时，情形就不同了。</span></span>
+          <span class="sent"><span class="en" lang="en">Sensation has a preferential objective determination, and those objects which release the strongest sensation are decisive for the individual's psychology.</span><span class="zh" lang="zh">感觉有一种偏向客观的决定方式，能释放最强感觉的那些客体，对这个人的心理是决定性的。</span></span>
+          <span class="sent"><span class="en" lang="en">The result of this is a pronounced sensuous hold to the object. Sensation, therefore, is a vital function, equipped with the potentest vital instinct.</span><span class="zh" lang="zh">结果是对客体有一种明显的感官上的抓住。因此感觉是一种生命功能，带着最强的生命本能。</span></span>
+          <span class="sent"><span class="en" lang="en">It is, however, only concrete, sensuously perceived objects or processes which excite sensations in the extraverted attitude; exclusively those, in fact, which everyone in all times and places would sense as concrete.</span><span class="zh" lang="zh">可是，外倾态度里能激起感觉的，只是具体的、被感官知觉到的客体或过程；事实上只限于那些无论何时何地人人都会当成具体的东西。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>上一段还在说功能受不受主观份额干扰。这一段才说感觉自己占优先时发生什么。荣格主张：能释放最强感觉的那些客体，定这个人的心理；外倾态度里，只有人人都会当成具体的东西能激起感觉。只读「最强感觉」，容易读成找刺激、找爽。他写的是具体客体，而且是人人都会当成具体的那种。直觉是对面那条，同段末尾写它被压下去，本课没印那一句。周衡碰碗边，停在热；老陈看窗大，停在看得见的尺寸。这两下都还够不上「占优先」。这是我的推断。</p>
+          </div>
+        </details>
+        <p class="cite">— 同节后半。Baynes, 1923（对应 Hull §604）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>感觉自己占优先、而不只是给别的功能当副手时，情形就不同了。感觉有一种偏向客观的决定方式，能释放最强感觉的那些客体，对这个人的心理是决定性的。结果是对客体有一种明显的感官上的抓住。因此感觉是一种生命功能，带着最强的生命本能。可是，外倾态度里能激起感觉的，只是具体的、被感官知觉到的客体或过程；事实上只限于那些无论何时何地人人都会当成具体的东西。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>外倾感觉型：现实主义，以及它为什么不是理性</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">No other human type can equal the extraverted sensation-type in <button type="button" class="wd" data-ipa="ˈrɪəlɪzəm" data-gloss="现实主义：紧贴具体事实">realism<span class="hint">现实主义</span></button>.</span><span class="zh" lang="zh">没有别的人类类型能在现实主义上比得上外倾感觉型。</span></span>
+          <span class="sent"><span class="en" lang="en">His sense for objective facts is extraordinarily developed. His life is an accumulation of actual experience with concrete objects, and the more pronounced he is, the less use does he make of his experience.</span><span class="zh" lang="zh">他对客观事实的感觉特别发达。他的生活是具体客体上实际经验的堆积；他越典型，就越不拿这些经验派别的用处。</span></span>
+          <span class="sent"><span class="en" lang="en">In so far as one is disposed to regard a highly developed sense for sheer actuality as very reasonable, will such men be esteemed rational. In reality, however, this is by no means the case, since they are equally subject to the sensation of irrational, chance happenings, as they are to rational behaviour.</span><span class="zh" lang="zh">若有人把高度发达的单纯实际感看成很合理，这种人就会被当成理性的。其实绝非如此，因为他们同样受非理性的、偶然事件的感觉支配，一如他们受理性行为支配。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>§604 说的是功能。这里才给型：没有别的类型能在现实主义上比得上它。荣格要挡住的是：发达的实际感看起来很理性。他主张：外倾感觉型同样受偶然事件的感觉支配，所以不能算理性类型。004 的情感、003 的思维是理性功能；感觉、直觉是非理性功能。只读「堆积经验」，容易读成阅历丰富、很靠谱。他写了：越典型，越不拿这些经验派别的用处。这一顿饭里三个人都碰到了具体东西，还看不出谁的感觉占了首位。这是我的推断。</p>
+          </div>
+        </details>
+        <p class="cite">— 同章，6. The Extraverted Sensation Type 开篇。Baynes, 1923（对应 Hull §605 前半）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>没有别的人类类型能在现实主义上比得上外倾感觉型。他对客观事实的感觉特别发达。他的生活是具体客体上实际经验的堆积；他越典型，就越不拿这些经验派别的用处。若有人把高度发达的单纯实际感看成很合理，这种人就会被当成理性的。其实绝非如此，因为他们同样受非理性的、偶然事件的感觉支配，一如他们受理性行为支配。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>§605：目的是具体的享受，但不是粗俗</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">Such a type—the majority are men apparently—does not, of course, believe himself to be 'subject' to sensation. He would be much more inclined to ridicule this view as altogether inconclusive, since, from his standpoint, sensation is the concrete manifestation of life—it is simply the fulness of actual living.</span><span class="zh" lang="zh">这一型——看起来多数是男人——当然不认为自己「受」感觉支配。他更倾向把这种看法当成完全站不住，因为从他的立场看，感觉就是生命的具体显现，就是实际生活的充足。</span></span>
+          <span class="sent"><span class="en" lang="en">His aim is concrete enjoyment, and his morality is similarly orientated. For true enjoyment has its own special morality, its own moderation and lawfulness, its own unselfishness and devotedness.</span><span class="zh" lang="zh">他的目的是具体的享受，他的道德也按这个定向。因为真正的享受有它自己的道德，有节制和法度，有不自私和投入。</span></span>
+          <span class="sent"><span class="en" lang="en">It by no means follows that he is just sensual or gross, for he may differentiate his sensation to the finest pitch of æsthetic purity without being the least unfaithful, even in his most abstract sensations, to his principle of objective sensation.</span><span class="zh" lang="zh">绝不能因此说他只是好色或粗俗；他可以把感觉分化到审美上最纯的程度，即使在最抽象的感觉里，也不稍稍背离客观感觉这一原则。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>上一张把型立住了，读者会把它收成吃喝玩乐。这一段自己挡：目的是具体的享受，真正的享受有节制和法度；绝不能因此说他只是好色或粗俗。他甚至可以把感觉分化到审美上很纯。只读 enjoyment，日常中文容易滑到「爽」。荣格写的是具体生活的充足，原则仍是客观感觉。阿宁看窗外已经黑了，是具体的光；没有人在这桌上追求享受。不要把这一顿饭读成类型画像。这是我的推断。</p>
+          </div>
+        </details>
+        <p class="cite">— 同段。Baynes, 1923（对应 Hull §605）。 [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>这一型——看起来多数是男人——当然不认为自己「受」感觉支配。他更倾向把这种看法当成完全站不住，因为从他的立场看，感觉就是生命的具体显现，就是实际生活的充足。他的目的是具体的享受，他的道德也按这个定向。因为真正的享受有它自己的道德，有节制和法度，有不自私和投入。绝不能因此说他只是好色或粗俗；他可以把感觉分化到审美上最纯的程度，即使在最抽象的感觉里，也不稍稍背离客观感觉这一原则。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>第十一章 §792：感觉的定义</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">Sensation is that psychological function which transmits a physical stimulus to <button type="button" class="wd" data-ipa="pəˈsepʃn" data-gloss="知觉">perception<span class="hint">知觉</span></button>. It is, therefore, identical with perception.</span><span class="zh" lang="zh">感觉是把物理刺激传到知觉的那种心理功能。因此它与知觉是同一的。</span></span>
+          <span class="sent"><span class="en" lang="en">Sensation must be strictly distinguished from feeling, since the latter is an entirely different process, although it may associate itself with sensation as “feeling-tone.”</span><span class="zh" lang="zh">感觉必须跟情感严格分开，因为后者完全是另一个过程，虽然它可以作为 feeling-tone（感觉上带着的情感色）跟感觉连在一起。</span></span>
+          <span class="sent"><span class="en" lang="en">Sensation is related not only to external stimuli but to inner ones, i.e., to changes in the internal organs.</span><span class="zh" lang="zh">感觉不仅关系到外部刺激，也关系到内部刺激，也就是内脏的变化。</span></span>
+        </blockquote>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>第十章一直在外倾态度里看感觉朝哪边。第十一章把功能本身拆出来，跟 003 的 §830、004 的 §724 同一层。荣格主张：感觉把物理刺激传到知觉，因此与知觉同一；必须跟情感严格分开。情感可以作为 feeling-tone 跟着感觉，但是另一个过程。内部刺激也算，内脏变化也算。只读「五感」，会把内脏那一层丢掉。周衡说汤不烫了，是热传到知觉；阿宁问「想去吗」是价值，不在这一条上。这是我的推断。</p>
+          </div>
+        </details>
+        <p class="cite">— CW 6, Chapter XI Definitions, SENSATION, §792. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>感觉是把物理刺激传到知觉的那种心理功能。因此它与知觉是同一的。感觉必须跟情感严格分开，因为后者完全是另一个过程，虽然它可以作为 feeling-tone（感觉上带着的情感色）跟感觉连在一起。感觉不仅关系到外部刺激，也关系到内部刺激，也就是内脏的变化。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <h3>解析</h3>
+    <p>§604 先立功能的定向：外倾态度里感觉最明确地由客体制约，主体那一份被压下去。能释放最强感觉的具体客体，定这个人的心理。老陈报窗大，周衡报汤不烫，都停在具体客体上。</p>
+    <p>§605 才给类型：现实主义最强的那一型，看起来很理性，荣格不把它算进理性类型。占优先才叫这一型。这一顿饭看得见三个人碰到了具体东西，看不见谁的感觉占了首位。这是我的推断。</p>
+    <p>§792 回到功能定义。感觉把刺激传到知觉；情感给的是接受或拒绝。阿宁上一课问「想去吗」，问的是价值。这一课桌上多出来的是热、光、窗的尺寸。</p>
+  </section>
+
+  <section id="ewai">
+    <h2>4. 额外</h2>
+    <h3>它没说什么</h3>
+    <p>流行读法常加给他、原文没有的：</p>
+    <ul>
+      <li>感觉等于享受、好吃好玩、会过日子。§605 写了具体的享受，也写了节制和法度；§792 只写传到知觉。</li>
+      <li>感觉型就是外倾。§605 写的是外倾感觉占优先的那一型；内倾感觉是另一节。</li>
+      <li>感觉是判断，是务实，是靠谱。感觉是非理性功能。务实是后加的评价。</li>
+      <li>荣格给了 S 字母、给了 S 分数。§605 要占优先。</li>
+      <li>五感就是全部。§792 把内脏变化也算进来。</li>
+    </ul>
+
+    <h3>对立并排</h3>
+    <p>三家各问各的。荣格给感觉下的是功能定义：传到知觉，不判断。迈尔斯把 S–N 做成一对偏好，注意具体事实还是模式可能。Luton 把它叫 fonction du réel，强调不判断意味、不判断价值。摆在一起，不合并。</p>
+
+    <article class="pair">
+      <h3>荣格 · 第十一章 §792（补一句）</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">Primarily, therefore, sensation is sense-perception, i.e., perception transmitted via the sense organs and “bodily senses” (kinaesthetic, vaso-motor sensation, etc.).</span><span class="zh" lang="zh">因此，感觉首先是感官知觉，也就是经由感觉器官和「身体感官」（运动感觉、血管运动感觉等）传来的知觉。</span></span>
+        </blockquote>
+        <p class="cite">— CW 6, Chapter XI Definitions, SENSATION, §792. Hull, 1971. [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>因此，感觉首先是感官知觉，也就是经由感觉器官和「身体感官」（运动感觉、血管运动感觉等）传来的知觉。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>迈尔斯官方 · Sensing 这一侧</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">People who prefer Sensing pay more attention to information that is concrete and tangible. They focus on what is, by paying attention to specific details and facts. They rely on perception through their five senses (trust experience).</span><span class="zh" lang="zh">偏好 Sensing 的人更注意具体、可摸到的信息。他们把注意放在「是什么」上，看具体细节和事实。他们依赖经由五感而来的知觉（信任经验）。</span></span>
+        </blockquote>
+        <p class="cite">— The Myers &amp; Briggs Foundation, "The Preferences." myersbriggs.org [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>偏好 Sensing 的人更注意具体、可摸到的信息。他们把注意放在「是什么」上，看具体细节和事实。他们依赖经由五感而来的知觉（信任经验）。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <article class="pair">
+      <h3>Luton：不判断意味，不判断价值</h3>
+      <div class="origin">
+        <div class="label">原文</div>
+        <blockquote>
+          <span class="sent"><span class="en" lang="en">In Jung’s model of typology, sensation, like intuition, is an irrational function. It perceives concrete facts, with no judgment of what they mean or what they are worth.</span><span class="zh" lang="zh">在荣格的类型模型里，感觉跟直觉一样是非理性功能。它知觉具体事实，不判断它们意味什么，也不判断它们值多少。</span></span>
+        </blockquote>
+        <p class="cite">— Frith Luton, "Sensation – Jungian definition of the psychological function." frithluton.com [VERIFIED]</p>
+      </div>
+      <div class="translation">
+        <div class="label">译文</div>
+        <blockquote>
+          <p>在荣格的类型模型里，感觉跟直觉一样是非理性功能。它知觉具体事实，不判断它们意味什么，也不判断它们值多少。</p>
+        </blockquote>
+        <p class="cite">（本段无出版中译，此为自译）</p>
+      </div>
+    </article>
+
+    <details class="jiangjie">
+      <summary>讲解</summary>
+      <div class="jiangjie-body">
+        <p>三条轴不能合并。荣格问的是：传到知觉的是不是具体刺激，以及外倾态度里主体那一份是否被压下去。迈尔斯问的是收集信息时先看具体事实还是模式可能，并且把五感、经验写进偏好。Luton 把非理性说成：不判断意味、不判断价值。周衡报汤不烫，按荣格是知觉；按迈尔斯像 S；按 Luton 还没有价值判断。老陈报窗大，也可以三条都读得通。读成「务实」是后加的。这是我的推断。</p>
+      </div>
+    </details>
+
+    <h3>费曼三问</h3>
+    <ol class="feynman">
+      <li>
+        <p class="q">用自己的句子说清 §792：感觉给意识的是什么。不要出现享受、细节控、S。</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>给的是知觉：物理刺激被传到意识。内部刺激也算。情感是另一条，给的是接受或拒绝；它可以作为 feeling-tone 跟着感觉，但不是感觉本身。可以拿「汤不烫了」想——热先到，值还没给。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">周衡说「汤不烫了」，阿宁上一课问「你自己想去吗」。按 §792 和 §724，这两句话各停在哪一种功能上？</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>周衡停在感觉：热传到知觉。阿宁停在情感：要一个接受或拒绝。老陈报窗大，也还停在具体尺寸上，没答「想不想」。这一顿饭仍然不够判类型。§605 要占优先。</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <p class="q">有人把老陈看户型图读成务实，有人读成外倾感觉。两种读法各要什么下文才站得住？</p>
+        <details class="jiangjie">
+          <summary>讲解</summary>
+          <div class="jiangjie-body">
+            <p>平凡读法：他务实，先看窗、看租约。荣格读法：定向落在具体客体上，主体那一份不拿来定向。只这一眼，两种都读得通。要检验荣格那条，看他后面是不是一直被最强的具体感觉拖着走，偶然的东西是否同样能定他。要检验务实那条，看他是不是在做判断、在比较利弊——那已经滑到思维。一句「窗大」定不了。这是我的推断。</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>CW 6；Baynes 1923；Hull 1971。庄仲黎本课无对应段可核。</p>
+  </footer>
+
+  <div id="wd-pop" hidden>
+    <p class="wd-line"><span class="wd-ipa"></span></p>
+    <p class="wd-gloss"></p>
+    <button type="button" class="wd-say">读这个词</button>
+  </div>
+  <script>
+  (function () {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "js";
+    var synth = window.speechSynthesis || null;
+    var active = null;
+    var watchdog = null;
+    var pop = null;
+    var popWord = "";
+    var NOVELTY = /zarvox|albert|bad news|good news|pipe organ|cellos|boing|whisper|superstar|trinoids|junior|kathy|bells|hysterical|princess|ralph|bruce|fred|organiser|novelty/i;
+    var PREFERRED = [
+      "samantha",
+      "daniel",
+      "karen",
+      "moira",
+      "google us english",
+      "google uk english",
+      "microsoft aria"
+    ];
+
+    function voices() {
+      return synth ? (synth.getVoices() || []) : [];
+    }
+
+    function voiceLang(v) {
+      return String(v && v.lang || "").toLowerCase().replace(/_/g, "-");
+    }
+
+    function voiceName(v) {
+      return String(v && v.name || "");
+    }
+
+    function isChineseVoice(v) {
+      var lang = voiceLang(v);
+      var name = voiceName(v).toLowerCase();
+      if (lang.indexOf("zh") === 0 || lang.indexOf("cmn") === 0) return true;
+      if (/chinese|中文|普通话|国语|粤语|cantonese|mandarin/.test(name)) return true;
+      return false;
+    }
+
+    function isEnglishVoice(v) {
+      return voiceLang(v).indexOf("en-") === 0;
+    }
+
+    function isNovelty(v) {
+      return NOVELTY.test(voiceName(v));
+    }
+
+    function looksLikePerson(name) {
+      var n = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
+      if (!n) return false;
+      if (/google|microsoft|siri|enhanced|compact|premium|neural|speech|voice|default|english/i.test(n)) return false;
+      return /^[A-Za-z][A-Za-z .'-]{0,40}$/.test(n) && n.split(/\s+/).length <= 3;
+    }
+
+    function pickEn() {
+      var list = voices();
+      var pool = [];
+      var i, v, lang, name;
+      for (i = 0; i < list.length; i++) {
+        v = list[i];
+        if (isChineseVoice(v) || !isEnglishVoice(v) || isNovelty(v)) continue;
+        pool.push(v);
+      }
+      function findPreferred(want) {
+        var j;
+        for (j = 0; j < pool.length; j++) {
+          if (voiceName(pool[j]).toLowerCase().indexOf(want) !== -1) return pool[j];
+        }
+        return null;
+      }
+      for (i = 0; i < PREFERRED.length; i++) {
+        v = findPreferred(PREFERRED[i]);
+        if (v) return v;
+      }
+      var usPerson, gbPerson, usDef, gbDef;
+      for (i = 0; i < pool.length; i++) {
+        v = pool[i];
+        lang = voiceLang(v);
+        name = voiceName(v);
+        if (lang.indexOf("en-us") === 0) {
+          if (looksLikePerson(name) && !usPerson) usPerson = v;
+          if (v.default && !usDef) usDef = v;
+        } else if (lang.indexOf("en-gb") === 0) {
+          if (looksLikePerson(name) && !gbPerson) gbPerson = v;
+          if (v.default && !gbDef) gbDef = v;
+        }
+      }
+      return usPerson || gbPerson || usDef || gbDef || pool[0] || null;
+    }
+
+    function applyVoice(u) {
+      var v = pickEn();
+      u.rate = 0.95;
+      u.pitch = 1;
+      if (v) {
+        u.voice = v;
+        u.lang = voiceLang(v);
+      } else {
+        u.lang = "en-US";
+      }
+    }
+
+    function bareText(el) {
+      if (!el) return "";
+      var clone = el.cloneNode(true);
+      var junk = clone.querySelectorAll(".zh, .hint, rt");
+      var i;
+      for (i = 0; i < junk.length; i++) {
+        if (junk[i].parentNode) junk[i].parentNode.removeChild(junk[i]);
+      }
+      return String(clone.innerText || clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function englishText(origin) {
+      var bq = origin.querySelector("blockquote");
+      var text = bareText(bq);
+      if (!text || text.indexOf("本轮未核到该段英文原文") !== -1) return "";
+      var latin = (text.match(/[A-Za-z]/g) || []).length;
+      var cjk = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+      return (latin >= 20 && latin > cjk) ? text : "";
+    }
+
+    function originAudio(origin) {
+      return origin ? origin.querySelector("audio[src]") : null;
+    }
+
+    function stopAllAudio() {
+      var clips = document.querySelectorAll(".origin audio[src]");
+      var i;
+      for (i = 0; i < clips.length; i++) clips[i].pause();
+    }
+
+    function idle(btn) {
+      if (!btn) return;
+      btn.setAttribute("aria-pressed", "false");
+      btn.textContent = "朗读";
+    }
+
+    function stop() {
+      if (watchdog) { clearInterval(watchdog); watchdog = null; }
+      if (synth) synth.cancel();
+      stopAllAudio();
+      idle(active);
+      active = null;
+    }
+
+    function whenVoices(fn) {
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        if (synth && synth.removeEventListener) synth.removeEventListener("voiceschanged", onChange);
+        fn();
+      }
+      function onChange() {
+        voices();
+        if (pickEn()) finish();
+      }
+      voices();
+      if (pickEn()) { fn(); return; }
+      if (synth && synth.addEventListener) synth.addEventListener("voiceschanged", onChange);
+      setTimeout(finish, 1600);
+    }
+
+    function playClip(btn, audio) {
+      if (active === btn && !audio.paused) {
+        audio.pause();
+        idle(btn);
+        active = null;
+        return;
+      }
+      stop();
+      active = btn;
+      btn.setAttribute("aria-pressed", "true");
+      btn.textContent = "停止";
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          if (active === btn) {
+            idle(btn);
+            active = null;
+          }
+        });
+      }
+    }
+
+    function speak(btn, text) {
+      var box = btn.closest ? btn.closest(".origin") : null;
+      var clip = originAudio(box);
+      if (clip) {
+        playClip(btn, clip);
+        return;
+      }
+      if (!synth) return;
+      if (active === btn) { stop(); return; }
+      var needWait = !!(active || (synth && synth.speaking));
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          u.onend = function () {
+            if (active !== btn) return;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            idle(btn);
+            active = null;
+          };
+          u.onerror = u.onend;
+          active = btn;
+          btn.setAttribute("aria-pressed", "true");
+          btn.textContent = "停止";
+          synth.speak(u);
+          if (watchdog) clearInterval(watchdog);
+          watchdog = setInterval(function () {
+            if (!synth.speaking) { clearInterval(watchdog); watchdog = null; return; }
+            if (synth.paused) synth.resume();
+          }, 400);
+        });
+      }
+      if (needWait) setTimeout(start, 80);
+      else start();
+    }
+
+    function speakWord(text) {
+      if (!synth || !text) return;
+      var wasBusy = !!(active || synth.speaking);
+      stop();
+      function start() {
+        whenVoices(function () {
+          var u = new SpeechSynthesisUtterance(text);
+          applyVoice(u);
+          synth.speak(u);
+        });
+      }
+      if (wasBusy) setTimeout(start, 80);
+      else start();
+    }
+
+    function closePop() {
+      if (!pop) return;
+      pop.hidden = true;
+      popWord = "";
+    }
+
+    function placePop(anchor) {
+      var r = anchor.getBoundingClientRect();
+      var pw = pop.offsetWidth;
+      var ph = pop.offsetHeight;
+      var pad = 10;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var x = r.left + (r.width / 2) - (pw / 2);
+      var y = r.bottom + 8;
+      if (x < pad) x = pad;
+      if (x + pw > vw - pad) x = Math.max(pad, vw - pw - pad);
+      if (y + ph > vh - pad) y = r.top - ph - 8;
+      if (y < pad) y = pad;
+      pop.style.left = Math.round(x) + "px";
+      pop.style.top = Math.round(y) + "px";
+    }
+
+    function openPop(btn) {
+      var word = bareText(btn);
+      pop.querySelector(".wd-word").textContent = word;
+      pop.querySelector(".wd-ipa").textContent = btn.getAttribute("data-ipa") || "";
+      pop.querySelector(".wd-gloss").textContent = btn.getAttribute("data-gloss") || "";
+      popWord = word;
+      pop.style.visibility = "hidden";
+      pop.hidden = false;
+      placePop(btn);
+      pop.style.visibility = "visible";
+    }
+
+    function foldTranslations() {
+      var pairs = document.querySelectorAll(".pair");
+      var p, origin, trans, details, summary;
+      for (p = 0; p < pairs.length; p++) {
+        origin = pairs[p].querySelector(".origin");
+        trans = null;
+        for (var c = pairs[p].firstElementChild; c; c = c.nextElementSibling) {
+          if (c.classList && c.classList.contains("translation")) { trans = c; break; }
+        }
+        if (!trans || !origin) continue;
+        if (!origin.querySelector(".sent .zh")) continue;
+        details = document.createElement("details");
+        details.className = "yiwen";
+        summary = document.createElement("summary");
+        summary.textContent = "译文";
+        trans.parentNode.insertBefore(details, trans);
+        details.appendChild(summary);
+        details.appendChild(trans);
+      }
+    }
+
+    if (synth) {
+      voices();
+      if (synth.addEventListener) synth.addEventListener("voiceschanged", function () { voices(); });
+    }
+
+    foldTranslations();
+
+    pop = document.createElement("div");
+    pop.id = "wd-pop";
+    pop.hidden = true;
+    pop.setAttribute("role", "dialog");
+    pop.innerHTML = '<p class="wd-line"><strong class="wd-word"></strong> · <span class="wd-ipa"></span></p><p class="wd-gloss"></p><button type="button" class="wd-say">读音</button>';
+    document.body.appendChild(pop);
+
+    var origins = document.querySelectorAll(".origin");
+    var i, origin, label, row, btn;
+    for (i = 0; i < origins.length; i++) {
+      origin = origins[i];
+      if (!englishText(origin)) continue;
+      label = origin.querySelector(".label");
+      if (!label || (label.parentNode && label.parentNode.classList.contains("origin-head"))) continue;
+      row = document.createElement("div");
+      row.className = "origin-head";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "speak";
+      btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "朗读这段英文");
+      btn.textContent = "朗读";
+      if (!synth && !originAudio(origin)) {
+        btn.disabled = true;
+        btn.title = "这台设备不能朗读";
+      }
+      row.appendChild(btn);
+    }
+
+    var clips = document.querySelectorAll(".origin audio[src]");
+    for (i = 0; i < clips.length; i++) {
+      clips[i].addEventListener("ended", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        if (b && active === b) {
+          idle(b);
+          active = null;
+        }
+      });
+      clips[i].addEventListener("play", function () {
+        var origin = this.closest ? this.closest(".origin") : null;
+        var b = origin ? origin.querySelector("button.speak") : null;
+        var others = document.querySelectorAll(".origin audio[src]");
+        var j;
+        if (watchdog) { clearInterval(watchdog); watchdog = null; }
+        if (synth) synth.cancel();
+        for (j = 0; j < others.length; j++) {
+          if (others[j] !== this) others[j].pause();
+        }
+        if (active && active !== b) idle(active);
+        if (b) {
+          active = b;
+          b.setAttribute("aria-pressed", "true");
+          b.textContent = "停止";
+        }
+      });
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t) return;
+      var say = t.closest ? t.closest("#wd-pop .wd-say") : null;
+      if (say) {
+        e.preventDefault();
+        speakWord(popWord);
+        return;
+      }
+      var wdBtn = t.closest ? t.closest("button.wd") : null;
+      if (wdBtn) {
+        e.preventDefault();
+        if (!pop.hidden && popWord === bareText(wdBtn)) closePop();
+        else openPop(wdBtn);
+        return;
+      }
+      var hit = t.closest ? t.closest("button.speak") : null;
+      if (hit && !hit.disabled) {
+        closePop();
+        var box = hit.closest(".origin");
+        if (originAudio(box)) {
+          speak(hit, "");
+          return;
+        }
+        var text = box ? englishText(box) : "";
+        if (!text) return;
+        speak(hit, text);
+        return;
+      }
+      if (pop && !pop.hidden && !(t.closest && t.closest("#wd-pop"))) closePop();
+    });
+
+    window.addEventListener("scroll", closePop, { passive: true });
+    window.addEventListener("resize", closePop);
+    window.addEventListener("orientationchange", closePop);
+  })();
+  </script>
+</body>
+</html>
